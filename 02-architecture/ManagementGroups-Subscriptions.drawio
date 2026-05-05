@@ -130,6 +130,12 @@
             <mxPoint x="1092" y="650" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="cT6LmnMbhNfq8FhoQMbc-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="" vertex="1">
+          <mxGeometry height="370" width="560" x="-430" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="cT6LmnMbhNfq8FhoQMbc-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Hub" vertex="1">
+          <mxGeometry height="30" width="60" x="-400" y="750" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
