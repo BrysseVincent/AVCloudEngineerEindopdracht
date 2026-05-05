@@ -76,6 +76,15 @@
         <mxCell id="LRZKTTYrlkjWFEzjWQWa-25" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/analytics/Log_Analytics_Workspaces.svg;" value="" vertex="1">
           <mxGeometry height="64" width="64" x="210" y="900" as="geometry" />
         </mxCell>
+        <mxCell id="LRZKTTYrlkjWFEzjWQWa-26" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/SQL_Database.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="48" x="160" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="LRZKTTYrlkjWFEzjWQWa-27" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/storage/Storage_Accounts.svg;" value="" vertex="1">
+          <mxGeometry height="52" width="65" x="260" y="616" as="geometry" />
+        </mxCell>
+        <mxCell id="LRZKTTYrlkjWFEzjWQWa-28" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/compute/Function_Apps.svg;" value="" vertex="1">
+          <mxGeometry height="60" width="68" x="142" y="460" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
