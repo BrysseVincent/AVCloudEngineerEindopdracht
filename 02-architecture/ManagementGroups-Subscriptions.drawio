@@ -268,9 +268,6 @@
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-63" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/management_governance/Policy.svg;" value="" vertex="1">
           <mxGeometry height="28.8" width="27" x="507" y="261.2" as="geometry" />
         </mxCell>
-        <mxCell id="cT6LmnMbhNfq8FhoQMbc-64" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Text" vertex="1">
-          <mxGeometry height="425" width="410" x="-790" y="135" as="geometry" />
-        </mxCell>
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-65" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/management_governance/Policy.svg;" value="" vertex="1">
           <mxGeometry height="28.8" width="27" x="80" y="431.2" as="geometry" />
         </mxCell>
