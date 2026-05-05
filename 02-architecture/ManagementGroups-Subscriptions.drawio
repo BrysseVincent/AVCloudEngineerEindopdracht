@@ -1,0 +1,136 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Pagina-1" id="j6Oa0W8JBIH_crfPehCw">
+    <mxGraphModel dx="2881" dy="1139" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Tenant Root Group" vertex="1">
+          <mxGeometry height="60" width="260" x="275" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-3" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Management_Groups.svg;" value="" vertex="1">
+          <mxGeometry height="32.97" width="34" x="500" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Contoso Manufacturing" vertex="1">
+          <mxGeometry height="60" width="260" x="275" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-5" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Management_Groups.svg;" value="" vertex="1">
+          <mxGeometry height="32.97" width="34" x="500" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Platform Management Group&lt;br&gt;&lt;i&gt;(Gedeelde Services)&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="260" x="-220" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-9" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Management_Groups.svg;" value="" vertex="1">
+          <mxGeometry height="32.97" width="34" x="5" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Landing Zones Management group&lt;br&gt;&lt;i&gt;(Workloads)&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="260" x="520" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-11" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Management_Groups.svg;" value="" vertex="1">
+          <mxGeometry height="32.97" width="34" x="745" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Identity" vertex="1">
+          <mxGeometry height="60" width="200" x="-430" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-16" parent="1" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Key.svg;" value="" vertex="1">
+          <mxGeometry height="50" width="31" x="-270" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Connectivity" vertex="1">
+          <mxGeometry height="60" width="200" x="50" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-20" parent="1" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Key.svg;" value="" vertex="1">
+          <mxGeometry height="50" width="31" x="210" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Management" vertex="1">
+          <mxGeometry height="60" width="200" x="-190" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-22" parent="1" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Key.svg;" value="" vertex="1">
+          <mxGeometry height="50" width="31" x="-30" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Corp Management Group" vertex="1">
+          <mxGeometry height="60" width="260" x="378" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-24" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Management_Groups.svg;" value="" vertex="1">
+          <mxGeometry height="32.97" width="34" x="603" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-25" edge="1" parent="1" source="lcC2BkzQlZVIqcTmOU3f-23" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;" target="lcC2BkzQlZVIqcTmOU3f-10" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="190" y="460" as="sourcePoint" />
+            <mxPoint x="240" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-26" edge="1" parent="1" source="lcC2BkzQlZVIqcTmOU3f-4" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" target="lcC2BkzQlZVIqcTmOU3f-1" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="190" y="460" as="sourcePoint" />
+            <mxPoint x="240" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-27" edge="1" parent="1" source="lcC2BkzQlZVIqcTmOU3f-8" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="lcC2BkzQlZVIqcTmOU3f-4" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="400" y="370" as="sourcePoint" />
+            <mxPoint x="400" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-28" edge="1" parent="1" source="lcC2BkzQlZVIqcTmOU3f-4" style="endArrow=none;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="lcC2BkzQlZVIqcTmOU3f-10" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="470" y="500" as="sourcePoint" />
+            <mxPoint x="725" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-29" edge="1" parent="1" source="lcC2BkzQlZVIqcTmOU3f-17" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;" target="lcC2BkzQlZVIqcTmOU3f-8" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="270" y="540" as="sourcePoint" />
+            <mxPoint x="270" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-31" edge="1" parent="1" source="lcC2BkzQlZVIqcTmOU3f-21" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" target="lcC2BkzQlZVIqcTmOU3f-8" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="50" y="655" as="sourcePoint" />
+            <mxPoint x="290" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-32" edge="1" parent="1" source="lcC2BkzQlZVIqcTmOU3f-19" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;" target="lcC2BkzQlZVIqcTmOU3f-8" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="70" y="655" as="sourcePoint" />
+            <mxPoint x="310" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-33" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Contoso-Prod" vertex="1">
+          <mxGeometry height="60" width="200" x="275" y="765" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-34" parent="1" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Key.svg;" value="" vertex="1">
+          <mxGeometry height="50" width="31" x="435" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-35" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Contoso-NonProd" vertex="1">
+          <mxGeometry height="60" width="200" x="538" y="765" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-36" parent="1" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Key.svg;" value="" vertex="1">
+          <mxGeometry height="50" width="31" x="698" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-39" edge="1" parent="1" source="lcC2BkzQlZVIqcTmOU3f-33" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;" target="lcC2BkzQlZVIqcTmOU3f-23" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="868" y="720" as="sourcePoint" />
+            <mxPoint x="508" y="640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-41" edge="1" parent="1" source="lcC2BkzQlZVIqcTmOU3f-35" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;" target="lcC2BkzQlZVIqcTmOU3f-23" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="668" y="835" as="sourcePoint" />
+            <mxPoint x="508" y="640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-42" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Online Management Group" vertex="1">
+          <mxGeometry height="60" width="260" x="670" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-43" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Management_Groups.svg;" value="" vertex="1">
+          <mxGeometry height="32.97" width="34" x="895" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-44" edge="1" parent="1" source="lcC2BkzQlZVIqcTmOU3f-42" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;" target="lcC2BkzQlZVIqcTmOU3f-10" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="632" y="650" as="sourcePoint" />
+            <mxPoint x="1092" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
