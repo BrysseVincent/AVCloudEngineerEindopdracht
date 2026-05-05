@@ -238,12 +238,6 @@
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-47" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Vnet Peering" vertex="1">
           <mxGeometry height="30" width="60" x="-220" y="1155" as="geometry" />
         </mxCell>
-        <mxCell id="cT6LmnMbhNfq8FhoQMbc-48" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;" value="">
-          <mxGeometry height="50" relative="1" width="50" as="geometry">
-            <mxPoint x="-10" y="1010" as="sourcePoint" />
-            <mxPoint x="40" y="960" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-51" edge="1" parent="1" source="lcC2BkzQlZVIqcTmOU3f-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.487;entryY=-0.003;entryDx=0;entryDy=0;entryPerimeter=0;" target="cT6LmnMbhNfq8FhoQMbc-3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
