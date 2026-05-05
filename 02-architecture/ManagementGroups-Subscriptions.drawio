@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Pagina-1" id="j6Oa0W8JBIH_crfPehCw">
-    <mxGraphModel dx="3708" dy="1139" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="4588" dy="1627" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -246,6 +246,21 @@
         </mxCell>
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-52" edge="1" parent="1" source="cT6LmnMbhNfq8FhoQMbc-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="cT6LmnMbhNfq8FhoQMbc-33">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cT6LmnMbhNfq8FhoQMbc-59" edge="1" parent="1" source="cT6LmnMbhNfq8FhoQMbc-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" target="cT6LmnMbhNfq8FhoQMbc-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cT6LmnMbhNfq8FhoQMbc-54" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" value="" vertex="1">
+          <mxGeometry height="200" width="260" x="800" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="cT6LmnMbhNfq8FhoQMbc-55" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="ON PREM" vertex="1">
+          <mxGeometry height="30" width="190" x="835" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="cT6LmnMbhNfq8FhoQMbc-56" parent="1" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.concepts.on_premises;" value="" vertex="1">
+          <mxGeometry height="100" width="127" x="866.5" y="945" as="geometry" />
+        </mxCell>
+        <mxCell id="cT6LmnMbhNfq8FhoQMbc-60" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="IPSEC VPN" vertex="1">
+          <mxGeometry height="30" width="60" x="650" y="990" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
