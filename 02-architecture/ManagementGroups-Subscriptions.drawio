@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Pagina-1" id="j6Oa0W8JBIH_crfPehCw">
-    <mxGraphModel dx="4588" dy="1627" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3708" dy="1139" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -196,7 +196,7 @@
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-33" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="" vertex="1">
           <mxGeometry height="330" width="690" x="-960" y="1140" as="geometry" />
         </mxCell>
-        <mxCell id="cT6LmnMbhNfq8FhoQMbc-34" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=#d5e8d4;align=center;verticalAlign=middle;rounded=0;" value="Management Vnet 10.22.0.0/24" vertex="1">
+        <mxCell id="cT6LmnMbhNfq8FhoQMbc-34" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=#d5e8d4;align=center;verticalAlign=middle;rounded=0;" value="Management Vnet 10.22.0.0/16" vertex="1">
           <mxGeometry height="30" width="190" x="-720" y="1150" as="geometry" />
         </mxCell>
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-35" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" value="" vertex="1">
