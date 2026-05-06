@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Pagina-1" id="0ov4cwr38fk90rf3Actb">
-    <mxGraphModel dx="2054" dy="1139" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="852" dy="573" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -49,17 +49,14 @@
         <mxCell id="LRZKTTYrlkjWFEzjWQWa-15" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;pre class=&quot;notranslate&quot;&gt;&lt;code&gt;rg-contoso-monitoring&lt;/code&gt;&lt;/pre&gt;" vertex="1">
           <mxGeometry height="40" width="190" x="110" y="870" as="geometry" />
         </mxCell>
-        <mxCell id="LRZKTTYrlkjWFEzjWQWa-17" parent="1" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Application_Gateway.svg;" value="" vertex="1">
-          <mxGeometry height="70" width="70" x="150" y="310" as="geometry" />
+        <mxCell id="LRZKTTYrlkjWFEzjWQWa-17" parent="1" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Application_Gateway.svg;labelBackgroundColor=none;" value="&lt;span&gt;Application gateway&lt;/span&gt;" vertex="1">
+          <mxGeometry height="50" width="50" x="142" y="308" as="geometry" />
         </mxCell>
-        <mxCell id="LRZKTTYrlkjWFEzjWQWa-18" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Web_Application_Firewall_Policies_WAF.svg;" value="" vertex="1">
-          <mxGeometry height="68" width="68" x="260" y="312" as="geometry" />
+        <mxCell id="LRZKTTYrlkjWFEzjWQWa-18" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Web_Application_Firewall_Policies_WAF.svg;labelBackgroundColor=none;labelBorderColor=none;textShadow=0;" value="&lt;span&gt;WAF&lt;/span&gt;" vertex="1">
+          <mxGeometry height="58" width="58" x="240" y="304" as="geometry" />
         </mxCell>
-        <mxCell id="LRZKTTYrlkjWFEzjWQWa-19" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/app_services/App_Service_Plans.svg;labelBackgroundColor=none;" value="&lt;pre class=&quot;notranslate&quot;&gt;&lt;code&gt;api-contoso-prd&lt;/code&gt;&lt;/pre&gt;" vertex="1">
-          <mxGeometry height="64" width="64" x="570" y="290" as="geometry" />
-        </mxCell>
-        <mxCell id="LRZKTTYrlkjWFEzjWQWa-20" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/app_services/App_Service_Plans.svg;labelBackgroundColor=none;" value="&lt;pre class=&quot;notranslate&quot;&gt;&lt;code&gt;web-contoso-prd&lt;/code&gt;&lt;/pre&gt;" vertex="1">
-          <mxGeometry height="64" width="64" x="450" y="290" as="geometry" />
+        <mxCell id="LRZKTTYrlkjWFEzjWQWa-20" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/app_services/App_Service_Plans.svg;labelBackgroundColor=none;" value="App Service Plan" vertex="1">
+          <mxGeometry height="64" width="64" x="350" y="290" as="geometry" />
         </mxCell>
         <mxCell id="LRZKTTYrlkjWFEzjWQWa-21" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/security/Key_Vaults.svg;" value="" vertex="1">
           <mxGeometry height="68" width="68" x="150" y="760" as="geometry" />
@@ -84,6 +81,12 @@
         </mxCell>
         <mxCell id="LRZKTTYrlkjWFEzjWQWa-28" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/compute/Function_Apps.svg;" value="" vertex="1">
           <mxGeometry height="60" width="68" x="142" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="8LdlQGzX2cAqiYZyafJo-1" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/compute/App_Services.svg;labelBackgroundColor=none;" value="&lt;pre class=&quot;notranslate&quot;&gt;&lt;code&gt;api-contoso-prd&lt;/code&gt;&lt;/pre&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="590" y="302" as="geometry" />
+        </mxCell>
+        <mxCell id="8LdlQGzX2cAqiYZyafJo-2" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/compute/App_Services.svg;labelBackgroundColor=none;" value="&lt;pre class=&quot;notranslate&quot;&gt;&lt;code&gt;web-contoso-prd&lt;/code&gt;&lt;/pre&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="480" y="302" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
