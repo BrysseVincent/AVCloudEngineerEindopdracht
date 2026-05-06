@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Pagina-1" id="j6Oa0W8JBIH_crfPehCw">
-    <mxGraphModel dx="4588" dy="1627" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3436" dy="1198" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -273,6 +273,15 @@
         </mxCell>
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-66" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/management_governance/Policy.svg;" value="" vertex="1">
           <mxGeometry height="28.8" width="27" x="611" y="551.2" as="geometry" />
+        </mxCell>
+        <mxCell id="VTVxEjelB-_B4yN_WOkT-1" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Virtual_Networks.svg;" value="" vertex="1">
+          <mxGeometry height="40" width="67" x="-335" y="875" as="geometry" />
+        </mxCell>
+        <mxCell id="VTVxEjelB-_B4yN_WOkT-2" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Virtual_Networks.svg;" value="" vertex="1">
+          <mxGeometry height="40" width="67" x="507" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="VTVxEjelB-_B4yN_WOkT-3" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Virtual_Networks.svg;" value="" vertex="1">
+          <mxGeometry height="40" width="67" x="-345" y="1160" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
