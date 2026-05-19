@@ -163,7 +163,6 @@ Documenteer de **minimaal vereiste NSG-regels** per subnet. Gebruik onderstaande
 | Prioriteit | Naam | Richting | Protocol | Bron | Doel | Poort | Actie |
 |---|---|---|---|---|---|---|---|
 | 100 | Allow-AppGW-to-Web | Inbound | TCP | 10.20.0.0/24 | * | 443 | Allow |
-| 110 | Allow-Bastion-to-Web | Inbound | TCP | 10.0.2.0/27 | * | 3389 | Allow |
 | 4096 | Deny-All-Inbound | Inbound | * | * | * | * | Deny |
 | 100 | Allow-Web-to-SQL | Outbound | TCP | * | 10.20.2.0/28 | 1433 | Allow |
 | 110 | Allow-Web-to-KV | Outbound | TCP | * | 10.20.2.0/28 | 443 | Allow |
