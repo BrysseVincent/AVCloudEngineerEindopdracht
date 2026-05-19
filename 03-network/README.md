@@ -246,6 +246,9 @@ Documenteer alle **Private Endpoints** in de architectuur:
 
 Documenteer in 3–5 zinnen waarom je Private Endpoints gebruikt in plaats van Service Endpoints. Wat zijn de voordelen en nadelen?
 
+Private Endpoints kennen een privé-IP-adres uit je eigen VNet toe aan een Azure-service (SQL, Storage, Key Vault). Het verkeer naar de service verlaat het VNet nooit — het blijft volledig op het Microsoft-backbone netwerk via een private NIC. Service Endpoints daarentegen optimaliseren de route naar de publieke Azure-service, maar de service blijft bereikbaar via een publiek IP-adres; alleen de routering wordt verbeterd.
+Met Private Endpoints kan je de publieke toegang op de resource volledig uitschakelen, de SQL Database, Storage en Key Vault zijn letterlijk niet bereikbaar vanaf het internet. Met Service Endpoints is dat niet mogelijk.
+
 ---
 
 ## DNS-architectuur
