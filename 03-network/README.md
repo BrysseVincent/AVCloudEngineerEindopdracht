@@ -158,6 +158,77 @@ Documenteer de **minimaal vereiste NSG-regels** per subnet. Gebruik onderstaande
 
 **Vul aan**: Maak vergelijkbare NSG-tabellen voor `nsg-func` en `nsg-data`.
 
+## NSG: nsg-web (snet-spoke-web — 10.20.1.0/27)
+
+| Prioriteit | Naam | Richting | Protocol | Bron | Doel | Poort | Actie |
+|---|---|---|---|---|---|---|---|
+| 100 | Allow-AppGW-to-Web | Inbound | TCP | 10.20.0.0/24 | * | 443 | Allow |
+| 110 | Allow-Bastion-to-Web | Inbound | TCP | 10.0.2.0/27 | * | 3389 | Allow |
+| 4096 | Deny-All-Inbound | Inbound | * | * | * | * | Deny |
+| 100 | Allow-Web-to-SQL | Outbound | TCP | * | 10.20.2.0/28 | 1433 | Allow |
+| 110 | Allow-Web-to-KV | Outbound | TCP | * | 10.20.2.0/28 | 443 | Allow |
+| 120 | Allow-Web-to-Storage | Outbound | TCP | * | 10.20.2.0/28 | 443 | Allow |
+| 130 | Allow-Web-to-Internet | Outbound | TCP | * | Internet | 443 | Allow |
+| 4096 | Deny-All-Outbound | Outbound | * | * | * | * | Deny |
+
+> ℹ️ Regel 130 (Allow-Web-to-Internet outbound) is nodig voor App Service runtime-operaties: NuGet packages, Entra ID token endpoints, en Azure Monitor telemetrie. In een strengere setup kan dit vervangen worden door Azure Firewall FQDN-regels.
+
+> ℹ️ Regel 110 (Bastion) laat RDP toe vanuit het AzureBastionSubnet in de Hub — dit is de enige toegestane beheertoegang tot eventuele VMs in dit subnet.
+
+---
+
+## NSG: nsg-func (snet-spoke-func — 10.20.1.32/27)
+
+| Prioriteit | Naam | Richting | Protocol | Bron | Doel | Poort | Actie |
+|---|---|---|---|---|---|---|---|
+| 100 | Allow-AppGW-to-Func | Inbound | TCP | 10.20.0.0/24 | * | 443 | Allow |
+| 110 | Allow-Bastion-to-Func | Inbound | TCP | 10.0.2.0/27 | * | 3389 | Allow |
+| 4096 | Deny-All-Inbound | Inbound | * | * | * | * | Deny |
+| 100 | Allow-Func-to-SQL | Outbound | TCP | * | 10.20.2.0/28 | 1433 | Allow |
+| 110 | Allow-Func-to-KV | Outbound | TCP | * | 10.20.2.0/28 | 443 | Allow |
+| 120 | Allow-Func-to-Storage | Outbound | TCP | * | 10.20.2.0/28 | 443 | Allow |
+| 130 | Allow-Func-to-SAP | Outbound | TCP | * | 10.10.0.0/16 | 443 | Allow |
+| 140 | Allow-Func-to-SMTP | Outbound | TCP | * | Internet | 587 | Allow |
+| 150 | Allow-Func-to-Internet | Outbound | TCP | * | Internet | 443 | Allow |
+| 4096 | Deny-All-Outbound | Outbound | * | * | * | * | Deny |
+
+> ℹ️ Regel 130 (Allow-Func-to-SAP) laat de nachtelijke SAP-batch toe richting het on-premises netwerk (10.10.0.0/16) via de VPN Gateway in de Hub. Het verkeer loopt via de Hub door Azure Firewall.
+
+> ℹ️ Regel 140 (Allow-Func-to-SMTP poort 587) is nodig voor de Reporter WebJob die nachtelijks rapporten verstuurt via Azure Communication Services of SendGrid.
+
+---
+
+## NSG: nsg-data (snet-spoke-data — 10.20.2.0/28)
+
+| Prioriteit | Naam | Richting | Protocol | Bron | Doel | Poort | Actie |
+|---|---|---|---|---|---|---|---|
+| 100 | Allow-Web-to-Data | Inbound | TCP | 10.20.1.0/27 | * | 1433 | Allow |
+| 110 | Allow-Web-to-KV-Storage | Inbound | TCP | 10.20.1.0/27 | * | 443 | Allow |
+| 120 | Allow-Func-to-Data | Inbound | TCP | 10.20.1.32/27 | * | 1433 | Allow |
+| 130 | Allow-Func-to-KV-Storage | Inbound | TCP | 10.20.1.32/27 | * | 443 | Allow |
+| 140 | Allow-Mgmt-to-Data | Inbound | TCP | 10.20.2.16/28 | * | 1433 | Allow |
+| 4096 | Deny-All-Inbound | Inbound | * | * | * | * | Deny |
+| 4096 | Deny-All-Outbound | Outbound | * | * | * | * | Deny |
+
+> ℹ️ Private Endpoints in snet-spoke-data hebben geen uitgaand verkeer nodig — ze zijn passieve ontvangers van verbindingen. De Deny-All-Outbound is hier dus volledig correct en intentioneel.
+
+> ℹ️ Regel 140 (Allow-Mgmt-to-Data) laat DBA-toegang toe vanuit het management subnet voor onderhoudstaken op de SQL Database via de Private Endpoint.
+
+---
+
+## NSG: nsg-mgmt (snet-spoke-mgmt — 10.20.2.16/28)
+
+| Prioriteit | Naam | Richting | Protocol | Bron | Doel | Poort | Actie |
+|---|---|---|---|---|---|---|---|
+| 100 | Allow-Bastion-to-Mgmt | Inbound | TCP | 10.0.2.0/27 | * | 3389 | Allow |
+| 4096 | Deny-All-Inbound | Inbound | * | * | * | * | Deny |
+| 100 | Allow-Mgmt-to-Data | Outbound | TCP | * | 10.20.2.0/28 | 1433 | Allow |
+| 110 | Allow-Mgmt-to-Internet | Outbound | TCP | * | Internet | 443 | Allow |
+| 4096 | Deny-All-Outbound | Outbound | * | * | * | * | Deny |
+
+> ℹ️ RDP-toegang tot jump VMs in het management subnet verloopt uitsluitend via Azure Bastion (10.0.2.0/27 in de Hub). Directe RDP via internet is niet toegestaan.
+
+
 ---
 
 ## private endpoints
