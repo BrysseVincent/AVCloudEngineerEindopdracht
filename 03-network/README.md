@@ -87,6 +87,25 @@ Ontwerp minimaal de volgende subnetten. Kies zelf de CIDR-ranges (documenteer je
 
 > 💡 Tip: Azure reserveert 5 IP-adressen per subnet (0, 1, 2, 3, 255). Plan daar rekening mee.
 
+snet-spoke-appgw — 10.20.0.0/24 (251 bruikbare IPs)
+Application Gateway v2 vereist een dedicated subnet. Microsoft documenteert dat Application Gateway v2 tot 125 instanties kan schalen, waarbij elke instantie een eigen privé-IP-adres verbruikt. Daarnaast reserveert Application Gateway extra IPs voor interne communicatie. Een /24 (251 bruikbare IPs) is de door Microsoft aanbevolen minimumgrootte voor een productie Application Gateway v2 subnet.
+
+Bron: Application Gateway subnet requirements — Microsoft Learn
+
+snet-spoke-web — 10.20.1.0/27 (27 bruikbare IPs)
+App Service VNet Integration wijst één IP toe per App Service instantie. Configuratie voor Contoso:
+InstantieIPsProduction slot (max 5 instanties via auto-scale)5Staging slot1Buffer voor tijdelijke overlap bij scale-out5Totaal benodigd11
+Een /27 (27 bruikbare IPs) biedt voldoende ruimte met groeimarges voor een eventuele tweede App Service in de toekomst.
+snet-spoke-func — 10.20.1.32/27 (27 bruikbare IPs)
+Zelfde redenering als snet-spoke-web. De drie WebJobs (scheduler, processor, reporter) draaien binnen dezelfde App Service Plan en gebruiken dezelfde VNet Integration als de web App Service — technisch gezien hetzelfde subnet is ook mogelijk, maar een aparte subnet per laag is best practice voor NSG-isolatie en toekomstige segmentatie.
+snet-spoke-data — 10.20.2.0/28 (11 bruikbare IPs)
+Private Endpoints verbruiken elk één privé-IP. Overzicht van benodigde Private Endpoints:
+ResourcePrivate EndpointAzure SQL Database1Azure Storage Account (blob)1Azure Storage Account (file)1Azure Key Vault1Totaal benodigd4
+Een /28 (11 bruikbare IPs) biedt ruim voldoende capaciteit, ook bij toevoeging van extra Private Endpoints in de toekomst (bijv. een tweede Key Vault voor non-prod, of Azure Service Bus).
+snet-spoke-mgmt — 10.20.2.16/28 (11 bruikbare IPs)
+Het management subnet host maximaal een beperkt aantal jump VMs of management agents. Een /28 (11 bruikbare IPs) is ruim voldoende voor dit doel.
+
+
 ---
 
 ## NSG-regels
