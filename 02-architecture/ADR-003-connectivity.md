@@ -12,8 +12,8 @@
 Voor de hybride connectiviteit tussen de on-premises vestigingen en Azure kiezen we voor Azure VPN Gateway met site-to-site VPN verbindingen voor elk van de drie vestigingen (Gent, Luik, Hasselt).
 Motivatie:
 De bestaande omgeving maakt gebruik van MPLS-verbindingen via Proximus tussen de drie vestigingen. Bij de migratie naar Azure is een hybride connectiviteitsoplossing nodig voor toegang tot Azure-resources vanuit de vestigingen, en voor de integratie met het on-premises SAP-systeem.
-VPN Gateway biedt:
 
+VPN Gateway biedt:
 Site-to-site VPN voor alle drie vestigingen via een versleutelde IPsec/IKE tunnel over het publieke internet
 Voldoende bandbreedte voor het huidige workloadprofiel (productieplanningsapplicatie, nachtelijke SAP-batch)
 Eenvoudige implementatie en beheer via Azure Portal of Bicep
