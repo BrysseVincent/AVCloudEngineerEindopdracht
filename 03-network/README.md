@@ -158,22 +158,6 @@ Documenteer de **minimaal vereiste NSG-regels** per subnet. Gebruik onderstaande
 
 **Vul aan**: Maak vergelijkbare NSG-tabellen voor `nsg-func` en `nsg-data`.
 
-## NSG: nsg-web (snet-spoke-web — 10.20.1.0/27)
-
-| Prioriteit | Naam | Richting | Protocol | Bron | Doel | Poort | Actie |
-|---|---|---|---|---|---|---|---|
-| 100 | Allow-AppGW-to-Web | Inbound | TCP | 10.20.0.0/24 | * | 443 | Allow |
-| 4096 | Deny-All-Inbound | Inbound | * | * | * | * | Deny |
-| 100 | Allow-Web-to-SQL | Outbound | TCP | * | 10.20.2.0/28 | 1433 | Allow |
-| 110 | Allow-Web-to-KV | Outbound | TCP | * | 10.20.2.0/28 | 443 | Allow |
-| 120 | Allow-Web-to-Storage | Outbound | TCP | * | 10.20.2.0/28 | 443 | Allow |
-| 130 | Allow-Web-to-Internet | Outbound | TCP | * | Internet | 443 | Allow |
-| 4096 | Deny-All-Outbound | Outbound | * | * | * | * | Deny |
-
-> ℹ️ Regel 130 (Allow-Web-to-Internet outbound) is nodig voor App Service runtime-operaties: NuGet packages, Entra ID token endpoints, en Azure Monitor telemetrie. In een strengere setup kan dit vervangen worden door Azure Firewall FQDN-regels.
-
-> ℹ️ Regel 110 (Bastion) laat RDP toe vanuit het AzureBastionSubnet in de Hub — dit is de enige toegestane beheertoegang tot eventuele VMs in dit subnet.
-
 ---
 
 ## NSG: nsg-func (snet-spoke-func — 10.20.1.32/27)
