@@ -173,11 +173,7 @@ Documenteer de **minimaal vereiste NSG-regels** per subnet. Gebruik onderstaande
 | 130 | Allow-Func-to-SAP | Outbound | TCP | * | 10.10.0.0/16 | 443 | Allow |
 | 140 | Allow-Func-to-SMTP | Outbound | TCP | * | Internet | 587 | Allow |
 | 150 | Allow-Func-to-Internet | Outbound | TCP | * | Internet | 443 | Allow |
-| 4096 | Deny-All-Outbound | Outbound | * | * | * | * | Deny |
-
-> ℹ️ Regel 130 (Allow-Func-to-SAP) laat de nachtelijke SAP-batch toe richting het on-premises netwerk (10.10.0.0/16) via de VPN Gateway in de Hub. Het verkeer loopt via de Hub door Azure Firewall.
-
-> ℹ️ Regel 140 (Allow-Func-to-SMTP poort 587) is nodig voor de Reporter WebJob die nachtelijks rapporten verstuurt via Azure Communication Services of SendGrid.
+| 4096 | Deny-All-Inbound | Inbound | * | * | * | * | Deny |
 
 ---
 
@@ -185,17 +181,12 @@ Documenteer de **minimaal vereiste NSG-regels** per subnet. Gebruik onderstaande
 
 | Prioriteit | Naam | Richting | Protocol | Bron | Doel | Poort | Actie |
 |---|---|---|---|---|---|---|---|
-| 100 | Allow-Web-to-Data | Inbound | TCP | 10.20.1.0/27 | * | 1433 | Allow |
-| 110 | Allow-Web-to-KV-Storage | Inbound | TCP | 10.20.1.0/27 | * | 443 | Allow |
-| 120 | Allow-Func-to-Data | Inbound | TCP | 10.20.1.32/27 | * | 1433 | Allow |
-| 130 | Allow-Func-to-KV-Storage | Inbound | TCP | 10.20.1.32/27 | * | 443 | Allow |
-| 140 | Allow-Mgmt-to-Data | Inbound | TCP | 10.20.2.16/28 | * | 1433 | Allow |
+| 100 | Allow-Web-to-Data | Inbound | TCP | snet-spoke-web | * | 1433 | Allow |
+| 110 | Allow-Web-to-KV-Storage | Inbound | TCP | snet-spoke-web | * | 443 | Allow |
+| 120 | Allow-Func-to-Data | Inbound | TCP | snet-spoke-func | * | 1433 | Allow |
+| 130 | Allow-Func-to-KV-Storage | Inbound | TCP | snet-spoke-func | * | 443 | Allow |
+| 140 | Allow-Mgmt-to-Data | Inbound | TCP | snet-spoke-mgmt | * | ??? | Allow |
 | 4096 | Deny-All-Inbound | Inbound | * | * | * | * | Deny |
-| 4096 | Deny-All-Outbound | Outbound | * | * | * | * | Deny |
-
-> ℹ️ Private Endpoints in snet-spoke-data hebben geen uitgaand verkeer nodig — ze zijn passieve ontvangers van verbindingen. De Deny-All-Outbound is hier dus volledig correct en intentioneel.
-
-> ℹ️ Regel 140 (Allow-Mgmt-to-Data) laat DBA-toegang toe vanuit het management subnet voor onderhoudstaken op de SQL Database via de Private Endpoint.
 
 ---
 
