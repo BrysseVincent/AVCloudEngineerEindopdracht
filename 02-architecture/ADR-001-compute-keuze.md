@@ -9,4 +9,10 @@
 
 **Vul in**: Welke kies jij en waarom?
 
-Voor de ASP.NET WebForms frontend is App Service de keuze. WebForms draait enkel op Windows, en containeriseren van een monolithische WebForms-app voor AKS of Container Apps vereist een grondige refactor die buiten scope valt van Fase 2. App Service biedt managed hosting met deployment slots (staging ↔ production swap), auto-scale, en minimale beheeroverhead.
+ASP.NET WebForms 4.7 is een Windows-gebonden framework dat sterk leunt op IIS, session state en het klassieke .NET Framework.
+App Service biedt native ondersteuning voor Windows en IIS, waardoor de bestaande applicatie met minimale aanpassingen kan worden gedeployed. Dit sluit perfect aan bij de Rehost → Refactor migratiestrategie waarbij we herplatformen zonder de app te herschrijven.
+
+Daarnaast voldoet App Service aan de projectvereisten:
+SLA van 99,9% via ingebouwde redundantie en availability zones
+Automatisch schalen bij piekbelasting (productieplanningsperiodes)
+Eenvoudige integratie met Azure SQL, Key Vault, Application Insights en Entra ID App Service biedt managed hosting met deployment slots (staging ↔ production swap), auto-scale, en minimale beheeroverhead.
