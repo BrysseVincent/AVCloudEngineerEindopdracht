@@ -164,15 +164,11 @@ Documenteer de **minimaal vereiste NSG-regels** per subnet. Gebruik onderstaande
 
 | Prioriteit | Naam | Richting | Protocol | Bron | Doel | Poort | Actie |
 |---|---|---|---|---|---|---|---|
-| 100 | Allow-AppGW-to-Func | Inbound | TCP | 10.20.0.0/24 | * | 443 | Allow |
-| 110 | Allow-Bastion-to-Func | Inbound | TCP | 10.0.2.0/27 | * | 3389 | Allow |
-| 4096 | Deny-All-Inbound | Inbound | * | * | * | * | Deny |
-| 100 | Allow-Func-to-SQL | Outbound | TCP | * | 10.20.2.0/28 | 1433 | Allow |
-| 110 | Allow-Func-to-KV | Outbound | TCP | * | 10.20.2.0/28 | 443 | Allow |
-| 120 | Allow-Func-to-Storage | Outbound | TCP | * | 10.20.2.0/28 | 443 | Allow |
-| 130 | Allow-Func-to-SAP | Outbound | TCP | * | 10.10.0.0/16 | 443 | Allow |
-| 140 | Allow-Func-to-SMTP | Outbound | TCP | * | Internet | 587 | Allow |
-| 150 | Allow-Func-to-Internet | Outbound | TCP | * | Internet | 443 | Allow |
+| 100 | Allow-Func-to-Data | Outbound | TCP | * | snet-spoke-data | 1433 | Allow |
+| 110 | Allow-Func-to-KV | Outbound | TCP | * | snet-spoke-data | 443 | Allow |
+| 120 | Allow-Func-to-SAP | Outbound | TCP | * | 10.10.0.0/16 | 443 | Allow |
+| 130 | Allow-Func-to-SMTP | Outbound | TCP | * | Internet | 587 | Allow |
+| 140 | Allow-Func-to-Internet | Outbound | TCP | * | Internet | 443 | Allow |
 | 4096 | Deny-All-Inbound | Inbound | * | * | * | * | Deny |
 
 ---
@@ -182,7 +178,7 @@ Documenteer de **minimaal vereiste NSG-regels** per subnet. Gebruik onderstaande
 | Prioriteit | Naam | Richting | Protocol | Bron | Doel | Poort | Actie |
 |---|---|---|---|---|---|---|---|
 | 100 | Allow-Web-to-Data | Inbound | TCP | snet-spoke-web | * | 1433 | Allow |
-| 110 | Allow-Web-to-KV-Storage | Inbound | TCP | snet-spoke-web | * | 443 | Allow |
+| 110 | Allow-Web-to-KV | Inbound | TCP | snet-spoke-web | * | 443 | Allow |
 | 120 | Allow-Func-to-Data | Inbound | TCP | snet-spoke-func | * | 1433 | Allow |
 | 130 | Allow-Func-to-KV-Storage | Inbound | TCP | snet-spoke-func | * | 443 | Allow |
 | 140 | Allow-Mgmt-to-Data | Inbound | TCP | snet-spoke-mgmt | * | ??? | Allow |
