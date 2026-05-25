@@ -22,6 +22,7 @@ Kostenefficiënte vervanging van de bestaande MPLS-verbindingen, in lijn met de 
 
 Waarom niet ExpressRoute:
 ExpressRoute biedt een dedicated, private verbinding met gegarandeerde bandbreedte en ultra-lage latency. Dit is ideaal voor grote enterprises met zware, latency-gevoelige workloads. 
+
 Voor Contoso Manufacturing is dit echter niet vereist:
 De SAP-integratie verloopt via nachtelijke batch — geen real-time of latency-kritische communicatie
 De applicatie is een interne productieplannings- en rapportageapplicatie zonder extreem hoge bandbreedtevereisten
