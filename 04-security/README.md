@@ -224,7 +224,9 @@ Gebruik **RBAC voor Key Vault** (niet het legacy access policy model).
 | App Service (Managed Identity) | `Key Vault Secrets User` | Lees secrets at runtime |
 | Azure Functions (Managed Identity) | `Key Vault Secrets User` | Lees secrets at runtime |
 | App Service (Managed Identity) | `Key Vault Crypto User` | Gebruik CMK voor encryptie |
+| zure Functions (Managed Identity) | `Key Vault Crypto User` | Gebruik CMK voor encryptie |
 | DevOps Pipeline (Service Principal) | `Key Vault Secrets Officer` | Schrijf/update secrets via pipeline |
+| Database Admin | `Key Vault Secrets Officer` | Beheer CMK sleutels voor SQL TDE |
 | Cloud Platform Engineer | `Key Vault Administrator` | Volledig beheer |
 | Security Analyst | `Key Vault Reader` | Audit toegang |
 
@@ -250,6 +252,37 @@ Azure SQL Database (via Private Endpoint)
 ```
 
 **Opdracht**: Beschrijf in code (C# of Python) hoe de applicatie de connection string ophaalt via de DefaultAzureCredential zonder hardcoded wachtwoorden.
+
+#### C# — connection string ophalen via DefaultAzureCredential
+
+```csharp
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+
+// DefaultAzureCredential gebruikt automatisch de Managed Identity
+// van de App Service — geen wachtwoorden in de code
+var credential = new DefaultAzureCredential();
+
+var client = new SecretClient(
+    new Uri("https://kv-contoso-prd.vault.azure.net/"),
+    credential
+);
+
+// Haal de connection string op uit Key Vault
+KeyVaultSecret secret = await client.GetSecretAsync("sql-connection-string");
+string connectionString = secret.Value;
+
+// Gebruik de connection string om te verbinden met SQL
+using var connection = new SqlConnection(connectionString);
+await connection.OpenAsync();
+```
+
+> `DefaultAzureCredential` kiest automatisch de juiste authenticatiemethode afhankelijk van de omgeving:
+> - **App Service in Azure** → Managed Identity
+> - **Lokale ontwikkelaar** → Azure CLI login
+> - **CI/CD pipeline** → Service Principal
+>
+> Geen wachtwoorden of secrets in de broncode — consistent met het Zero Trust principe en NIS2-vereisten.
 
 ---
 
