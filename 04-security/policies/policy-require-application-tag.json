@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json#",
+  "name": "require-application-tag",
+  "displayName": "Require tag 'Application' on all resources",
+  "description": "Enforces the presence of the required 'Application' tag on all resources. Allowed value: contoso-manufacturing.",
+  "mode": "Indexed",
+  "metadata": {
+    "category": "Tags",
+    "version": "1.0.0",
+    "author": "delaware cloud practice"
+  },
+  "parameters": {
+    "effect": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Effect",
+        "description": "The effect determines what happens when the policy rule is evaluated to match"
+      },
+      "allowedValues": [
+        "Deny",
+        "Audit",
+        "Disabled"
+      ],
+      "defaultValue": "Deny"
+    }
+  },
+  "policyRule": {
+    "if": {
+      "anyOf": [
+        {
+          "field": "tags['Application']",
+          "exists": "false"
+        },
+        {
+          "field": "tags['Application']",
+          "notIn": ["contoso-manufacturing"]
+        }
+      ]
+    },
+    "then": {
+      "effect": "[parameters('effect')]"
+    }
+  }
+}
