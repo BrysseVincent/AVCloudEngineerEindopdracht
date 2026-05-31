@@ -315,7 +315,10 @@ Documenteer de **minimaal vereiste Azure Firewall regels**:
 | Naam | Bron | Protocol | Doel | Poort | Actie |
 |---|---|---|---|---|---|
 | Allow-Onprem-to-Azure | `10.10.0.0/16` | TCP | `10.20.0.0/16` | 443,1433 | Allow |
-| Allow-Azure-to-Onprem-SMTP | `10.20.0.0/16` | TCP | `10.10.X.X` (Exchange) | 25 | Allow |
+| Allow-Azure-to-Onprem-SMTP | `10.20.0.0/16` | TCP | `10.10.4.X` (Exchange) | 587 | Allow |
+| Allow-Azure-to-SAP | `10.20.0.0/16` | TCP | `10.10.0.0/16` | 443 | Allow |
+| Allow-DNS-Resolver | `10.10.0.0/16` | UDP | `10.0.3.4` | 53 | Allow |
+| Allow-DNS-to-Onprem | `10.0.3.0/28` | UDP | `10.10.4.X` | 53 | Allow |
 
 **Vul aan**: Voeg alle vereiste regels toe voor de Contoso applicatie.
 
