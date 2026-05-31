@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json#",
+  "name": "require-tls12-storage",
+  "displayName": "Require minimum TLS 1.2 on Storage Accounts",
+  "description": "Denies creation or update of Storage Accounts that do not enforce a minimum TLS version of 1.2. Required for NIS2 compliance and encryption in transit.",
+  "mode": "Indexed",
+  "metadata": {
+    "category": "Storage",
+    "version": "1.0.0",
+    "author": "delaware cloud practice"
+  },
+  "parameters": {
+    "effect": {
+      "type": "String",
+      "allowedValues": ["Deny", "Audit", "Disabled"],
+      "defaultValue": "Deny"
+    }
+  },
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "equals": "Microsoft.Storage/storageAccounts"
+        },
+        {
+          "field": "Microsoft.Storage/storageAccounts/minimumTlsVersion",
+          "notEquals": "TLS1_2"
+        }
+      ]
+    },
+    "then": {
+      "effect": "[parameters('effect')]"
+    }
+  }
+}
