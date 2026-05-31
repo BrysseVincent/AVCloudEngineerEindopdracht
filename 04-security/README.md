@@ -209,6 +209,8 @@ Documenteer de Key Vault-architectuur voor de Contoso-omgeving.
 | **Secret** | `sql-connection-string` | Connection string SQL Database | 90 dagen |
 | **Secret** | `smtp-password` | SMTP relay wachtwoord | 180 dagen |
 | **Secret** | `sap-api-key` | SAP REST API key | 90 dagen |
+| **Secret** | `storage-connection-string` | stringConnection string Storage Account | 90 dagen |
+| **Secret** | `appinsights-connection-string` | Application Insights connection string | 180  dagen |
 | **Key** | `cmk-sql-encryption` | Customer Managed Key voor SQL TDE | 1 jaar |
 | **Key** | `cmk-storage-encryption` | Customer Managed Key voor Storage | 1 jaar |
 | **Certificate** | `ssl-contoso-app` | TLS/SSL certificaat App Service | 1 jaar (auto-renew) |
