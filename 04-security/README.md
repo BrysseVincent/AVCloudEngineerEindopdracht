@@ -125,7 +125,7 @@ Maak een **custom RBAC-rol** voor een "Contoso App Deployer" die enkel App Servi
 
 **Opdracht**: Pas bovenstaand voorbeeld aan en documenteer je keuzes.
 
-De ingebouwde Contributor rol geeft te veel rechten — ook toegang tot SQL, Key Vault en netwerkresources. De custom role beperkt toegang tot enkel App Service deployment acties.
+De ingebouwde Contributor rol geeft te veel rechten waaronder ook toegang tot SQL, Key Vault en netwerkresources. De custom role beperkt toegang tot enkel App Service deployment acties.
 
 | Action | Reden |
 |---|---|
