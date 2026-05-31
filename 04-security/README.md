@@ -155,6 +155,15 @@ Kies voor elke resource type welk Defender-plan je activeert. Onderbouw je keuze
 | Resource Manager | Defender for Resource Manager | € 4/subscription/maand | ✅ / ❌ + motivering |
 | Servers (indien VMs) | Defender for Servers P2 | € 15/server/maand | n.v.t. (PaaS) |
 
+| Resource Type | Defender Plan | Maandkost (indicatief) | Activeren? |
+|---|---|---|---|
+| Azure SQL Database | Defender for SQL | € 15/server/maand | ✅ Productiedatabase met gevoelige productiedata. Detecteert SQL injection, anomale queries en brute force aanvallen. Kritiek voor NIS2-compliance. |
+| App Service | Defender for App Service | € 15/app plan/maand | ✅ Publiek bereikbare webapplicatie. Detecteert aanvallen op de applicatielaag, verdachte processen en data exfiltration pogingen. |
+| Storage Account | Defender for Storage | Op basis van transacties | ✅ Beschermt rapporten en uploads tegen anomale toegang en malware uploads. Kost wordt gemonitord via Azure Cost Management gezien de transactiegebaseerde pricing. |
+| Key Vault | Defender for Key Vault | € 0.02/10k operaties | ✅ Goedkoopste plan, beschermt de meest kritieke resource (CMK sleutels, secrets, certificaten). Detecteert anomale toegang zoals bulk secret ophalen of toegang vanuit onbekende IP-adressen. |
+| Resource Manager | Defender for Resource Manager | € 4/subscription/maand | ✅ Detecteert aanvallen op het Azure management plane zoals verdachte roleAssignments, policy wijzigingen en privilege escalation pogingen. Zeer lage kost voor de geboden bescherming. |
+| Servers (indien VMs) | Defender for Servers P2 | € 15/server/maand | ❌ n.v.t. — PaaS architectuur zonder productie VMs. Enkel een jump VM in het management subnet waarvoor Defender for Servers niet vereist is. |
+
 ### secure score doelstelling
 
 Documenteer welke **Secure Score** je nastreeft en welke aanbevelingen je prioriteit geeft:
