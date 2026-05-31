@@ -125,6 +125,19 @@ Maak een **custom RBAC-rol** voor een "Contoso App Deployer" die enkel App Servi
 
 **Opdracht**: Pas bovenstaand voorbeeld aan en documenteer je keuzes.
 
+De ingebouwde Contributor rol geeft te veel rechten — ook toegang tot SQL, Key Vault en netwerkresources. De custom role beperkt toegang tot enkel App Service deployment acties.
+
+| Action | Reden |
+|---|---|
+| `Microsoft.Web/sites/read` | Deployer moet de App Service kunnen zien |
+| `Microsoft.Web/sites/slots/read` | Staging slot moet zichtbaar zijn voor verificatie |
+| `Microsoft.Web/sites/slots/slotsswap/action` | Kernactie: staging naar productie swappen |
+| `Microsoft.Web/sites/publish/action` | Code deployen naar productie |
+| `Microsoft.Web/sites/slots/publish/action` | Code deployen naar staging slot |
+
+Scope: rg-contoso-frontend 
+De rol moet enkel toegang hebben tot de resource group met de App Service, niet de volledige subscription. Zo heeft de deployer geen toegang tot data, netwerk of security resources.
+
 ---
 
 ## deel C: microsoft defender for cloud
