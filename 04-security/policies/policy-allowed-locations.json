@@ -3,7 +3,7 @@
   "name": "allowed-locations-contoso",
   "displayName": "Allowed locations — West Europe and North Europe only",
   "description": "Restricts resource deployment to approved Azure regions. Contoso Manufacturing only uses West Europe (Amsterdam) and North Europe (Dublin) for GDPR and data residency compliance.",
-  "mode": "Indexed",
+  "mode": "All",
   "metadata": {
     "category": "General",
     "version": "1.0.0",
@@ -39,10 +39,6 @@
         {
           "field": "location",
           "notIn": "[parameters('allowedLocations')]"
-        },
-        {
-          "field": "location",
-          "notEquals": "global"
         },
         {
           "field": "type",
