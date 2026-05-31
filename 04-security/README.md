@@ -175,6 +175,25 @@ Documenteer welke **Secure Score** je nastreeft en welke aanbevelingen je priori
 | 🟠 Hoog | Enable Defender for SQL | Middel |
 | 🟡 Middel | Apply system updates | Laag |
 
+> **Secure Score doelstelling: ≥ 80%**
+> De Azure Security Benchmark initiative wordt toegewezen op Management Group-niveau.
+> Maandelijkse audit via Defender for Cloud dashboard.
+
+| Prioriteit | Aanbeveling | Score impact | Status in Contoso architectuur |
+|---|---|---|---|
+| 🔴 Kritiek | Enable MFA for all users | Hoog | ✅ Afgedekt via Entra ID MFA + Conditional Access |
+| 🔴 Kritiek | Disable public network access on SQL | Hoog | ✅ Afgedekt via Private Endpoints + Azure Policy |
+| 🔴 Kritiek | Disable public network access on Key Vault | Hoog | ✅ Afgedekt via Private Endpoints |
+| 🔴 Kritiek | Disable public network access on Storage | Hoog | ✅ Afgedekt via Private Endpoints |
+| 🟠 Hoog | Enable Defender for SQL | Middel | ✅ Geactiveerd |
+| 🟠 Hoog | Enable Defender for App Service | Middel | ✅ Geactiveerd |
+| 🟠 Hoog | Enable Defender for Key Vault | Middel | ✅ Geactiveerd |
+| 🟠 Hoog | Enable Azure Defender for Resource Manager | Middel | ✅ Geactiveerd |
+| 🟠 Hoog | Enable purge protection on Key Vault | Middel | ✅ Afgedekt via Azure Policy |
+| 🟡 Middel | Apply system updates | Laag | ✅ n.v.t. — PaaS, Azure beheert updates |
+| 🟡 Middel | Enable HTTPS only on App Service | Laag | ✅ Afgedekt via Azure Policy |
+| 🟡 Middel | Require minimum TLS 1.2 on Storage | Laag | ✅ Afgedekt via Azure Policy |
+
 ---
 
 ## deel D: key vault architectuur
