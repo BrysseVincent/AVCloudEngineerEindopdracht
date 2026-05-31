@@ -285,7 +285,8 @@ await connection.OpenAsync();
 > 5. VisualStudioCredential     → is er een Visual Studio login?
 > 6. AzureCliCredential         → is er een `az login` gedaan?
 > 7. AzurePowerShellCredential  → is er een PowerShell login?
-> Het probeert ze één voor één van boven naar beneden — de eerste die werkt wordt gebruikt.
+> Het probeert ze één voor één van boven naar beneden & de eerste die werkt wordt gebruikt.
+>
 > `DefaultAzureCredential` kiest automatisch de juiste authenticatiemethode afhankelijk van de omgeving:
 > - **App Service in Azure** → Managed Identity
 > - **Lokale ontwikkelaar** → Azure CLI login
