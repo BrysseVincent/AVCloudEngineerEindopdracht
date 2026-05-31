@@ -292,7 +292,7 @@ await connection.OpenAsync();
 > - **Lokale ontwikkelaar** → Azure CLI login
 > - **CI/CD pipeline** → Service Principal
 >
-> Geen wachtwoorden of secrets in de broncode — consistent met het Zero Trust principe en NIS2-vereisten.
+> Geen wachtwoorden of secrets in de broncode, consistent met het Zero Trust principe en NIS2-vereisten.
 
 ---
 
