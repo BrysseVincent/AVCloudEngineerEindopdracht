@@ -310,6 +310,8 @@ Documenteer de **minimaal vereiste Azure Firewall regels**:
 | Allow-AzureMonitor | `10.20.0.0/16` | HTTPS | `*.monitor.azure.com` | Allow |
 | Allow-SAP-API | `10.20.0.0/16` | HTTPS | `sap-api.contoso.local` | Allow |
 
+⚠️ **DNS Proxy configuratie**: Azure Firewall is geconfigureerd met DNS Proxy enabled en `10.0.3.4` (DNS Private Resolver Inbound Endpoint) als custom DNS server. Hierdoor kunnen Application Rules ook interne FQDNs zoals `sap-api.contoso.local` resolven via de DNS Private Resolver, die op zijn beurt `.contoso.local` queries forwardet naar DC01 op on-premises.
+
 ### Network Rules (IP-gebaseerd)
 
 | Naam | Bron | Protocol | Doel | Poort | Actie |
