@@ -285,7 +285,13 @@ Azure SQL Database
 ```
 
 Op DC01 moet je de volgende Conditional Forwarders aanmaken:
-ZoneForwarder IPDoeldatabase.windows.net10.0.3.4Azure SQLblob.core.windows.net10.0.3.4Storage (blob)file.core.windows.net10.0.3.4Storage (files)vaultcore.azure.net10.0.3.4Key Vaultazurewebsites.net10.0.3.4App Service
+| Zone | Forwarder IP | Doel |
+|---|---|---|
+| `database.windows.net` | `10.0.3.4` | Azure SQL |
+| `blob.core.windows.net` | `10.0.3.4` | Storage (blob) |
+| `file.core.windows.net` | `10.0.3.4` | Storage (files) |
+| `vaultcore.azure.net` | `10.0.3.4` | Key Vault |
+| `azurewebsites.net` | `10.0.3.4` | App Service |
 
 Alle forwarders wijzen naar hetzelfde IP — de Inbound Endpoint van de Azure DNS Private Resolver in de hub.
 
