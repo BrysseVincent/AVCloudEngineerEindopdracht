@@ -256,6 +256,38 @@ Azure SQL Database (via private network, geen publiek internet)
 
 **Vul in**: Teken dit diagram netter en documenteer welke DNS-forwarder-configuratie nodig is op DC01.
 
+On-prem client (10.10.X.X)
+  │
+  │  Query: sql-contoso-prd.database.windows.net
+  ▼
+DC01 — On-prem DNS Server (10.10.4.X)
+  │
+  │  Conditional Forwarder:
+  │  database.windows.net → 10.0.3.4
+  │
+  ▼
+Azure DNS Private Resolver — Inbound Endpoint (10.0.3.4)
+  │  Subnet: snet-hub-dns (10.0.3.0/28) — Hub VNet
+  │
+  │  Zoekt in gekoppelde Private DNS Zone:
+  │  privatelink.database.windows.net
+  │
+  ▼
+Private DNS Zone lost op naar: 10.20.2.4
+  │
+  ▼
+Private Endpoint (10.20.2.4)
+  │  Subnet: snet-spoke-data (10.20.2.0/28) — Spoke VNet
+  │
+  ▼
+Azure SQL Database
+  (via Microsoft backbone — geen publiek internet)
+
+Op DC01 moet je de volgende Conditional Forwarders aanmaken:
+ZoneForwarder IPDoeldatabase.windows.net10.0.3.4Azure SQLblob.core.windows.net10.0.3.4Storage (blob)file.core.windows.net10.0.3.4Storage (files)vaultcore.azure.net10.0.3.4Key Vaultazurewebsites.net10.0.3.4App Service
+
+Alle forwarders wijzen naar hetzelfde IP — de Inbound Endpoint van de Azure DNS Private Resolver in de hub.
+
 ---
 
 ## azure firewall regels
