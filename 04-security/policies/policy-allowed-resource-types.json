@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json#",
+  "name": "allowed-resource-types-contoso",
+  "displayName": "Allowed resource types for Contoso Manufacturing",
+  "description": "Restricts the deployment of Azure resource types to only those required for the Contoso Manufacturing workload. Prevents deployment of unauthorized or unnecessary services.",
+  "mode": "All",
+  "metadata": {
+    "category": "General",
+    "version": "1.0.0",
+    "author": "delaware cloud practice"
+  },
+  "parameters": {
+    "effect": {
+      "type": "String",
+      "allowedValues": ["Deny", "Audit", "Disabled"],
+      "defaultValue": "Deny"
+    }
+  },
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "notIn": [
+            "Microsoft.Web/sites",
+            "Microsoft.Web/serverFarms",
+            "Microsoft.Web/sites/slots",
+            "Microsoft.Sql/servers",
+            "Microsoft.Sql/servers/databases",
+            "Microsoft.Storage/storageAccounts",
+            "Microsoft.KeyVault/vaults",
+            "Microsoft.Network/virtualNetworks",
+            "Microsoft.Network/virtualNetworks/subnets",
+            "Microsoft.Network/networkSecurityGroups",
+            "Microsoft.Network/privateEndpoints",
+            "Microsoft.Network/privateDnsZones",
+            "Microsoft.Network/vpnGateways",
+            "Microsoft.Network/virtualNetworkGateways",
+            "Microsoft.Network/publicIPAddresses",
+            "Microsoft.Network/azureFirewalls",
+            "Microsoft.Network/bastionHosts",
+            "Microsoft.Network/applicationGateways",
+            "Microsoft.Network/dnsResolvers",
+            "Microsoft.Compute/virtualMachines",
+            "Microsoft.Compute/disks",
+            "Microsoft.Insights/components",
+            "Microsoft.Insights/workbooks",
+            "Microsoft.OperationalInsights/workspaces",
+            "Microsoft.Authorization/roleAssignments",
+            "Microsoft.Authorization/policyAssignments",
+            "Microsoft.Resources/resourceGroups",
+            "Microsoft.ManagedIdentity/userAssignedIdentities"
+          ]
+        }
+      ]
+    },
+    "then": {
+      "effect": "[parameters('effect')]"
+    }
+  }
+}
