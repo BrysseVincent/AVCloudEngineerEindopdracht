@@ -255,7 +255,7 @@ Azure SQL Database (via private network, geen publiek internet)
 ```
 
 **Vul in**: Teken dit diagram netter en documenteer welke DNS-forwarder-configuratie nodig is op DC01.
-
+```
 On-prem client (10.10.X.X)
   │
   │  Query: sql-contoso-prd.database.windows.net
@@ -282,6 +282,7 @@ Private Endpoint (10.20.2.4)
   ▼
 Azure SQL Database
   (via Microsoft backbone — geen publiek internet)
+```
 
 Op DC01 moet je de volgende Conditional Forwarders aanmaken:
 ZoneForwarder IPDoeldatabase.windows.net10.0.3.4Azure SQLblob.core.windows.net10.0.3.4Storage (blob)file.core.windows.net10.0.3.4Storage (files)vaultcore.azure.net10.0.3.4Key Vaultazurewebsites.net10.0.3.4App Service
