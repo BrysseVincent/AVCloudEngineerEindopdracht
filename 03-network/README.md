@@ -180,8 +180,9 @@ Documenteer de **minimaal vereiste NSG-regels** per subnet. Gebruik onderstaande
 | 100 | Allow-Web-to-Data | Inbound | TCP | snet-spoke-web | * | 1433 | Allow |
 | 110 | Allow-Web-to-KV | Inbound | TCP | snet-spoke-web | * | 443 | Allow |
 | 120 | Allow-Func-to-Data | Inbound | TCP | snet-spoke-func | * | 1433 | Allow |
-| 130 | Allow-Func-to-KV-Storage | Inbound | TCP | snet-spoke-func | * | 443 | Allow |
-| 140 | Allow-Mgmt-to-Data | Inbound | TCP | snet-spoke-mgmt | * | ??? | Allow |
+| 130 | Allow-Func-to-KV | Inbound | TCP | snet-spoke-func | * | 443 | Allow |
+| 140 | Allow-Mgmt-to-Data | Inbound | TCP | snet-spoke-mgmt | * | 1433 | Allow |
+| 140 | Allow-Mgmt-to-KV | Inbound | TCP | snet-spoke-mgmt | * | 433 | Allow |
 | 4096 | Deny-All-Inbound | Inbound | * | * | * | * | Deny |
 
 ---
@@ -192,8 +193,8 @@ Documenteer de **minimaal vereiste NSG-regels** per subnet. Gebruik onderstaande
 |---|---|---|---|---|---|---|---|
 | 100 | Allow-Bastion-to-Mgmt | Inbound | TCP | 10.0.2.0/27 | * | 3389 | Allow |
 | 4096 | Deny-All-Inbound | Inbound | * | * | * | * | Deny |
-| 100 | Allow-Mgmt-to-Data | Outbound | TCP | * | 10.20.2.0/28 | 1433 | Allow |
-| 110 | Allow-Mgmt-to-Internet | Outbound | TCP | * | Internet | 443 | Allow |
+| 200 | Allow-Mgmt-to-Data | Outbound | TCP | * | 10.20.2.0/28 | 1433 | Allow |
+| 210 | Allow-Mgmt-to-Internet | Outbound | TCP | * | Internet | 443 | Allow |
 | 4096 | Deny-All-Outbound | Outbound | * | * | * | * | Deny |
 
 > ℹ️ RDP-toegang tot jump VMs in het management subnet verloopt uitsluitend via Azure Bastion (10.0.2.0/27 in de Hub). Directe RDP via internet is niet toegestaan.
