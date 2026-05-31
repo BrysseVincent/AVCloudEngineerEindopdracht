@@ -293,6 +293,7 @@ Op DC01 moet je de volgende Conditional Forwarders aanmaken:
 | `vaultcore.azure.net` | `10.0.3.4` | Key Vault |
 | `azurewebsites.net` | `10.0.3.4` | App Service |
 
+De Inbound Endpoint van de Azure DNS Private Resolver krijgt een statisch privé-IP toegewezen uit snet-hub-dns (10.0.3.0/28), bijv. 10.0.3.4. Dit IP wordt geconfigureerd als Conditional Forwarder op DC01.
 Alle forwarders wijzen naar hetzelfde IP — de Inbound Endpoint van de Azure DNS Private Resolver in de hub.
 
 ---
