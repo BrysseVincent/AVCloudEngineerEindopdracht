@@ -2,12 +2,12 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json#",
   "name": "require-dataclassification-tag",
   "displayName": "Require tag 'DataClassification' on all resources",
-  "description": "Enforces the presence of the required 'DataClassification' tag on all resources. Allowed values: public, internal, confidential, strictly-confidential.",
+  "description": "Enforces the presence of the required 'DataClassification' tag on all resources. Allowed values: internal, confidential.",
   "mode": "Indexed",
   "metadata": {
     "category": "Tags",
     "version": "1.0.0",
-    "author": "delaware cloud practice"
+    "author": "Vincent Brysse"
   },
   "parameters": {
     "effect": {
@@ -33,7 +33,7 @@
         },
         {
           "field": "tags['DataClassification']",
-          "notIn": ["public", "internal", "confidential", "strictly-confidential"]
+          "notIn": ["internal", "confidential"]
         }
       ]
     },
