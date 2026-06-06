@@ -91,7 +91,7 @@ Ontwerp minimaal de volgende subnetten. Kies zelf de CIDR-ranges (documenteer je
 
 Application Gateway v2 vereist een dedicated subnet. Microsoft documenteert dat Application Gateway v2 tot 125 instanties kan schalen, waarbij elke instantie een eigen privé-IP-adres verbruikt. Daarnaast reserveert Application Gateway extra IPs voor interne communicatie. Een /24 (251 bruikbare IPs) is de door Microsoft aanbevolen minimumgrootte voor een productie Application Gateway v2 subnet.
 
-> Bron: [Application Gateway subnet requirements — Microsoft Learn](https://learn.microsoft.com/en-us/azure/application-gateway/configuration-infrastructure#size-of-the-subnet)
+> Bron: [Application Gateway subnet requirements - Microsoft Learn](https://learn.microsoft.com/en-us/azure/application-gateway/configuration-infrastructure#size-of-the-subnet)
 
 ### snet-spoke-web — 10.20.1.0/27 (27 bruikbare IPs)
 
