@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Pagina-1" id="j6Oa0W8JBIH_crfPehCw">
-    <mxGraphModel dx="3840" dy="1393" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="4012" dy="1393" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -160,7 +160,7 @@
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-15" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" value="" vertex="1">
           <mxGeometry height="100" width="540" x="-34.5" y="1260" as="geometry" />
         </mxCell>
-        <mxCell id="cT6LmnMbhNfq8FhoQMbc-16" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="DNSResolverSubnet&amp;nbsp;-&amp;nbsp;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;&lt;/code&gt;10.0.4.0/28" vertex="1">
+        <mxCell id="cT6LmnMbhNfq8FhoQMbc-16" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="DNSResolverSubnet&amp;nbsp;-&amp;nbsp;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;&lt;/code&gt;10.0.3.0/28" vertex="1">
           <mxGeometry height="40" width="470" x="0.8000000000000114" y="1260" as="geometry" />
         </mxCell>
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-17" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/DNS_Private_Resolver.svg;" value="" vertex="1">
