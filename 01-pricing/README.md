@@ -178,6 +178,64 @@ BESPARING (Azure vs On-prem)                            €XX.XXX (XX%)
 
 ---
 
+## Aannames
+
+Onderstaande aannames zijn gedocumenteerd als uitgangspunt voor de prijsinschatting.
+Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
+
+### Gebruikers en gebruik
+
+| Categorie | Aanname | Motivering |
+|---|---|---|
+| Totaal aantal gebruikers | 450 medewerkers | Opgegeven in opdracht |
+| Gelijktijdige gebruikers | ~50 concurrent users | Productieplanningsapplicatie — niet iedereen tegelijk actief |
+| Piekgebruik | Werkdagen 7u–18u | Productieplanningsperiodes tijdens werkuren |
+| Peak CPU gebruik | ~60% tijdens werkuren | Buiten werkuren minimale belasting |
+| Beschikbaarheid | 99,9% tijdens werkuren | Productieplanning niet 24/7 kritiek |
+
+### Database
+
+| Categorie | Aanname | Motivering |
+|---|---|---|
+| Huidige database grootte | ~500 GB | Opgegeven in opdracht |
+| Verwachte groei per jaar | ~10% (~50 GB/jaar) | Historische productiedata groeit geleidelijk |
+| Database grootte jaar 3 | ~650 GB | 500 GB + 3 × 50 GB |
+
+### Netwerk
+
+| Categorie | Aanname | Motivering |
+|---|---|---|
+| Datatransfer egress | ~50 GB/maand | Webverkeer (~11 GB) + SAP batch (~5 GB) + rapporten (~10 GB) + geo-replicatie (~20 GB) |
+| SAP batch transfer | ~5 GB/maand | Nachtelijke batch, beperkt datavolume |
+| VPN bandbreedte | ~10 Mbps gemiddeld | 3 vestigingen, interne applicatie |
+
+### Opslag en backup
+
+| Categorie | Aanname | Motivering |
+|---|---|---|
+| Backup retentie | 35 dagen | Conform RPO/RTO vereisten |
+| Storage Account grootte | ~1 TB | Rapporten, uploads, file shares ter vervanging van NAS |
+| Log Analytics | ~5 GB/dag | App Service, SQL, Firewall en NSG logs |
+
+### Licenties en omgevingen
+
+| Categorie | Aanname | Motivering |
+|---|---|---|
+| Azure Hybrid Benefit | Van toepassing | Klant beschikt over Windows Server Datacenter + SQL Server Enterprise met Software Assurance |
+| Reserved Instances | 1 jaar | Voldoende zekerheid over workload voor 1-jarige reservering |
+| Omgevingen | 3 (prd, tst, dev) | Dev/Test via Dev/Test subscription aan lagere tarieven |
+| Dev/Test SKUs | 1 tier lager dan productie | tst op B2ms, dev op B1ms |
+
+### Algemeen
+
+| Categorie | Aanname | Motivering |
+|---|---|---|
+| Primaire regio | West Europe (Amsterdam) | Dichtstbij Belgische vestigingen |
+| DR regio | North Europe (Dublin) | Geo-redundantie voor SQL backups |
+| Prijspeil | Juni 2026 | Prijzen kunnen wijzigen — jaarlijkse herziening aanbevolen |
+| Wisselkoers | € (EUR) | Alle prijzen in euro |
+
+---
 ## beoordelingscriteria (20 punten)
 
 | Criterium | Punten |
