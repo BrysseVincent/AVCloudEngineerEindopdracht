@@ -334,6 +334,7 @@ Gedetailleerde melding met impact en maatregelen
     ▼ (binnen 1 maand)
 Eindrapport met oorzaakanalyse en preventieve maatregelen
 ```
+Bij een significant incident meldt Contoso dit conform NIS2 in drie stappen aan het CCB (Centrum voor Cybersecurity België) via ccb.belgium.be. Binnen 24 uur volgt een initiële melding met een eerste beschrijving van het incident en de getroffen systemen. Binnen 72 uur wordt een gedetailleerde melding ingediend met de volledige impact en genomen maatregelen. Binnen één maand sluit Contoso het proces af met een eindrapport dat de oorzaakanalyse en preventieve maatregelen documenteert.
 
 ---
 
