@@ -124,7 +124,7 @@ Private Endpoints verbruiken elk één privé-IP. Overzicht van benodigde Privat
 
 Een /28 (11 bruikbare IPs) biedt ruim voldoende capaciteit, ook bij toevoeging van extra Private Endpoints in de toekomst (bijv. een tweede Key Vault voor non-prod, of Azure Service Bus).
 
-### snet-spoke-mgmt - 10.20.2.16/28 (11 bruikbare IPs)
+### snet-spoke-mgmt - 10.20.3.0/28 (11 bruikbare IPs)
 
 Het management subnet host maximaal een beperkt aantal jump VMs of management agents. Een /28 (11 bruikbare IPs) is ruim voldoende voor dit doel.
 
@@ -187,7 +187,7 @@ Documenteer de **minimaal vereiste NSG-regels** per subnet. Gebruik onderstaande
 
 ---
 
-## NSG: nsg-mgmt (snet-spoke-mgmt — 10.20.2.16/28)
+## NSG: nsg-mgmt (snet-spoke-mgmt — 10.20.3.0/28)
 
 | Prioriteit | Naam | Richting | Protocol | Bron | Doel | Poort | Actie |
 |---|---|---|---|---|---|---|---|
