@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Pagina-1" id="bO0eF0MEG30PwN0SY_UD">
-    <mxGraphModel dx="1570" dy="1178" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2831" dy="1184" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -90,34 +90,34 @@
         <mxCell id="5jyI5hjUl4sj9ss2DCPe-40" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Subnet.svg;" value="" vertex="1">
           <mxGeometry height="40.72" width="68" x="612" y="570" as="geometry" />
         </mxCell>
-        <mxCell id="5jyI5hjUl4sj9ss2DCPe-41" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;gradientColor=none;opacity=40;" value="" vertex="1">
+        <mxCell id="5jyI5hjUl4sj9ss2DCPe-41" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;opacity=30;" value="" vertex="1">
           <mxGeometry height="740" width="790" x="21.1" y="840" as="geometry" />
         </mxCell>
-        <mxCell id="5jyI5hjUl4sj9ss2DCPe-42" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;gradientColor=none;" value="" vertex="1">
+        <mxCell id="5jyI5hjUl4sj9ss2DCPe-42" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#60A917,#31590B);strokeColor=#2D7600;fontColor=#ffffff;" value="" vertex="1">
           <mxGeometry height="625" width="690" x="78.7" y="945" as="geometry" />
         </mxCell>
         <mxCell id="5jyI5hjUl4sj9ss2DCPe-43" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Spoke Vnet 10.20.0.0/16" vertex="1">
           <mxGeometry height="30" width="190" x="138.6999999999999" y="945" as="geometry" />
         </mxCell>
-        <mxCell id="5jyI5hjUl4sj9ss2DCPe-44" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" value="" vertex="1">
+        <mxCell id="5jyI5hjUl4sj9ss2DCPe-44" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" value="" vertex="1">
           <mxGeometry height="100" width="540" x="144.1999999999999" y="995" as="geometry" />
         </mxCell>
         <mxCell id="5jyI5hjUl4sj9ss2DCPe-45" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;code&gt;snet-spoke-appgw - 10.20.0.0/24&lt;/code&gt;" vertex="1">
           <mxGeometry height="40" width="470" x="179.50000000000009" y="995" as="geometry" />
         </mxCell>
-        <mxCell id="5jyI5hjUl4sj9ss2DCPe-46" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" value="" vertex="1">
+        <mxCell id="5jyI5hjUl4sj9ss2DCPe-46" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" value="" vertex="1">
           <mxGeometry height="100" width="540" x="144.50000000000009" y="1215" as="geometry" />
         </mxCell>
         <mxCell id="5jyI5hjUl4sj9ss2DCPe-47" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="snet-spoke-func - 10.20.1.32/27" vertex="1">
           <mxGeometry height="40" width="470" x="179.80000000000004" y="1215" as="geometry" />
         </mxCell>
-        <mxCell id="5jyI5hjUl4sj9ss2DCPe-48" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" value="" vertex="1">
+        <mxCell id="5jyI5hjUl4sj9ss2DCPe-48" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" value="" vertex="1">
           <mxGeometry height="100" width="540" x="144.80000000000004" y="1105" as="geometry" />
         </mxCell>
         <mxCell id="5jyI5hjUl4sj9ss2DCPe-49" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="snet-spoke-web - 10.20.1.0/27" vertex="1">
           <mxGeometry height="40" width="470" x="181.1" y="1105" as="geometry" />
         </mxCell>
-        <mxCell id="5jyI5hjUl4sj9ss2DCPe-50" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" value="" vertex="1">
+        <mxCell id="5jyI5hjUl4sj9ss2DCPe-50" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" value="" vertex="1">
           <mxGeometry height="100" width="540" x="144.1999999999999" y="1325" as="geometry" />
         </mxCell>
         <mxCell id="5jyI5hjUl4sj9ss2DCPe-51" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="snet-spoke-data - 10.20.2.0/28" vertex="1">
@@ -144,7 +144,7 @@
         <mxCell id="5jyI5hjUl4sj9ss2DCPe-62" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Subnet.svg;" value="" vertex="1">
           <mxGeometry height="40.72" width="68" x="610.6999999999999" y="1335" as="geometry" />
         </mxCell>
-        <mxCell id="5jyI5hjUl4sj9ss2DCPe-63" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" value="" vertex="1">
+        <mxCell id="5jyI5hjUl4sj9ss2DCPe-63" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" value="" vertex="1">
           <mxGeometry height="100" width="540" x="143" y="1440" as="geometry" />
         </mxCell>
         <mxCell id="5jyI5hjUl4sj9ss2DCPe-64" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="snet-spoke-mgmt - 10.20.2.16/28" vertex="1">
