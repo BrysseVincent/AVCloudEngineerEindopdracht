@@ -93,7 +93,7 @@ Application Gateway v2 vereist een dedicated subnet. Microsoft documenteert dat 
 
 > Bron: [Application Gateway subnet requirements - Microsoft Learn](https://learn.microsoft.com/en-us/azure/application-gateway/configuration-infrastructure#size-of-the-subnet)
 
-### snet-spoke-web — 10.20.1.0/27 (27 bruikbare IPs)
+### snet-spoke-web - 10.20.1.0/27 (27 bruikbare IPs)
 
 App Service VNet Integration wijst één IP toe per App Service instantie. Configuratie voor Contoso:
 
