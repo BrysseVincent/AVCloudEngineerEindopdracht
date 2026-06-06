@@ -136,31 +136,31 @@
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;gradientColor=none;" value="" vertex="1">
           <mxGeometry height="520" width="690" x="-100" y="880" as="geometry" />
         </mxCell>
-        <mxCell id="cT6LmnMbhNfq8FhoQMbc-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Hub&amp;nbsp;Vnet 10.20.0.0/16" vertex="1">
+        <mxCell id="cT6LmnMbhNfq8FhoQMbc-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Hub&amp;nbsp;Vnet 10.0.0.0/16" vertex="1">
           <mxGeometry height="30" width="190" x="140" y="890" as="geometry" />
         </mxCell>
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-6" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" value="" vertex="1">
           <mxGeometry height="100" width="540" x="-34.5" y="930" as="geometry" />
         </mxCell>
-        <mxCell id="cT6LmnMbhNfq8FhoQMbc-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;AzureFirewallSubnet&lt;/code&gt;&amp;nbsp;-&amp;nbsp;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;&lt;/code&gt;10.20.0.0/26" vertex="1">
+        <mxCell id="cT6LmnMbhNfq8FhoQMbc-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;AzureFirewallSubnet&lt;/code&gt;&amp;nbsp;-&amp;nbsp;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;&lt;/code&gt;10.0.0.0/26" vertex="1">
           <mxGeometry height="40" width="470" x="0.8000000000000114" y="930" as="geometry" />
         </mxCell>
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-11" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" value="" vertex="1">
           <mxGeometry height="100" width="540" x="-34.200000000000045" y="1150" as="geometry" />
         </mxCell>
-        <mxCell id="cT6LmnMbhNfq8FhoQMbc-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="AzureBastionSubnet&amp;nbsp;-&amp;nbsp;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;&lt;/code&gt;10.20.2.0/27" vertex="1">
+        <mxCell id="cT6LmnMbhNfq8FhoQMbc-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="AzureBastionSubnet&amp;nbsp;-&amp;nbsp;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;&lt;/code&gt;10.0.2.0/27" vertex="1">
           <mxGeometry height="40" width="470" x="1.1000000000000227" y="1150" as="geometry" />
         </mxCell>
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-13" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" value="" vertex="1">
           <mxGeometry height="100" width="540" x="-33.89999999999998" y="1040" as="geometry" />
         </mxCell>
-        <mxCell id="cT6LmnMbhNfq8FhoQMbc-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="GatewaySubnet&amp;nbsp;-&amp;nbsp;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;&lt;/code&gt;10.20.1.0/27" vertex="1">
+        <mxCell id="cT6LmnMbhNfq8FhoQMbc-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="GatewaySubnet&amp;nbsp;-&amp;nbsp;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;&lt;/code&gt;10.0.1.0/27" vertex="1">
           <mxGeometry height="40" width="470" x="2.400000000000034" y="1040" as="geometry" />
         </mxCell>
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-15" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" value="" vertex="1">
           <mxGeometry height="100" width="540" x="-34.5" y="1260" as="geometry" />
         </mxCell>
-        <mxCell id="cT6LmnMbhNfq8FhoQMbc-16" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="DNSResolverSubnet&amp;nbsp;-&amp;nbsp;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;&lt;/code&gt;10.20.4.0/28" vertex="1">
+        <mxCell id="cT6LmnMbhNfq8FhoQMbc-16" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="DNSResolverSubnet&amp;nbsp;-&amp;nbsp;&lt;code class=&quot;bg-text-200/5 border border-0.5 border-border-300 text-danger-000 whitespace-pre-wrap rounded-[0.4rem] px-1 py-px text-[0.9rem]&quot;&gt;&lt;/code&gt;10.0.4.0/28" vertex="1">
           <mxGeometry height="40" width="470" x="0.8000000000000114" y="1260" as="geometry" />
         </mxCell>
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-17" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/DNS_Private_Resolver.svg;" value="" vertex="1">
