@@ -295,6 +295,27 @@
         <mxCell id="HAYzw38xPHUCz2f2pw4r-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Vnet Peering" vertex="1">
           <mxGeometry height="30" width="60" x="670" y="1230" as="geometry" />
         </mxCell>
+        <mxCell id="taR4tqvxNjhkJS3MPA-4-1" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Subnet.svg;" value="" vertex="1">
+          <mxGeometry height="40.72" width="68" x="435" y="940" as="geometry" />
+        </mxCell>
+        <mxCell id="taR4tqvxNjhkJS3MPA-4-2" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Subnet.svg;" value="" vertex="1">
+          <mxGeometry height="40.72" width="68" x="435" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="taR4tqvxNjhkJS3MPA-4-3" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Subnet.svg;" value="" vertex="1">
+          <mxGeometry height="40.72" width="68" x="435" y="1160" as="geometry" />
+        </mxCell>
+        <mxCell id="taR4tqvxNjhkJS3MPA-4-4" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Subnet.svg;" value="" vertex="1">
+          <mxGeometry height="40.72" width="68" x="435" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="taR4tqvxNjhkJS3MPA-4-5" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Subnet.svg;" value="" vertex="1">
+          <mxGeometry height="40.72" width="68" x="-420" y="940" as="geometry" />
+        </mxCell>
+        <mxCell id="taR4tqvxNjhkJS3MPA-4-6" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Subnet.svg;" value="" vertex="1">
+          <mxGeometry height="40.72" width="68" x="-420" y="1209.28" as="geometry" />
+        </mxCell>
+        <mxCell id="taR4tqvxNjhkJS3MPA-4-7" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Subnet.svg;" value="" vertex="1">
+          <mxGeometry height="40.72" width="68" x="-420" y="1340" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
