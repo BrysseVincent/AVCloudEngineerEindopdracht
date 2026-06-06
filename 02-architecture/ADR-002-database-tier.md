@@ -13,8 +13,8 @@ Voor de databank kiezen we voor Azure SQL Database in de General Purpose tier me
 De bestaande omgeving draait op SQL Server 2014 met Always On (2 nodes, ~500 GB). De migratiedoelstellingen vereisen een RTO ≤ 1 uur en RPO ≤ 15 minuten, samen met een TCO-reductie van minimaal 20% over 3 jaar.
 
 General Purpose biedt:
-RPO van ~1-5 minuten via automatische geo-redundante backups — ruim binnen de vereiste van 15 minuten
-RTO van ~20-30 minuten bij failover — dit valt binnen de vereiste van 1 uur, maar zit aan de ondergrens
+RPO van ~1-5 minuten via automatische geo-redundante backups, wat ruim binnen de vereiste van 15 minuten valt
+RTO van ~20-30 minuten bij failover, dit valt binnen de vereiste van 1 uur, maar zit aan de ondergrens
 Zone-redundantie voor hoge beschikbaarheid binnen één regio
 Automatische backups met point-in-time restore tot 35 dagen
 Ingebouwde HA zonder extra configuratie, ter vervanging van de huidige Always On setup
