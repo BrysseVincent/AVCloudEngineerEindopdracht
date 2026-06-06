@@ -224,7 +224,7 @@ Gebruik **RBAC voor Key Vault** (niet het legacy access policy model).
 | App Service (Managed Identity) | `Key Vault Secrets User` | Lees secrets at runtime |
 | Azure Functions (Managed Identity) | `Key Vault Secrets User` | Lees secrets at runtime |
 | App Service (Managed Identity) | `Key Vault Crypto User` | Gebruik CMK voor encryptie |
-| zure Functions (Managed Identity) | `Key Vault Crypto User` | Gebruik CMK voor encryptie |
+| Azure Functions (Managed Identity) | `Key Vault Crypto User` | Gebruik CMK voor encryptie |
 | DevOps Pipeline (Service Principal) | `Key Vault Secrets Officer` | Schrijf/update secrets via pipeline |
 | Database Admin | `Key Vault Secrets Officer` | Beheer CMK sleutels voor SQL TDE |
 | Cloud Platform Engineer | `Key Vault Administrator` | Volledig beheer |
