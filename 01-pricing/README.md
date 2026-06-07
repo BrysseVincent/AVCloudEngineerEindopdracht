@@ -240,7 +240,7 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 | Azure Hybrid Benefit | Van toepassing | Klant beschikt over Windows Server Datacenter + SQL Server Enterprise met Software Assurance |
 | Reserved Instances | 1 jaar | Voldoende zekerheid over workload voor 1-jarige reservering |
 | Omgevingen | 3 (prd, tst, dev) | Dev/Test via Dev/Test subscription aan lagere tarieven |
-| Dev/Test SKUs | 1 tier lager dan productie | tst op B2ms, dev op B1ms |
+| Dev/Test SKUs | tst op S2, dev op B1 | On-demand opgestart via Dev/Test subscription |
 
 ### Algemeen
 
