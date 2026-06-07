@@ -178,6 +178,10 @@ BESPARING (Azure vs On-prem)                            €XX.XXX (XX%)
 
 ---
 
+_Ga verder naar [`../02-architecture/README.md`](../02-architecture/README.md)_
+
+---
+
 ## Aannames
 
 Onderstaande aannames zijn gedocumenteerd als uitgangspunt voor de prijsinschatting.
@@ -249,6 +253,125 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 
 ---
 
-_Ga verder naar [`../02-architecture/README.md`](../02-architecture/README.md)_
+## SKU-keuze onderbouwing
+
+### App Service Plan — P2v3 (Windows, 2 instances)
+
+De bestaande web- en applicatietier (WEB01/WEB02 + APP01/APP02) wordt vervangen door
+één App Service Plan P2v3 met 2 instances. Gezien de aard van de applicatie (read-heavy
+planning en rapportage), het beperkte aantal gelijktijdige gebruikers (≈50), en het feit
+dat de Windows Services worden gemigreerd naar Azure Functions, is een afzonderlijk App
+Service Plan voor de API/Worker niet nodig. Web en API delen dezelfde HA-vereisten en
+hebben vergelijkbare performance-karakteristieken. P2v3 volstaat omdat Azure efficiënter
+omgaat met resources dan dedicated on-premises servers die nooit op volledige capaciteit
+draaiden. Auto-scale laat toe om bij piekbelasting op te schalen tot 5 instances, waarna
+de capaciteit vergelijkbaar is met de huidige on-premises omgeving.
+
+**1 jaar Reserved Instance toegepast** — voldoende workloadzekerheid voor 1-jarige
+reservering. Korting: ~25% t.o.v. pay-as-you-go.
 
 ---
+
+### Azure Functions — App Service Plan (inbegrepen)
+
+De drie Windows Services (scheduler, processor, reporter) worden gemigreerd naar Azure
+Functions op het bestaande P2v3 App Service Plan. De keuze voor Azure Functions boven
+WebJobs is gebaseerd op native Timer triggers (CRON-expressies) voor de nachtelijke batch
+(23u–03u), ingebouwde integratie met Application Insights, en toekomstbestendigheid.
+Door de Functions op het bestaande plan te hosten is VNet integratie beschikbaar zonder
+extra kost — noodzakelijk voor toegang tot de Private Endpoints. Kost: **€ 0** (inbegrepen
+in App Service Plan).
+
+---
+
+### Azure SQL Database — General Purpose, 4 vCores
+
+De bestaande SQL Server 2014 Always On Availability Group (SQL01/SQL02) wordt vervangen
+door Azure SQL Database General Purpose. De applicatie is read-heavy met ≈50 gelijktijdige
+gebruikers tijdens werkuren (7u-18u) en een nachtelijke batch zonder gebruikers. Geschat
+piekverbruik bedraagt ≈500-1.000 IOPS tijdens werkuren — ruim binnen de General Purpose
+limiet van 1.280 IOPS op 4 vCores. RA-GRS backup storage voorziet geo-redundante backups
+naar North Europe met RPO ≈1-5 minuten en RTO ≈20-30 minuten — beide binnen de
+migratiedoelstellingen (RPO ≤ 15 min, RTO ≤ 1 uur).
+
+Business Critical werd overwogen maar niet gekozen omwille van de significant hogere
+kostprijs (~€ 3.000+/maand vs ~€ 1.077/maand) zonder dat de RTO/RPO-vereisten dit
+vereisen.
+
+---
+
+### Azure Firewall — Premium
+
+Azure Firewall Premium werd gekozen boven Standard omwille van de ingebouwde **IDPS
+(Intrusion Detection and Prevention System)**. IDPS detecteert en blokkeert bekende
+aanvalspatronen op netwerkniveau — een relevante maatregel voor NIS2-compliance. De
+meerkost t.o.v. Standard is verdedigbaar vanuit het security perspectief van de opdracht.
+
+---
+
+### Application Gateway — WAF_v2
+
+WAF_v2 vervangt de F5 BIG-IP (EOL 2025) en biedt Layer 7 load balancing met WAF
+(OWASP 3.2) bescherming. WAF_v2 schaalt automatisch op basis van Capacity Units — voor
+Contoso met ≈50 gelijktijdige gebruikers zijn 2 CU voldoende. Zone-redundant voor HA.
+
+---
+
+### VPN Gateway — VpnGw1AZ
+
+VPN Gateway wordt gekozen boven ExpressRoute (zie ADR-003). VpnGw1AZ is zone-redundant
+en bevat 10 S2S tunnels — ruim voldoende voor de 3 vestigingen (Gent, Luik, Hasselt).
+Alle 3 vestigingen zijn verbonden via het bestaande MPLS netwerk van Proximus, waardoor
+bij keuze voor ExpressRoute slechts 1 circuit nodig zou zijn. Desondanks bespaart VPN
+Gateway €500-2.000+/maand aan circuitkosten.
+
+---
+
+### DNS Private Resolver
+
+Inbound en Outbound Endpoint voor bidirectionele DNS-resolutie tussen on-premises en
+Azure. Het Outbound Endpoint is vereist voor het resolven van interne FQDNs zoals
+`sap-api.contoso.local` via DC01. Azure Firewall is geconfigureerd met DNS Proxy enabled
+naar `10.0.3.4` (Inbound Endpoint).
+
+---
+
+### Jump VM — B2ms (Windows, 1 jaar Reserved, AHB)
+
+Een jump VM in `snet-spoke-mgmt` biedt toegang tot Azure SQL Database via SSMS voor
+database administrators en developers. De Private Endpoint van SQL is niet bereikbaar
+vanuit on-premises zonder een VM in het VNet. B2ms (2 vCPU, 8 GB RAM) is voldoende
+voor SSMS gebruik. Azure Hybrid Benefit toegepast — Windows Server licentie inbegrepen
+via bestaande SA. Auto-shutdown geconfigureerd om kostoptimalisatie te realiseren buiten
+werkuren.
+
+---
+
+### Microsoft Entra ID — P1 (443 users) + P2 (7 users)
+
+Entra ID P1 wordt toegewezen aan alle 450 medewerkers voor MFA en Conditional Access —
+verplicht voor NIS2-compliance. IT-beheerders en Security Analysts (±7 personen) krijgen
+Entra ID P2 voor Privileged Identity Management (PIM) en Identity Protection. Dit volgt
+het least privilege principe ook op licentieniveau.
+
+> **Aanname**: Indien Contoso over Microsoft 365 Business Premium beschikt, is Entra ID
+> P1 reeds inbegrepen en bedraagt de kost enkel de P2 add-on voor 7 gebruikers
+> (€ 3,00/gebruiker/maand supplement).
+
+---
+
+### Azure Firewall — Premium vs Standard
+
+Azure Firewall Premium werd bewust gekozen omwille van IDPS. De meerkost t.o.v. Standard
+(~€ 450/maand) wordt gerechtvaardigd door de betere bescherming tegen bekende
+aanvalspatronen, consistent met de NIS2-vereisten en Zero Trust architectuur.
+
+---
+
+### Storage Account — GRS, Hot tier, 1 TB
+
+Azure Storage Account vervangt de on-premises NAS shares (UNC). GRS redundantie zorgt
+voor geo-redundante opslag naar North Europe. Hot tier is gekozen omdat rapporten en
+uploads regelmatig worden geraadpleegd. Lifecycle Management wordt geconfigureerd om
+oudere bestanden automatisch naar Cool of Cold tier te verplaatsen voor
+kostoptimalisatie. 1 TB capaciteit biedt ruime groeimarges.
