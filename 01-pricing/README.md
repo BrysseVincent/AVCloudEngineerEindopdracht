@@ -204,7 +204,7 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 | Categorie | Aanname | Motivering |
 |---|---|---|
 | Totaal aantal gebruikers | 450 medewerkers | Opgegeven in opdracht |
-| Applicatie gebruikers | 200 medewerkers | schatting aantal gebruikers die applicatie zal gebruiken|
+| Applicatie gebruikers | 200 medewerkers | Schatting aantal gebruikers die applicatie zal gebruiken|
 | Gelijktijdige gebruikers | ~50 concurrent users | Productieplanningsapplicatie — niet iedereen tegelijk actief |
 | Piekgebruik | Werkdagen 7u–18u | Productieplanningsperiodes tijdens werkuren |
 | Peak CPU gebruik | ~60% tijdens werkuren | Buiten werkuren minimale belasting |
