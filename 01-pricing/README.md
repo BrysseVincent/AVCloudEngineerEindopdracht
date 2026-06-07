@@ -190,15 +190,6 @@ BESPARING (Azure vs On-prem)                            €XX.XXX (XX%)
 
 ---
 
-
-Component                          | Eenmalige kost (schatting) | Jaarlijkse kost (schatting)
----------------------------------- | --------------------------- | ---------------------------
-Azure services (maandkost × 12)    | —                           | € 87.170 / jaar
-IT‑beheer (FTE, deels)             | —                           | € 40.000 / jaar
-Netwerkapparatuur refresh          | € 20.000                    | € 3.000 / jaar
-Migratie & opzetkosten Azure       | € 30.000                    | —
-Totaal                             | ≈ € 50.000                  | ≈ € 130.170 / jaar
-
 _Ga verder naar [`../02-architecture/README.md`](../02-architecture/README.md)_
 
 ---
