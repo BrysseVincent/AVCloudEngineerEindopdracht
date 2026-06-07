@@ -215,7 +215,7 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 |---|---|---|
 | Backup retentie | 35 dagen | Conform RPO/RTO vereisten |
 | Storage Account grootte | ~1 TB | Rapporten, uploads, file shares ter vervanging van NAS |
-| Log Analytics | ~5 GB/dag | App Service, SQL, Firewall en NSG logs |
+| Log Analytics | ~10 GB/dag | App Service, SQL, Firewall en NSG logs |
 
 ### Licenties en omgevingen
 
