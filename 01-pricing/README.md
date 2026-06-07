@@ -431,14 +431,6 @@ het least privilege principe ook op licentieniveau.
 
 ---
 
-### Azure Firewall — Premium vs Standard
-
-Azure Firewall Premium werd bewust gekozen omwille van IDPS. De meerkost t.o.v. Standard
-(~€ 450/maand) wordt gerechtvaardigd door de betere bescherming tegen bekende
-aanvalspatronen, consistent met de NIS2-vereisten en Zero Trust architectuur.
-
----
-
 ### Storage Account — GRS, Hot tier, 1 TB
 
 Azure Storage Account vervangt de on-premises NAS shares (UNC). GRS redundantie zorgt
@@ -536,8 +528,9 @@ Daarnaast blijft er een risico dat de workload in de toekomst wijzigt, waardoor 
 
 ### 4. Geen gebruik van Azure Hybrid Benefit (AHB)
 
-De berekening gaat ervan uit dat er geen SQL‑licenties met Software Assurance beschikbaar zijn. Indien de organisatie in de toekomst toch licenties aankoopt of reeds bestaande licenties blijkt te hebben, kan dit de koststructuur wijzigen.
-Het risico bestaat dat AHB later alsnog voordelig wordt, afhankelijk van licentiebeleid of contractwijzigingen.
+De huidige kostenberekening maakt gebruik van Azure Hybrid Benefit (AHB) op basis van bestaande Windows Server Datacenter en SQL Server Enterprise licenties met Software Assurance. Na afloop van de SA-contracten vervalt het recht op AHB automatisch.
+
+Indien na afloop geen Azure Savings Plan wordt afgesloten, stijgt de compute kost automatisch naar Pay-as-you-go tarieven.
 
 
 ### 5. Onzekerheden rond netwerkverkeer en egress‑kosten
