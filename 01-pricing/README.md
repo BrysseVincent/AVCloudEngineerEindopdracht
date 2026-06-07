@@ -477,7 +477,7 @@ Totaal                             | ≈ € 80.000                  | ≈ € 1
 |                        |                  |                  |                  |                  |
 | **AZURE (1J RI)** |               |                  |                  |                  |
 | CapEx (netwerk + migratie) | € 80.000    | € 0              | € 0              | € 80.000         |
-| OpEx (Azure + beheer)  | € 126.997     | € 126.997     | € 126.997     | € 401.036,52     |
+| OpEx (Azure + beheer)  | € 126.997     | € 126.997     | € 126.997     | € 380.991     |
 | **Subtotaal Azure**    | **€ 206.997** | **€ 126.997** | **€ 126.997** | **€ 460.991** |
 |                        |                  |                  |                  |                  |
 | **BESPARING Azure vs On‑prem** |          |                  |                  | **€ 147.009 (≈ 24,2%)** |
@@ -495,9 +495,11 @@ Omdat de SQL‑omgeving stabiel en permanent actief is, vormt een 1‑jaar RI de
 
 ### 2. Azure Hybrid Benefit (AHB)
 
-Azure Hybrid Benefit laat organisaties bestaande Windows Server‑ en SQL‑licenties met Software Assurance hergebruiken.
-In deze case is AHB niet van toepassing, omdat er geen geldige SQL‑licenties met SA beschikbaar zijn en de aankoop ervan duurder zou uitvallen dan het Savings Plan.
-Daarom wordt AHB bewust niet geactiveerd, wat resulteert in een lagere totale kost.
+De klant beschikt over bestaande Windows Server Datacenter en SQL Server Enterprise licenties met Software Assurance via een Microsoft Enterprise Agreement. De SA-contracten worden na afloop niet verlengd, omdat de jaarlijkse SA-kost de AHB besparing ruimschoots overstijgt.
+
+Zolang de bestaande SA-periode loopt wordt AHB toegepast op: de Jump VM en de Azure SQL Database.
+
+Na afloop van de SA-contracten wordt overgeschakeld naar een Azure Savings Plan als kostenefficiënter alternatief zonder licentieverplichting.
 
 
 ### 3. Auto‑scale
