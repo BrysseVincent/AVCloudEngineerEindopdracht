@@ -475,7 +475,7 @@ Totaal                             | ≈ € 80.000                  | ≈ € 1
 | **BESPARING Azure vs On‑prem** |          |                  |                  | **€ 153.336,36 (≈ 25,2%)** |
 
 > **Dev/Test omgevingen** zijn niet opgenomen in de TCO-berekening.
-> Deze omgevingen worden on-demand opgestart via de Contoso-NonProd
+> Deze omgevingen worden on-demand opgestart via de Contoso-NonProd.
 > Dev/Test subscription en hebben geen vaste maandelijkse kost.
 > Geschatte kost bij actief gebruik: ~€ 50-100/dag.
 
@@ -579,3 +579,24 @@ De TCO veronderstelt dat:
     logging en monitoring efficiënt zijn geconfigureerd
 
 Fouten in configuratie kunnen leiden tot onnodige kosten, zoals te veel instanties, te hoge log‑retentie of inefficiënte firewall‑regels.
+
+---
+
+## Dev/Test resources (on-demand)
+
+| Resource | SKU (tst) | SKU (dev) | Opmerkingen |
+|---|---|---|---|
+| App Service Plan | S2 | B1 | On-demand opgestart |
+| web-app + api-app | ✅ | ✅ | Zelfde apps als productie |
+| Staging slots | ❌ | ❌ | Niet nodig in non-prod |
+| Azure Functions | Op ASP (inbegrepen) | Op ASP (inbegrepen) | |
+| Azure SQL Database | GP 2 vCores (Serverless) | GP 2 vCores (Serverless) | Pauzeert automatisch |
+| Storage Account | LRS, 100 GB, Hot | LRS, 100 GB, Hot | Geen geo-redundantie |
+| Key Vault | Standard | Standard | Aparte secrets per omgeving |
+| Application Insights | Workspace-based | Workspace-based | Gedeelde Log Analytics |
+| Application Gateway | ❌ | ❌ | Niet nodig in non-prod |
+| Defender plans | ❌ | ❌ | Niet nodig in non-prod |
+| Azure Firewall | Gedeeld via hub | Gedeeld via hub | Geen extra kost |
+| VPN Gateway | Gedeeld via hub | Gedeeld via hub | Geen extra kost |
+| Azure Bastion | Gedeeld via hub | Gedeeld via hub | Geen extra kost |
+| DNS Private Resolver | Gedeeld via hub | Gedeeld via hub | Geen extra kost |
