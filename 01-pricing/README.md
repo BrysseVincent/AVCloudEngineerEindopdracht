@@ -265,7 +265,7 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 ### Database
 
 | Resource | SKU | Regio | Prijs/maand (PAYG) | Prijs/maand (PAYG + AHB) | Prijs/maand (1J RI) | Prijs/maand (1J RI + AHB) |
-|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|
 | Azure SQL Database | General Purpose, 4 vCores, 500 GB | West Europe | € 1.077,09 | € 826,02 | € 766,16 | € 590,40 |
 | SQL Geo-redundante backup (RA-GRS) | Inbegrepen | North Europe | € 0 | € 0 | € 0 | € 0 |
 | **Subtotaal Database** | | | **€ 1.077,09** | **€ 826,02** |  **€ 766,16** | **€ 590,40** |
