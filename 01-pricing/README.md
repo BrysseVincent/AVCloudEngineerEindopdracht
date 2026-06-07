@@ -222,8 +222,7 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 
 | Categorie | Aanname | Motivering |
 |---|---|---|
-| Datatransfer egress | ~50 GB/maand | Webverkeer (~11 GB) + SAP batch (~5 GB) + rapporten (~10 GB) + geo-replicatie (~20 GB) |
-| SAP batch transfer | ~5 GB/maand | Nachtelijke batch, beperkt datavolume |
+| Datatransfer egress | ~300 GB/maand | Webverkeer (~130 GB) + SAP batch (~20 GB) + rapporten (~50 GB) + geo-replicatie (~100 GB - Wijzigingsratio: 0.2% – 1% per dag) |
 | VPN bandbreedte | ~10 Mbps gemiddeld | 3 vestigingen, interne applicatie |
 
 ### Opslag en backup
