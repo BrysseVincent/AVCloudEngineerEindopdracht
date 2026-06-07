@@ -175,6 +175,18 @@ BESPARING (Azure vs On-prem)                            €XX.XXX (XX%)
 4. **3-jaar TCO tabel** — vergelijking on-prem vs Azure
 5. **Optimalisatieadvies** — Reserved Instances, AHB, Auto-scale
 6. **Risico's** — onzekerheden in de inschatting
+   
+---
+## beoordelingscriteria (20 punten)
+
+| Criterium | Punten |
+|---|---|
+| Alle vereiste resources aanwezig en geraamd | 5 |
+| Correcte SKU-keuzes met onderbouwing | 4 |
+| 3-jaar TCO vergelijking correct uitgewerkt | 4 |
+| Azure Hybrid Benefit correct toegepast | 3 |
+| Aannames duidelijk gedocumenteerd | 2 |
+| Optimalisatieadvies (Reserved Instances, ...) | 2 |
 
 ---
 
@@ -238,18 +250,6 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 | DR regio | North Europe (Dublin) | Geo-redundantie voor SQL backups |
 | Prijspeil | Juni 2026 | Prijzen kunnen wijzigen — jaarlijkse herziening aanbevolen |
 | Wisselkoers | € (EUR) | Alle prijzen in euro |
-
----
-## beoordelingscriteria (20 punten)
-
-| Criterium | Punten |
-|---|---|
-| Alle vereiste resources aanwezig en geraamd | 5 |
-| Correcte SKU-keuzes met onderbouwing | 4 |
-| 3-jaar TCO vergelijking correct uitgewerkt | 4 |
-| Azure Hybrid Benefit correct toegepast | 3 |
-| Aannames duidelijk gedocumenteerd | 2 |
-| Optimalisatieadvies (Reserved Instances, ...) | 2 |
 
 ---
 
