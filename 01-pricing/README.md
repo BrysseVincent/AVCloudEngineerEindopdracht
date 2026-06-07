@@ -503,8 +503,79 @@ Daarom wordt AHB bewust niet geactiveerd, wat resulteert in een lagere totale ko
 ### 3. Auto‑scale
 
 Auto‑scale maakt het mogelijk om compute‑capaciteit automatisch op en af te schalen op basis van belasting.
-Voor de web‑ en applicatielaag (Azure App Service) zorgt auto‑scale ervoor dat er enkel extra instanties worden ingezet tijdens piekbelasting, terwijl tijdens rustige periodes automatisch wordt teruggeschaald.
+Voor de web‑ en applicatielaag (Azure App Service) zorgt auto‑scale ervoor dat er enkel extra instanties kunnen worden ingezet tijdens piekbelasting, terwijl tijdens rustige periodes automatisch wordt teruggeschaald.
 Dit voorkomt overprovisioning en verlaagt de compute‑kost zonder impact op de beschikbaarheid.
 Voor SQL is auto‑scale minder relevant door de stabiele workload en vaste vCore‑configuratie.
 
+---
 
+## 6. Risico's — onzekerheden in de inschatting
+
+
+Bij het opstellen van de Total Cost of Ownership (TCO) voor de Azure‑omgeving zijn verschillende aannames gemaakt. Hoewel deze gebaseerd zijn op actuele prijzen, best practices en realistische verbruiksmodellen, blijven er een aantal onzekerheden die een impact kunnen hebben op de uiteindelijke kost. Hieronder worden de belangrijkste risico’s toegelicht.
+
+### 1. Prijswijzigingen in Azure‑diensten
+
+Azure‑prijzen kunnen in de toekomst wijzigen. Hoewel Microsoft historisch gezien vooral prijsdalingen of stabiele tarieven hanteert, kunnen wijzigingen in compute, storage of netwerkverkeer een invloed hebben op de totale kost.
+Dit geldt vooral voor bandbreedte, premium storage en security‑diensten zoals Azure Firewall.
+
+
+### 2. Onzekerheid in verbruiksprofielen
+
+De berekeningen gaan uit van een stabiel verbruik van compute‑resources en SQL‑capaciteit. Indien de applicatie in de toekomst meer verkeer, meer transacties of zwaardere workloads verwerkt, kan dit leiden tot hogere kosten.
+Vooral bij App Service auto‑scale kan een onverwacht hoge belasting tijdelijk extra instanties activeren.
+
+
+### 3. Afhankelijkheid van Reserved Instances en Savings Plans
+
+De TCO gaat uit van het gebruik van 1‑jaar Reserved Instances en 1‑jaar SQL Savings Plan. Indien deze optimalisaties niet worden toegepast of te laat worden geactiveerd, stijgt de kost automatisch naar Pay‑As‑You‑Go tarieven.
+Daarnaast blijft er een risico dat de workload in de toekomst wijzigt, waardoor de gekozen RI‑configuratie minder optimaal wordt.
+
+
+### 4. Geen gebruik van Azure Hybrid Benefit (AHB)
+
+De berekening gaat ervan uit dat er geen SQL‑licenties met Software Assurance beschikbaar zijn. Indien de organisatie in de toekomst toch licenties aankoopt of reeds bestaande licenties blijkt te hebben, kan dit de koststructuur wijzigen.
+Het risico bestaat dat AHB later alsnog voordelig wordt, afhankelijk van licentiebeleid of contractwijzigingen.
+
+
+### 5. Onzekerheden rond netwerkverkeer en egress‑kosten
+
+Uitgaand verkeer (egress) naar het internet of tussen regio’s kan variëren.
+Hoewel de huidige inschatting conservatief is, kunnen:
+
+    nieuwe integraties
+
+    API‑verkeer
+
+    externe partners
+
+    of groeiende gebruikersaantallen
+
+leiden tot hogere netwerk‑ en datatransferkosten.
+
+
+### 6. Onvoorziene groei van storage en back‑ups
+
+Storage groeit vaak sneller dan verwacht.
+SQL‑back‑ups, logbestanden, monitoring‑data en applicatiebestanden kunnen leiden tot:
+
+    hogere storage‑kosten
+
+    hogere back‑upkosten
+
+    hogere retention‑kosten
+
+Vooral bij RA‑GRS back‑ups kan dit oplopen.
+
+
+### 7. Afhankelijkheid van correcte configuratie
+
+De TCO veronderstelt dat:
+
+    auto‑scale correct is ingesteld
+
+    onnodige resources worden uitgeschakeld
+
+    logging en monitoring efficiënt zijn geconfigureerd
+
+Fouten in configuratie kunnen leiden tot onnodige kosten, zoals te veel instanties, te hoge log‑retentie of inefficiënte firewall‑regels.
