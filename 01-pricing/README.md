@@ -462,9 +462,29 @@ kostoptimalisatie. 1 TB capaciteit biedt ruime groeimarges.
 
 Component                          | Eenmalige kost (schatting) | Jaarlijkse kost (schatting)
 ---------------------------------- | --------------------------- | ---------------------------
-Azure services (maandkost × 12)    | —                           | € 90.678,84 / jaar
-IT‑beheer (FTE, deels)             | —                           | € 40.000 / jaar
+Azure services (maandkost × 12)    | -                           | € 90.678,84 / jaar
+IT‑beheer (FTE, deels)             | -                           | € 40.000 / jaar
 Netwerkapparatuur refresh          | € 20.000                    | € 3.000 / jaar
-Migratie & opzetkosten Azure       | € 60.000                    | —
+Migratie & opzetkosten Azure       | € 60.000                    | -
 Totaal                             | ≈ € 80.000                  | ≈ € 133.678,84 / jaar
+
+
+                  Jaar 1              Jaar 2              Jaar 3              TOTAAL 3J
+────────────────────────────────────────────────────────────────────────────────────────
+ON-PREMISES
+  Capex             €320.000              €0                  €0               €320.000
+  Opex/jaar          €96.000          €96.000             €96.000              €288.000
+  Subtotaal         €416.000          €96.000             €96.000              €608.000
+
+AZURE (Pay-as-you-go)
+  Capex              €80.000              €0                  €0                €80.000
+  Opex/jaar         €133.678,84      €133.678,84        €133.678,84           €401.036,52
+  Subtotaal         €213.678,84      €133.678,84        €133.678,84           €481.036,52
+
+BESPARING (Azure vs On-prem)                                              €126.963,48 (≈ 20,9%)
+────────────────────────────────────────────────────────────────────────────────────────
+
+
+
+
 
