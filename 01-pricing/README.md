@@ -1,4 +1,4 @@
-# 01 — azure prijsinschatting
+<img width="289" height="21" alt="afbeelding" src="https://github.com/user-attachments/assets/dae3c5f4-409b-45c8-a37e-606228c4920f" /># 01 — azure prijsinschatting
 
 > **Deliverable**: Azure-kostenraming + 3-jaar TCO-vergelijking  
 > **Gewicht**: 20% van de totale eindopdrachtscore
@@ -459,3 +459,12 @@ kostoptimalisatie. 1 TB capaciteit biedt ruime groeimarges.
 ---
 
 ## 4. 3-jaar TCO tabel - vergelijking on-prem vs Azure
+
+Component                          | Eenmalige kost (schatting) | Jaarlijkse kost (schatting)
+---------------------------------- | --------------------------- | ---------------------------
+Azure services (maandkost × 12)    | —                           | € 90.678,84 / jaar
+IT‑beheer (FTE, deels)             | —                           | € 40.000 / jaar
+Netwerkapparatuur refresh          | € 20.000                    | € 3.000 / jaar
+Migratie & opzetkosten Azure       | € 60.000                    | —
+Totaal                             | ≈ € 80.000                  | ≈ € 133.678,84 / jaar
+
