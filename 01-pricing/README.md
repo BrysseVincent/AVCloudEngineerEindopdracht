@@ -474,6 +474,11 @@ Totaal                             | ≈ € 80.000                  | ≈ € 1
 |                        |                  |                  |                  |                  |
 | **BESPARING Azure vs On‑prem** |          |                  |                  | **€ 153.336,36 (≈ 25,2%)** |
 
+> **Dev/Test omgevingen** zijn niet opgenomen in de TCO-berekening.
+> Deze omgevingen worden on-demand opgestart via de Contoso-NonProd
+> Dev/Test subscription en hebben geen vaste maandelijkse kost.
+> Geschatte kost bij actief gebruik: ~€ 50-100/dag.
+
 ---
 
 ## 5. Optimalisatieadvies — Reserved Instances, AHB, Auto-scale
