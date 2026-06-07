@@ -194,7 +194,7 @@ _Ga verder naar [`../02-architecture/README.md`](../02-architecture/README.md)_
 
 ---
 
-## Aannames
+## 1. Aannames
 
 Onderstaande aannames zijn gedocumenteerd als uitgangspunt voor de prijsinschatting.
 Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
@@ -250,6 +250,77 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 | DR regio | North Europe (Dublin) | Geo-redundantie voor SQL backups |
 | Prijspeil | Juni 2026 | Prijzen kunnen wijzigen — jaarlijkse herziening aanbevolen |
 | Wisselkoers | € (EUR) | Alle prijzen in euro |
+
+## 2. Resource overzicht
+
+### Compute
+
+| Resource | SKU | Regio | Instances | Prijs/maand (PAYG) | Prijs/maand (1J RI) |
+|---|---|---|---|---|---|
+| App Service Plan (Web + API) | P2v3 Windows | West Europe | 2 | € 848,89 | € 633,04 |
+| Azure Functions (Scheduler, Processor, Reporter) | Consumption (inbegrepen in ASP) | West Europe | — | € 0 | € 0 |
+| Virtual Machine (Jump VM) | B2ms, Windows (AHB) | West Europe | 1 | € 65,30 | € 35,26 |
+| **Subtotaal Compute** | | | | **€ 914,19** | **€ 668,30** |
+
+### Database
+
+| Resource | SKU | Regio | Prijs/maand (PAYG) | Prijs/maand (PAYG + AHB) | Prijs/maand (1J RI + AHB) |
+|---|---|---|---|---|---|
+| Azure SQL Database | General Purpose, 4 vCores, 500 GB | West Europe | € 1.077,09 | € 826,02 | € 590,40 |
+| SQL Geo-redundante backup (RA-GRS) | Inbegrepen | North Europe | € 0 | € 0 | € 0 |
+| **Subtotaal Database** | | | **€ 1.077,09** | **€ 826,02** | **€ 590,40** |
+
+### Netwerk
+
+| Resource | SKU | Regio | Prijs/maand |
+|---|---|---|---|
+| Azure Firewall | Premium (IDPS) | West Europe | € 1.102,91 |
+| Application Gateway + WAF | WAF_v2 | West Europe | € 327,97 |
+| VPN Gateway | VpnGw1AZ (zone-redundant) | West Europe | € 145,62 |
+| Azure Bastion | Basic | West Europe | € 119,30 |
+| Private DNS Zones + DNS Private Resolver | 5 zones + Inbound/Outbound Endpoint | Global | € 322,51 |
+| Datatransfer egress | ~300 GB/maand | — | € 14,97 |
+| **Subtotaal Netwerk** | | | **€ 2.033,28** |
+
+### Security & Identity
+
+| Resource | SKU | Prijs/maand |
+|---|---|---|
+| Microsoft Entra ID | P1 × 443 gebruikers + P2 × 7 gebruikers | € 2.591,49 |
+| Key Vault | Standard | € 2,74 |
+| Defender for SQL | € 15/server | € 15,00 |
+| Defender for App Service | € 15/plan | € 15,00 |
+| Defender for Storage | Per transactie | € 10,00 |
+| Defender for Key Vault | € 0,02/10k operaties | € 1,00 |
+| Defender for Resource Manager | € 4/subscription | € 4,00 |
+| **Subtotaal Security** | | **€ 2.639,23** |
+
+### Monitoring
+
+| Resource | SKU | Prijs/maand |
+|---|---|---|
+| Log Analytics Workspace | 10 GB/dag, 90 dagen retentie | € 825,74 |
+| Application Insights | Per request (workspace-based) | € 1,50 |
+| **Subtotaal Monitoring** | | **€ 827,24** |
+
+### Storage & Backup
+
+| Resource | SKU | Prijs/maand |
+|---|---|---|
+| Storage Account | GRS, Hot tier, 1 TB | € 52,82 |
+| Azure Backup (Jump VM) | Standaard policy, 35 dagen, LRS | € 12,72 |
+| **Subtotaal Storage** | | **€ 65,54** |
+
+---
+
+### Totaaloverzicht
+
+| Scenario | Prijs/maand | Prijs/jaar |
+|---|---|---|
+| **Pay-as-you-go** | **€ 7.556,57** | **€ 90.678,84** |
+| **Pay-as-you-go + AHB** | **€ 7.305,50** | **€ 87.666,00** |
+| **1 jaar Reserved + AHB** | **€ 6.823,99** | **€ 81.887,88** |
+
 
 ---
 
