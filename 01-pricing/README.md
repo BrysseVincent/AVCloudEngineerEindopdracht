@@ -506,6 +506,26 @@ Voor de web‑ en applicatielaag (Azure App Service) zorgt auto‑scale ervoor d
 Dit voorkomt overprovisioning en verlaagt de compute‑kost zonder impact op de beschikbaarheid.
 Voor SQL is auto‑scale minder relevant door de stabiele workload en vaste vCore‑configuratie.
 
+
+### 4. Dev/Test resources (on-demand)
+
+| Resource | SKU (tst) | SKU (dev) | Opmerkingen |
+|---|---|---|---|
+| App Service Plan | S2 | B1 | On-demand opgestart |
+| web-app + api-app | ✅ | ✅ | Zelfde apps als productie |
+| Staging slots | ❌ | ❌ | Niet nodig in non-prod |
+| Azure Functions | Op ASP (inbegrepen) | Op ASP (inbegrepen) | |
+| Azure SQL Database | GP 2 vCores (Serverless) | GP 2 vCores (Serverless) | Pauzeert automatisch |
+| Storage Account | LRS, 100 GB, Hot | LRS, 100 GB, Hot | Geen geo-redundantie |
+| Key Vault | Standard | Standard | Aparte secrets per omgeving |
+| Application Insights | Workspace-based | Workspace-based | Gedeelde Log Analytics |
+| Application Gateway | ❌ | ❌ | Niet nodig in non-prod |
+| Defender plans | ❌ | ❌ | Niet nodig in non-prod |
+| Azure Firewall | Gedeeld via hub | Gedeeld via hub | Geen extra kost |
+| VPN Gateway | Gedeeld via hub | Gedeeld via hub | Geen extra kost |
+| Azure Bastion | Gedeeld via hub | Gedeeld via hub | Geen extra kost |
+| DNS Private Resolver | Gedeeld via hub | Gedeeld via hub | Geen extra kost |
+
 ---
 
 ## 6. Risico's — onzekerheden in de inschatting
@@ -579,24 +599,3 @@ De TCO veronderstelt dat:
     logging en monitoring efficiënt zijn geconfigureerd
 
 Fouten in configuratie kunnen leiden tot onnodige kosten, zoals te veel instanties, te hoge log‑retentie of inefficiënte firewall‑regels.
-
----
-
-## Dev/Test resources (on-demand)
-
-| Resource | SKU (tst) | SKU (dev) | Opmerkingen |
-|---|---|---|---|
-| App Service Plan | S2 | B1 | On-demand opgestart |
-| web-app + api-app | ✅ | ✅ | Zelfde apps als productie |
-| Staging slots | ❌ | ❌ | Niet nodig in non-prod |
-| Azure Functions | Op ASP (inbegrepen) | Op ASP (inbegrepen) | |
-| Azure SQL Database | GP 2 vCores (Serverless) | GP 2 vCores (Serverless) | Pauzeert automatisch |
-| Storage Account | LRS, 100 GB, Hot | LRS, 100 GB, Hot | Geen geo-redundantie |
-| Key Vault | Standard | Standard | Aparte secrets per omgeving |
-| Application Insights | Workspace-based | Workspace-based | Gedeelde Log Analytics |
-| Application Gateway | ❌ | ❌ | Niet nodig in non-prod |
-| Defender plans | ❌ | ❌ | Niet nodig in non-prod |
-| Azure Firewall | Gedeeld via hub | Gedeeld via hub | Geen extra kost |
-| VPN Gateway | Gedeeld via hub | Gedeeld via hub | Geen extra kost |
-| Azure Bastion | Gedeeld via hub | Gedeeld via hub | Geen extra kost |
-| DNS Private Resolver | Gedeeld via hub | Gedeeld via hub | Geen extra kost |
