@@ -190,11 +190,20 @@ BESPARING (Azure vs On-prem)                            €XX.XXX (XX%)
 
 ---
 
+
+Component                          | Eenmalige kost (schatting) | Jaarlijkse kost (schatting)
+---------------------------------- | --------------------------- | ---------------------------
+Azure services (maandkost × 12)    | —                           | € 87.170 / jaar
+IT‑beheer (FTE, deels)             | —                           | € 40.000 / jaar
+Netwerkapparatuur refresh          | € 20.000                    | € 3.000 / jaar
+Migratie & opzetkosten Azure       | € 30.000                    | —
+Totaal                             | ≈ € 50.000                  | ≈ € 130.170 / jaar
+
 _Ga verder naar [`../02-architecture/README.md`](../02-architecture/README.md)_
 
 ---
 
-## 1. Aannames
+## 1. Aannames - gedocumenteerde uitgangspunten
 
 Onderstaande aannames zijn gedocumenteerd als uitgangspunt voor de prijsinschatting.
 Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
@@ -251,7 +260,7 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 | Prijspeil | Juni 2026 | Prijzen kunnen wijzigen — jaarlijkse herziening aanbevolen |
 | Wisselkoers | € (EUR) | Alle prijzen in euro |
 
-## 2-3. Resource overzicht met Maandelijks kostenoverzicht
+## 2-3. Resource overzicht met Maandelijks kostenoverzicht - tabel met elke resource, SKU, prijs/maan + gegroepeerd per categorie
 
 ### Compute
 
@@ -446,3 +455,7 @@ voor geo-redundante opslag naar North Europe. Hot tier is gekozen omdat rapporte
 uploads regelmatig worden geraadpleegd. Lifecycle Management wordt geconfigureerd om
 oudere bestanden automatisch naar Cool of Cold tier te verplaatsen voor
 kostoptimalisatie. 1 TB capaciteit biedt ruime groeimarges.
+
+---
+
+## 4. 3-jaar TCO tabel - vergelijking on-prem vs Azure
