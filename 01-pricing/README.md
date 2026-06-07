@@ -482,6 +482,29 @@ Totaal                             | ≈ € 80.000                  | ≈ € 1
 |                        |                  |                  |                  |                  |
 | **BESPARING Azure vs On‑prem** |          |                  |                  | **€ 147.009 (≈ 24,2%)** |
 
+---
 
+## 5. Optimalisatieadvies — Reserved Instances, AHB, Auto-scale
+
+### 1. Reserved Instances (RI)
+
+Reserved Instances bieden een aanzienlijke korting op compute‑resources wanneer capaciteit voor 1 jaar wordt vastgelegd.
+Voor workloads die continu draaien, zoals de SQL‑database in deze omgeving, levert een 1‑jaar RI een directe en voorspelbare kostenreductie op van 20–40%.
+Omdat de SQL‑omgeving stabiel en permanent actief is, vormt een 1‑jaar RI de meest efficiënte keuze.
+
+
+### 2. Azure Hybrid Benefit (AHB)
+
+Azure Hybrid Benefit laat organisaties bestaande Windows Server‑ en SQL‑licenties met Software Assurance hergebruiken.
+In deze case is AHB niet van toepassing, omdat er geen geldige SQL‑licenties met SA beschikbaar zijn en de aankoop ervan duurder zou uitvallen dan het Savings Plan.
+Daarom wordt AHB bewust niet geactiveerd, wat resulteert in een lagere totale kost.
+
+
+### 3. Auto‑scale
+
+Auto‑scale maakt het mogelijk om compute‑capaciteit automatisch op en af te schalen op basis van belasting.
+Voor de web‑ en applicatielaag (Azure App Service) zorgt auto‑scale ervoor dat er enkel extra instanties worden ingezet tijdens piekbelasting, terwijl tijdens rustige periodes automatisch wordt teruggeschaald.
+Dit voorkomt overprovisioning en verlaagt de compute‑kost zonder impact op de beschikbaarheid.
+Voor SQL is auto‑scale minder relevant door de stabiele workload en vaste vCore‑configuratie.
 
 
