@@ -251,7 +251,7 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 | Prijspeil | Juni 2026 | Prijzen kunnen wijzigen — jaarlijkse herziening aanbevolen |
 | Wisselkoers | € (EUR) | Alle prijzen in euro |
 
-## 2. Resource overzicht
+## 2-3. Resource overzicht met Maandelijks kostenoverzicht
 
 ### Compute
 
