@@ -1,4 +1,4 @@
-<img width="289" height="21" alt="afbeelding" src="https://github.com/user-attachments/assets/dae3c5f4-409b-45c8-a37e-606228c4920f" /># 01 — azure prijsinschatting
+# 01 — azure prijsinschatting
 
 > **Deliverable**: Azure-kostenraming + 3-jaar TCO-vergelijking  
 > **Gewicht**: 20% van de totale eindopdrachtscore
