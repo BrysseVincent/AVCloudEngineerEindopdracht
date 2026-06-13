@@ -55,8 +55,9 @@ resource sqlDatabase 'Microsoft.Sql/servers/databases@2023-05-01-preview' = {
     requestedBackupStorageRedundancy: backupRedundancy
     readScale: 'Disabled'
     autoPauseDelay: isServerless ? 60 : -1  // 60 min voor serverless, -1 = uitgeschakeld
-    // minCapacity must be an integer per Bicep type; use 1 for serverless minimum to satisfy the type
-    minCapacity: isServerless ? 1 : null
+// minCapacity verwacht een float (0.5) maar Bicep definieert het als int.
+// Bekende Bicep bug — json() workaround gebruikt om float door te geven.
+    minCapacity: isServerless ? json('0.5') : null
   }
 }
 

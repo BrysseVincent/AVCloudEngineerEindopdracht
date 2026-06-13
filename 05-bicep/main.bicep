@@ -205,8 +205,8 @@ module functionApp 'modules/compute/function-app.bicep' = {
     appServicePlanId: appServicePlan.outputs.planId
     storageAccountName: storageAccount.outputs.storageAccountName
     keyVaultName: keyVault.outputs.keyVaultName
-    // choose subnet for VNet integration; here we reuse the web subnet
-    vnetSubnetId: spokeVnet.outputs.webSubnetId
+    // choose subnet for VNet integration; here we use the func subnet
+    vnetSubnetId: spokeVnet.outputs.funcSubnetId
     tags: tags
   }
 }

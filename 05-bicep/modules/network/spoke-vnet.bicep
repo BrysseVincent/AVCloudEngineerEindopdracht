@@ -99,5 +99,6 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-09-01' = {
 
 output vnetId string = vnet.id
 output vnetName string = vnet.name
-output webSubnetId string = vnet.properties.subnets[1].id
-output dataSubnetId string = vnet.properties.subnets[3].id
+output webSubnetId string = vnet.properties.subnets[4].id
+output dataSubnetId string = vnet.properties.subnets[1].id
+output funcSubnetId string = vnet.properties.subnets[2].id
