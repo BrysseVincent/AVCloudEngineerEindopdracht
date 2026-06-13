@@ -22,7 +22,7 @@ var subnets = [
   }
   {
     name: 'snet-web'
-    addressPrefix: cidrSubnet(addressPrefix, 24, 1)
+    addressPrefix: cidrSubnet(addressPrefix, 24, 0)
     delegations: [
       {
         name: 'delegation-appservice'
@@ -34,7 +34,7 @@ var subnets = [
   }
   {
     name: 'snet-func'
-    addressPrefix: cidrSubnet(addressPrefix, 24, 2)
+    addressPrefix: cidrSubnet(addressPrefix, 24, 0)
     delegations: [
       {
         name: 'delegation-functions'
@@ -46,10 +46,16 @@ var subnets = [
   }
   {
     name: 'snet-data'
-    addressPrefix: cidrSubnet(addressPrefix, 24, 3)
+    addressPrefix: cidrSubnet(addressPrefix, 24, 0)
+    delegations: []
+  }
+   {
+    name: 'snet-mgmt'
+    addressPrefix: cidrSubnet(addressPrefix, 24, 0)
     delegations: []
   }
 ]
+
 
 // ── NSG ──────────────────────────────────────────────────────────────
 
