@@ -512,7 +512,7 @@ Vul de starter pipelines aan en documenteer je keuzes:
 
 ---
 
-## SAST — SonarCloud
+## SAST - SonarCloud
 
 Voor de statische applicatiebeveiligingstest (SAST) werd gekozen voor **SonarCloud**. 
 SonarCloud analyseert de broncode automatisch op beveiligingslekken, bugs en 
