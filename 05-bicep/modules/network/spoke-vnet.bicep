@@ -1,5 +1,3 @@
-// modules/network/spoke-vnet.bicep
-
 @description('Azure region')
 param location string
 
@@ -17,24 +15,20 @@ param tags object
 var subnets = [
   {
     name: 'snet-appgw'
-    addressPrefix: '10.20.0.0/24'
+    cidr: '10.20.0.0/24'
+    type: 'appgw'
     delegations: []
   }
   {
-    name: 'snet-web'
-    addressPrefix: '10.20.1.0/27'
-    delegations: [
-      {
-        name: 'delegation-appservice'
-        properties: {
-          serviceName: 'Microsoft.Web/serverFarms'
-        }
-      }
-    ]
+    name: 'snet-data'
+    cidr: '10.20.3.0/28'
+    type: 'data'
+    delegations: []
   }
   {
     name: 'snet-func'
-    addressPrefix: '10.20.2.0/27'
+    cidr: '10.20.2.0/27'
+    type: 'func'
     delegations: [
       {
         name: 'delegation-functions'
@@ -45,54 +39,37 @@ var subnets = [
     ]
   }
   {
-    name: 'snet-data'
-    addressPrefix: '10.20.3.0/28'
-    delegations: []
-  }
-  {
     name: 'snet-mgmt'
-    addressPrefix: '10.20.4.0/28'
+    cidr: '10.20.4.0/28'
+    type: 'mgmt'
     delegations: []
-  }
-]
-
-// ── NSG ──────────────────────────────────────────────────────────────
-
-resource nsgWeb 'Microsoft.Network/networkSecurityGroups@2023-09-01' = {
-  name: 'nsg-snet-web'
-  location: location
-  tags: tags
-  properties: {
-    securityRules: [
+  }  
+  {
+    name: 'snet-web'
+    cidr: '10.20.1.0/27'
+    type: 'web'
+    delegations: [
       {
-        name: 'Allow-AppGW-Inbound'
+        name: 'delegation-appservice'
         properties: {
-          priority: 100
-          protocol: 'Tcp'
-          access: 'Allow'
-          direction: 'Inbound'
-          sourceAddressPrefix: cidrSubnet(addressPrefix, 24, 0)
-          sourcePortRange: '*'
-          destinationAddressPrefix: '*'
-          destinationPortRange: '443'
-        }
-      }
-      {
-        name: 'Deny-All-Inbound'
-        properties: {
-          priority: 4096
-          protocol: '*'
-          access: 'Deny'
-          direction: 'Inbound'
-          sourceAddressPrefix: '*'
-          sourcePortRange: '*'
-          destinationAddressPrefix: '*'
-          destinationPortRange: '*'
+          serviceName: 'Microsoft.Web/serverFarms'
         }
       }
     ]
   }
-}
+]
+
+// ── NSG’s per subnet ─────────────────────────────────────────────────
+
+module nsgs 'nsg.bicep' = [for subnet in subnets: {
+  name: 'nsg-${subnet.name}'
+  params: {
+    location: location
+    nsgName: 'nsg-${subnet.name}'
+    subnetType: subnet.type
+    tags: tags
+  }
+}]
 
 // ── Virtual Network ───────────────────────────────────────────────────
 
@@ -104,14 +81,14 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-09-01' = {
     addressSpace: {
       addressPrefixes: [ addressPrefix ]
     }
-    subnets: [for subnet in subnets: {
+    subnets: [for (subnet, i) in subnets: {
       name: subnet.name
       properties: {
-        addressPrefix: subnet.addressPrefix
+        addressPrefix: subnet.cidr
         delegations: subnet.delegations
-        networkSecurityGroup: subnet.name == 'snet-web' ? {
-          id: nsgWeb.id
-        } : null
+        networkSecurityGroup: {
+          id: nsgs[i].outputs.nsgId
+        }
         privateEndpointNetworkPolicies: 'Disabled'
       }
     }]

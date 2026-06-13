@@ -117,33 +117,33 @@ var webRules = [
   {
     name: 'Allow-Web-to-Data-SQL'
     properties: {
-      priority: 100
+      priority: 200
       direction: 'Outbound'
       access: 'Allow'
       protocol: 'Tcp'
       sourceAddressPrefix: '*'
       sourcePortRange: '*'
-      destinationAddressPrefix: '10.20.2.0/28'
+      destinationAddressPrefix: '10.20.3.0/28'
       destinationPortRange: '1433'
     }
   }
   {
     name: 'Allow-Web-to-Data-HTTPS'
     properties: {
-      priority: 110
+      priority: 300
       direction: 'Outbound'
       access: 'Allow'
       protocol: 'Tcp'
       sourceAddressPrefix: '*'
       sourcePortRange: '*'
-      destinationAddressPrefix: '10.20.2.0/28'
+      destinationAddressPrefix: '10.20.3.0/28'
       destinationPortRange: '443'
     }
   }
   {
     name: 'Allow-AzurePlatform'
     properties: {
-      priority: 120
+      priority: 400
       direction: 'Outbound'
       access: 'Allow'
       protocol: 'Tcp'
@@ -191,7 +191,7 @@ var funcRules = [
       protocol: 'Tcp'
       sourceAddressPrefix: '*'
       sourcePortRange: '*'
-      destinationAddressPrefix: '10.20.2.0/28'
+      destinationAddressPrefix: '10.20.3.0/28'
       destinationPortRange: '1433'
     }
   }
@@ -204,7 +204,20 @@ var funcRules = [
       protocol: 'Tcp'
       sourceAddressPrefix: '*'
       sourcePortRange: '*'
-      destinationAddressPrefix: '10.20.2.0/28'
+      destinationAddressPrefix: '10.20.3.0/28'
+      destinationPortRange: '443'
+    }
+  }
+  {
+    name: 'Allow-Func-to-KV'
+    properties: {
+      priority: 115
+      direction: 'Outbound'
+      access: 'Allow'
+      protocol: 'Tcp'
+      sourceAddressPrefix: '*'
+      sourcePortRange: '*'
+      destinationAddressPrefix: '10.20.3.0/28'
       destinationPortRange: '443'
     }
   }
@@ -230,7 +243,7 @@ var funcRules = [
       protocol: 'Tcp'
       sourceAddressPrefix: '*'
       sourcePortRange: '*'
-      destinationAddressPrefix: '10.10.0.0/16'
+      destinationAddressPrefix: 'Internet'
       destinationPortRange: '587'
     }
   }
@@ -296,7 +309,7 @@ var dataRules = [
       direction: 'Inbound'
       access: 'Allow'
       protocol: 'Tcp'
-      sourceAddressPrefix: '10.20.1.32/27'
+      sourceAddressPrefix: '10.20.2.0/27'
       sourcePortRange: '*'
       destinationAddressPrefix: '*'
       destinationPortRange: '1433'
@@ -309,7 +322,7 @@ var dataRules = [
       direction: 'Inbound'
       access: 'Allow'
       protocol: 'Tcp'
-      sourceAddressPrefix: '10.20.1.32/27'
+      sourceAddressPrefix: '10.20.2.0/27'
       sourcePortRange: '*'
       destinationAddressPrefix: '*'
       destinationPortRange: '443'
@@ -322,10 +335,23 @@ var dataRules = [
       direction: 'Inbound'
       access: 'Allow'
       protocol: 'Tcp'
-      sourceAddressPrefix: '10.20.2.16/28'
+      sourceAddressPrefix: '10.20.4.0/28'
       sourcePortRange: '*'
       destinationAddressPrefix: '*'
       destinationPortRange: '1433'
+    }
+  }
+  {
+    name: 'Allow-Mgmt-to-KV'
+    properties: {
+      priority: 150
+      direction: 'Inbound'
+      access: 'Allow'
+      protocol: 'Tcp'
+      sourceAddressPrefix: '10.20.4.0/28'
+      sourcePortRange: '*'
+      destinationAddressPrefix: '*'
+      destinationPortRange: '443'
     }
   }
   {
@@ -333,6 +359,19 @@ var dataRules = [
     properties: {
       priority: 4096
       direction: 'Inbound'
+      access: 'Deny'
+      protocol: '*'
+      sourceAddressPrefix: '*'
+      sourcePortRange: '*'
+      destinationAddressPrefix: '*'
+      destinationPortRange: '*'
+    }
+  }
+  {
+    name: 'Deny-All-Outbound'
+    properties: {
+      priority: 4096
+      direction: 'Outbound'
       access: 'Deny'
       protocol: '*'
       sourceAddressPrefix: '*'
@@ -379,7 +418,7 @@ var mgmtRules = [
       protocol: 'Tcp'
       sourceAddressPrefix: '*'
       sourcePortRange: '*'
-      destinationAddressPrefix: '10.20.2.0/28'
+      destinationAddressPrefix: '10.20.3.0/28'
       destinationPortRange: '1433'
     }
   }
