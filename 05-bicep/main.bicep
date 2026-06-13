@@ -105,6 +105,7 @@ module spokeVnet 'modules/network/spoke-vnet.bicep' = {
     location: location
     vnetName: 'vnet-${locationCode}-spoke-${environment}'
     addressPrefix: spokeVnetAddressPrefix
+    environment: environment
     tags: tags
   }
 }

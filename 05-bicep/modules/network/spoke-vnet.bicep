@@ -10,6 +10,10 @@ param addressPrefix string
 @description('Tags')
 param tags object
 
+@description('Environment: dev, tst, prd')
+@allowed(['dev', 'tst', 'prd'])
+param environment string
+
 // ── Subnets ──────────────────────────────────────────────────────────
 
 var subnets = [
@@ -62,10 +66,10 @@ var subnets = [
 // ── NSG’s per subnet ─────────────────────────────────────────────────
 
 module nsgs 'nsg.bicep' = [for subnet in subnets: {
-  name: 'nsg-${subnet.name}'
+  name: 'nsg-${subnet.name}-${environment}'
   params: {
     location: location
-    nsgName: 'nsg-${subnet.name}'
+    nsgName: 'nsg-${subnet.name}-${environment}'
     subnetType: subnet.type
     tags: tags
   }
