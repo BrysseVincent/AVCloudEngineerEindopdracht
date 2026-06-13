@@ -77,11 +77,11 @@ Ontwerp minimaal de volgende subnetten. Kies zelf de CIDR-ranges (documenteer je
 
 | Subnet naam | CIDR (te bepalen) | Doel | NSG vereist? |
 |---|---|---|---|
-| `snet-spoke-appgw` | `10.20.X.X/??` | Application Gateway + WAF | ✅ |
-| `snet-spoke-web` | `10.20.X.X/??` | App Service VNet Integration | ✅ |
-| `snet-spoke-func` | `10.20.X.X/??` | Functions VNet Integration | ✅ |
-| `snet-spoke-data` | `10.20.X.X/??` | Private Endpoints (SQL, Storage, KV) | ✅ |
-| `snet-spoke-mgmt` | `10.20.X.X/??` | Management/Jump VMs (indien van toepassing) | ✅ |
+| `snet-spoke-appgw` | `10.20.0.0/24` | Application Gateway + WAF | ✅ |
+| `snet-spoke-web` | `10.20.1.0/27` | App Service VNet Integration | ✅ |
+| `snet-spoke-func` | `10.20.2.0/27` | Functions VNet Integration | ✅ |
+| `snet-spoke-data` | `10.20.3.0/28` | Private Endpoints (SQL, Storage, KV) | ✅ |
+| `snet-spoke-mgmt` | `10.20.4.0/28` | Management/Jump VMs (indien van toepassing) | ✅ |
 
 **Vul in**: Kies je CIDR-ranges en onderbouw de grootte (hoeveel IP-adressen heb je nodig?).
 
@@ -106,11 +106,11 @@ App Service VNet Integration wijst één IP toe per App Service instantie. Confi
 
 Een /27 (27 bruikbare IPs) biedt voldoende ruimte met groeimarges voor een eventuele tweede App Service in de toekomst.
 
-### snet-spoke-func - 10.20.1.32/27 (27 bruikbare IPs)
+### snet-spoke-func - 10.20.2.0/27 (27 bruikbare IPs)
 
 Zelfde redenering als snet-spoke-web. De drie WebJobs (scheduler, processor, reporter) draaien binnen dezelfde App Service Plan en gebruiken dezelfde VNet Integration als de web App Service — technisch gezien hetzelfde subnet is ook mogelijk, maar een aparte subnet per laag is best practice voor NSG-isolatie en toekomstige segmentatie.
 
-### snet-spoke-data - 10.20.2.0/28 (11 bruikbare IPs)
+### snet-spoke-data - 10.20.3.0/28 (11 bruikbare IPs)
 
 Private Endpoints verbruiken elk één privé-IP. Overzicht van benodigde Private Endpoints:
 
@@ -124,7 +124,7 @@ Private Endpoints verbruiken elk één privé-IP. Overzicht van benodigde Privat
 
 Een /28 (11 bruikbare IPs) biedt ruim voldoende capaciteit, ook bij toevoeging van extra Private Endpoints in de toekomst (bijv. een tweede Key Vault voor non-prod, of Azure Service Bus).
 
-### snet-spoke-mgmt - 10.20.3.0/28 (11 bruikbare IPs)
+### snet-spoke-mgmt - 10.20.4.0/28 (11 bruikbare IPs)
 
 Het management subnet host maximaal een beperkt aantal jump VMs of management agents. Een /28 (11 bruikbare IPs) is ruim voldoende voor dit doel.
 
