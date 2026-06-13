@@ -42,7 +42,7 @@ resource sqlServer 'Microsoft.Sql/servers@2023-05-01-preview' = {
       login: adminLogin
       sid: adminObjectId
       tenantId: tenantId
-      azureADOnlyAuthentication: true      // Enkel Entra ID — geen SQL logins
+      azureADOnlyAuthentication: true      // Enkel Entra ID - geen SQL logins
     }
   }
 }

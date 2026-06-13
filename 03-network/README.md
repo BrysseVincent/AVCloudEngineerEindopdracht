@@ -160,7 +160,7 @@ Documenteer de **minimaal vereiste NSG-regels** per subnet. Gebruik onderstaande
 
 ---
 
-## NSG: nsg-func (snet-spoke-func — 10.20.1.32/27)
+## NSG: nsg-func (snet-spoke-func — 10.20.2.0/27)
 
 | Prioriteit | Naam | Richting | Protocol | Bron | Doel | Poort | Actie |
 |---|---|---|---|---|---|---|---|
@@ -173,7 +173,7 @@ Documenteer de **minimaal vereiste NSG-regels** per subnet. Gebruik onderstaande
 
 ---
 
-## NSG: nsg-data (snet-spoke-data — 10.20.2.0/28)
+## NSG: nsg-data (snet-spoke-data — 10.20.3.0/28)
 
 | Prioriteit | Naam | Richting | Protocol | Bron | Doel | Poort | Actie |
 |---|---|---|---|---|---|---|---|
@@ -187,7 +187,7 @@ Documenteer de **minimaal vereiste NSG-regels** per subnet. Gebruik onderstaande
 
 ---
 
-## NSG: nsg-mgmt (snet-spoke-mgmt — 10.20.3.0/28)
+## NSG: nsg-mgmt (snet-spoke-mgmt — 10.20.4.0/28)
 
 | Prioriteit | Naam | Richting | Protocol | Bron | Doel | Poort | Actie |
 |---|---|---|---|---|---|---|---|

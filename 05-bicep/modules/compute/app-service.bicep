@@ -44,10 +44,10 @@ resource appService 'Microsoft.Web/sites@2023-01-01' = {
   }
   properties: {
     serverFarmId: appServicePlanId
-    httpsOnly: true                        // HTTPS only — Azure Policy vereiste
+    httpsOnly: true                        // HTTPS only - Azure Policy vereiste
     virtualNetworkSubnetId: vnetSubnetId   // VNet Integration
     siteConfig: {
-      minTlsVersion: '1.2'                 // Minimum TLS 1.2 — Azure Policy vereiste
+      minTlsVersion: '1.2'                 // Minimum TLS 1.2 - Azure Policy vereiste
       alwaysOn: isProduction               // Always On enkel in prd
       healthCheckPath: '/health'
       netFrameworkVersion: 'v4.0'          // ASP.NET WebForms 4.7
