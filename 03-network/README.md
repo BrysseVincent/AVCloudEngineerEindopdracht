@@ -60,7 +60,7 @@ Gebruik de **Hub-Spoke netwerktopologie** als basis. Dit is de Microsoft-aanbevo
 De Contoso Manufacturing Azure-omgeving is opgezet volgens de **Hub-Spoke netwerktopologie**, 
 de door Microsoft aanbevolen architectuur voor Enterprise-omgevingen.
 
-### Hub VNet (10.0.0.0/16) — Connectivity Subscription
+### Hub VNet (10.0.0.0/16) - Connectivity Subscription
 
 De hub vormt het centrale knooppunt van het netwerk. Alle gedeelde netwerkservices zijn 
 hier ondergebracht: Azure Firewall filtert al het inkomende en uitgaande verkeer, de VPN 
@@ -69,7 +69,7 @@ Luik, Hasselt) via site-to-site tunnels, Azure Bastion biedt veilige RDP-toegang
 jump VMs zonder publieke IP-adressen, en de DNS Private Resolver verwerkt DNS-queries 
 tussen on-premises en Azure.
 
-### Spoke VNet (10.20.0.0/16) — Workload Subscription
+### Spoke VNet (10.20.0.0/16) - Workload Subscription
 
 De spoke bevat de eigenlijke Contoso-werklasten. Via VNet Peering is de spoke verbonden 
 met de hub, waardoor al het verkeer naar on-premises of het internet via de Azure Firewall 
