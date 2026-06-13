@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Pagina-1" id="bO0eF0MEG30PwN0SY_UD">
-    <mxGraphModel dx="2831" dy="1184" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1701" dy="1386" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -108,7 +108,7 @@
         <mxCell id="5jyI5hjUl4sj9ss2DCPe-46" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" value="" vertex="1">
           <mxGeometry height="120" width="540" x="146.1" y="1260" as="geometry" />
         </mxCell>
-        <mxCell id="5jyI5hjUl4sj9ss2DCPe-47" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="snet-spoke-func - 10.20.1.32/27" vertex="1">
+        <mxCell id="5jyI5hjUl4sj9ss2DCPe-47" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="snet-spoke-func - 10.20.2.0/27" vertex="1">
           <mxGeometry height="40" width="470" x="181.40000000000003" y="1260" as="geometry" />
         </mxCell>
         <mxCell id="5jyI5hjUl4sj9ss2DCPe-48" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" value="" vertex="1">
@@ -120,7 +120,7 @@
         <mxCell id="5jyI5hjUl4sj9ss2DCPe-50" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" value="" vertex="1">
           <mxGeometry height="120" width="540" x="146.1" y="1390" as="geometry" />
         </mxCell>
-        <mxCell id="5jyI5hjUl4sj9ss2DCPe-51" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="snet-spoke-data - 10.20.2.0/28" vertex="1">
+        <mxCell id="5jyI5hjUl4sj9ss2DCPe-51" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="snet-spoke-data - 10.20.3.0/28" vertex="1">
           <mxGeometry height="40" width="470" x="183.60000000000008" y="1390" as="geometry" />
         </mxCell>
         <mxCell id="5jyI5hjUl4sj9ss2DCPe-56" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Workload Subscription" vertex="1">
@@ -147,7 +147,7 @@
         <mxCell id="5jyI5hjUl4sj9ss2DCPe-63" parent="1" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" value="" vertex="1">
           <mxGeometry height="120" width="540" x="148.6" y="1520" as="geometry" />
         </mxCell>
-        <mxCell id="5jyI5hjUl4sj9ss2DCPe-64" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="snet-spoke-mgmt - 10.20.3.0/28" vertex="1">
+        <mxCell id="5jyI5hjUl4sj9ss2DCPe-64" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="snet-spoke-mgmt - 10.20.4.0/28" vertex="1">
           <mxGeometry height="40" width="470" x="183.90000000000018" y="1520" as="geometry" />
         </mxCell>
         <mxCell id="5jyI5hjUl4sj9ss2DCPe-66" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Subnet.svg;" value="" vertex="1">
