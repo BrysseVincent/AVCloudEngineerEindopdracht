@@ -525,15 +525,13 @@ Minimaal **2 approvers** moeten akkoord geven voor een productie deployment kan 
 
 ### Hoe instellen in Azure DevOps?
 
-1. Ga naar **Pipelines → Environments → prd**
-2. Klik op **Approvals and checks**
-3. Voeg een **Approvals** check toe met:
-   - Minimaal **2 approvers** (Tech Lead + Product Owner)
-   - Timeout: **24 uur** — bij geen reactie wordt de deployment automatisch geannuleerd
-   - Instructies voor approver: *"Controleer de TST-omgeving voor akkoord — valideer de applicatie via https://app-contoso-tst-web.azurewebsites.net"*
-4. Voeg een **Business hours** check toe:
-   - Deployments naar productie zijn enkel toegestaan op **werkdagen tussen 9u en 17u**
-   - Dit voorkomt deployments buiten kantooruren wanneer geen support beschikbaar is
+1. Ga in Azure DevOps naar **Pipelines → Environments → prd**
+2. Klik op "Approvals and checks"
+3. Voeg een "Approvals" check toe met:
+   - Minimaal **2 approvers** (bijv. Tech Lead + Product Owner)
+   - Timeout: **24 uur**
+   - Instructies voor approver: "Controleer de TST-omgeving voor akkoord"
+4. Voeg optioneel een "Business hours" check toe (deployments enkel tijdens kantooruren)
 
 ---
 
