@@ -269,18 +269,18 @@ DC01 — On-prem DNS Server (10.10.4.X)
   │  database.windows.net → 10.0.3.4
   │
   ▼
-Azure DNS Private Resolver — Inbound Endpoint (10.0.3.4)
-  │  Subnet: snet-hub-dns (10.0.3.0/28) — Hub VNet
+Azure DNS Private Resolver -git Inbound Endpoint (10.0.3.4)
+  │  Subnet: snet-hub-dns (10.0.3.0/28) - Hub VNet
   │
   │  Zoekt in gekoppelde Private DNS Zone:
   │  privatelink.database.windows.net
   │
   ▼
-Private DNS Zone lost op naar: 10.20.2.4
+Private DNS Zone lost op naar: 10.20.3.4
   │
   ▼
-Private Endpoint (10.20.2.4)
-  │  Subnet: snet-spoke-data (10.20.2.0/28) — Spoke VNet
+Private Endpoint (10.20.3.4)
+  │  Subnet: snet-spoke-data (10.20.3.0/28) - Spoke VNet
   │
   ▼
 Azure SQL Database
