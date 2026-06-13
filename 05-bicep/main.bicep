@@ -39,6 +39,25 @@ param privateDnsZoneKvId string
 @description('Private DNS zone ID for Storage Blob private endpoint (privatelink.blob.core.windows.net)')
 param privateDnsZoneStorageBlobId string
 
+// ── SKU Parameters — omgevingsspecifieke waarden komen uit param files ─
+
+@description('App Service Plan SKU — P2v3 voor prd, S2 voor tst, B1 voor dev')
+@allowed(['P2v3', 'P3v3', 'S2', 'S3', 'B1', 'B2', 'B3'])
+param appServiceSku string = 'P2v3'
+
+@description('SQL Database SKU — GP_Gen5_4 voor prd, GP_Gen5_2 voor tst, GP_S_Gen5_2 voor dev (serverless)')
+@allowed(['GP_Gen5_4', 'GP_Gen5_2', 'GP_S_Gen5_2'])
+param sqlSku string = 'GP_Gen5_4'
+
+@description('SQL Database max grootte in GB')
+@minValue(1)
+@maxValue(4096)
+param sqlMaxSizeGB int = 500
+
+@description('Storage Account SKU — Standard_GRS voor prd, Standard_LRS voor dev/tst')
+@allowed(['Standard_GRS', 'Standard_LRS', 'Standard_ZRS'])
+param storageSku string = 'Standard_GRS'
+
 // ──────────────────────────────────────────────
 // Variables
 // ──────────────────────────────────────────────
@@ -128,7 +147,7 @@ module appServicePlan 'modules/compute/app-service-plan.bicep' = {
   params: {
     location: location
     planName: 'asp-${prefix}'
-    sku: environment == 'prd' ? 'P2v3' : 'B2'
+    sku: appServiceSku
     tags: tags
   }
 }
@@ -143,6 +162,7 @@ module webApp 'modules/compute/app-service.bicep' = {
     appServicePlanId: appServicePlan.outputs.planId
     keyVaultName: keyVault.outputs.keyVaultName
     vnetSubnetId: spokeVnet.outputs.webSubnetId
+    environment: environment
     tags: tags
   }
 }
@@ -154,7 +174,7 @@ module sqlServer 'modules/data/sql-server.bicep' = {
   params: {
     location: location
     serverName: 'sql-${prefix}'
-    adminObjectId: '00000000-0000-0000-0000-000000000000' // replace with real Entra ID objectId
+    adminObjectId: '00000000-0000-0000-0000-000000000000' // TODO: vervang met echt Entra ID objectId
     tags: tags
   }
 }
@@ -167,7 +187,8 @@ module sqlDatabase 'modules/data/sql-database.bicep' = {
     location: location
     serverName: sqlServer.outputs.serverName
     databaseName: 'sqldb-${prefix}'
-    sku: environment == 'prd' ? 'GP_Gen5_4' : 'GP_Gen5_2'
+    sku: sqlSku
+    maxSizeGB: sqlMaxSizeGB
     tags: tags
   }
 }
@@ -179,8 +200,7 @@ module storageAccount 'modules/data/storage-account.bicep' = {
   params: {
     location: location
     storageAccountName: 'st${appName}${environment}'
-    // prd: GRS, non-prd: LRS
-    storageSku: environment == 'prd' ? 'Standard_GRS' : 'Standard_LRS'
+    storageSku: storageSku
     tags: tags
   }
 }
@@ -206,7 +226,6 @@ module functionApp 'modules/compute/function-app.bicep' = {
     appServicePlanId: appServicePlan.outputs.planId
     storageAccountName: storageAccount.outputs.storageAccountName
     keyVaultName: keyVault.outputs.keyVaultName
-    // choose subnet for VNet integration; here we use the func subnet
     vnetSubnetId: spokeVnet.outputs.funcSubnetId
     tags: tags
   }
