@@ -17,12 +17,12 @@ param tags object
 var subnets = [
   {
     name: 'snet-appgw'
-    addressPrefix: cidrSubnet(addressPrefix, 24, 0)  // Eerste /24
+    addressPrefix: '10.20.0.0/24'
     delegations: []
   }
   {
     name: 'snet-web'
-    addressPrefix: cidrSubnet(addressPrefix, 24, 0)
+    addressPrefix: '10.20.1.0/27'
     delegations: [
       {
         name: 'delegation-appservice'
@@ -34,7 +34,7 @@ var subnets = [
   }
   {
     name: 'snet-func'
-    addressPrefix: cidrSubnet(addressPrefix, 24, 0)
+    addressPrefix: '10.20.2.0/27'
     delegations: [
       {
         name: 'delegation-functions'
@@ -46,16 +46,15 @@ var subnets = [
   }
   {
     name: 'snet-data'
-    addressPrefix: cidrSubnet(addressPrefix, 24, 0)
+    addressPrefix: '10.20.3.0/28'
     delegations: []
   }
-   {
+  {
     name: 'snet-mgmt'
-    addressPrefix: cidrSubnet(addressPrefix, 24, 0)
+    addressPrefix: '10.20.4.0/28'
     delegations: []
   }
 ]
-
 
 // ── NSG ──────────────────────────────────────────────────────────────
 
