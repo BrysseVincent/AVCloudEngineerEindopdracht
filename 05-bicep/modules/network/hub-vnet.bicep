@@ -13,6 +13,9 @@ param vnetName string = 'vnet-hub-contoso-prd-weu'
 @description('Tags')
 param tags object
 
+@description('Address prefix for the Hub VNet')
+param hubVnetAddressPrefix string = '10.0.0.0/16'
+
 // ── Hub VNet ──────────────────────────────────────────────────────────
 
 resource hubVnet 'Microsoft.Network/virtualNetworks@2023-09-01' = {
@@ -21,39 +24,34 @@ resource hubVnet 'Microsoft.Network/virtualNetworks@2023-09-01' = {
   tags: tags
   properties: {
     addressSpace: {
-      addressPrefixes: ['10.0.0.0/16']
+      addressPrefixes: [hubVnetAddressPrefix]
     }
     subnets: [
       {
-        // Vereiste exacte naam voor Azure Firewall
         name: 'AzureFirewallSubnet'
         properties: {
           addressPrefix: '10.0.0.0/26'
         }
       }
       {
-        // Vereiste exacte naam voor Firewall management
         name: 'AzureFirewallManagementSubnet'
         properties: {
           addressPrefix: '10.0.0.64/26'
         }
       }
       {
-        // Vereiste exacte naam voor VPN/ExpressRoute Gateway
         name: 'GatewaySubnet'
         properties: {
           addressPrefix: '10.0.1.0/27'
         }
       }
       {
-        // Vereiste exacte naam voor Azure Bastion
         name: 'AzureBastionSubnet'
         properties: {
           addressPrefix: '10.0.2.0/27'
         }
       }
       {
-        // DNS Private Resolver subnet
         name: 'snet-hub-dns'
         properties: {
           addressPrefix: '10.0.3.0/28'

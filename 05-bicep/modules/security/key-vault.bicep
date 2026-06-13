@@ -30,11 +30,11 @@ resource keyVault 'Microsoft.KeyVault/vaults@2023-07-01' = {
       name: sku
     }
     tenantId: tenant().tenantId
-    enableRbacAuthorization: true          // Gebruik RBAC, niet legacy access policies
+    enableRbacAuthorization: true
     enableSoftDelete: true
     softDeleteRetentionInDays: 90
-    enablePurgeProtection: true            // Vereist voor CMK gebruik
-    publicNetworkAccess: 'Disabled'        // Alleen via Private Endpoint
+    enablePurgeProtection: true
+    publicNetworkAccess: 'Disabled'
     networkAcls: {
       defaultAction: 'Deny'
       bypass: 'AzureServices'
@@ -42,8 +42,19 @@ resource keyVault 'Microsoft.KeyVault/vaults@2023-07-01' = {
   }
 }
 
-// ── Diagnostics ───────────────────────────────────────────────────────
-// TODO: voeg Log Analytics workspace referentie toe voor audit logging
+// ── RBAC Access for Deployer ──────────────────────────────────────────
+
+resource deployerAccess 'Microsoft.Authorization/roleAssignments@2022-04-01' = if (!empty(deployerObjectId)) {
+  name: guid(keyVault.id, deployerObjectId, 'KeyVaultAccess')
+  scope: keyVault
+  properties: {
+    roleDefinitionId: subscriptionResourceId(
+      'Microsoft.Authorization/roleDefinitions',
+      'b86a8fe4-44ce-4948-aee5-eccb2c155cd7' // Key Vault Secrets Officer
+    )
+    principalId: deployerObjectId
+  }
+}
 
 // ── Outputs ───────────────────────────────────────────────────────────
 
