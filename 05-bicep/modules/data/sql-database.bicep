@@ -55,7 +55,8 @@ resource sqlDatabase 'Microsoft.Sql/servers/databases@2023-05-01-preview' = {
     requestedBackupStorageRedundancy: backupRedundancy
     readScale: 'Disabled'
     autoPauseDelay: isServerless ? 60 : -1  // 60 min voor serverless, -1 = uitgeschakeld
-    minCapacity: isServerless ? '0.5' : null
+    // minCapacity must be an integer per Bicep type; use 1 for serverless minimum to satisfy the type
+    minCapacity: isServerless ? 1 : null
   }
 }
 
