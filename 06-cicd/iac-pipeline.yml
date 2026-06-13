@@ -1,0 +1,205 @@
+# iac-pipeline.yml
+# Deploys Bicep infrastructure to Azure
+# Triggered on changes to 05-bicep/**
+
+name: 'IaC Deploy — $(Date:yyyyMMdd)$(Rev:.r)'
+
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+  paths:
+    include:
+      - '05-bicep/**'
+
+pr:
+  branches:
+    include:
+      - main
+      - develop
+  paths:
+    include:
+      - '05-bicep/**'
+
+# ──────────────────────────────────────────────
+# Variable Groups
+# Beheerd in Azure DevOps → Pipelines → Library
+# ──────────────────────────────────────────────
+
+variables:
+  - group: 'contoso-shared'
+  - name: bicepDirectory
+    value: '$(Build.SourcesDirectory)/05-bicep'
+  - name: azureLocation
+    value: 'westeurope'
+
+# ──────────────────────────────────────────────
+# Stages
+# ──────────────────────────────────────────────
+
+stages:
+
+  # ────────── VALIDATE ──────────────────────────
+  - stage: Validate
+    displayName: '🔍 Validate Bicep'
+    jobs:
+      - job: Lint
+        displayName: 'Bicep Lint & Build'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - checkout: self
+
+          - task: AzureCLI@2
+            displayName: 'Install Bicep CLI'
+            inputs:
+              azureSubscription: 'sc-azure-dev'
+              scriptType: bash
+              scriptLocation: inlineScript
+              inlineScript: |
+                az bicep upgrade
+                az bicep version
+
+          - task: AzureCLI@2
+            displayName: 'Bicep Lint'
+            inputs:
+              azureSubscription: 'sc-azure-dev'
+              scriptType: bash
+              scriptLocation: inlineScript
+              inlineScript: |
+                az bicep lint --file $(bicepDirectory)/main.bicep
+
+          - task: AzureCLI@2
+            displayName: 'Bicep Build (compile to ARM)'
+            inputs:
+              azureSubscription: 'sc-azure-dev'
+              scriptType: bash
+              scriptLocation: inlineScript
+              inlineScript: |
+                az bicep build --file $(bicepDirectory)/main.bicep \
+                  --outdir $(Build.ArtifactStagingDirectory)
+
+          - publish: '$(Build.ArtifactStagingDirectory)'
+            artifact: 'bicep-arm'
+            displayName: 'Publish ARM artifact'
+
+      - job: WhatIf_Dev
+        displayName: 'What-If: DEV'
+        dependsOn: Lint
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - checkout: self
+
+          - task: AzureCLI@2
+            displayName: 'az deployment sub what-if (dev)'
+            inputs:
+              azureSubscription: 'sc-azure-dev'
+              scriptType: bash
+              scriptLocation: inlineScript
+              inlineScript: |
+                az deployment sub what-if \
+                  --location $(azureLocation) \
+                  --template-file $(bicepDirectory)/main.bicep \
+                  --parameters $(bicepDirectory)/main.dev.bicepparam \
+                  --result-format FullResourcePayloads
+
+  # ────────── DEPLOY DEV ────────────────────────
+  - stage: Deploy_Dev
+    displayName: '🚀 Deploy — DEV'
+    dependsOn: Validate
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    variables:
+      - group: 'contoso-dev'
+    jobs:
+      - deployment: DeployInfra_Dev
+        displayName: 'Deploy Infrastructure to DEV'
+        pool:
+          vmImage: 'ubuntu-latest'
+        environment: 'dev'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+
+                - task: AzureCLI@2
+                  displayName: 'Deploy Bicep to DEV'
+                  inputs:
+                    azureSubscription: 'sc-azure-dev'
+                    scriptType: bash
+                    scriptLocation: inlineScript
+                    inlineScript: |
+                      az deployment sub create \
+                        --name "iac-$(Build.BuildNumber)" \
+                        --location $(azureLocation) \
+                        --template-file $(bicepDirectory)/main.bicep \
+                        --parameters $(bicepDirectory)/main.dev.bicepparam \
+                        --parameters environment='dev'
+
+  # ────────── DEPLOY TST ────────────────────────
+  - stage: Deploy_Tst
+    displayName: '🧪 Deploy — TST'
+    dependsOn: Deploy_Dev
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
+    variables:
+      - group: 'contoso-tst'
+    jobs:
+      - deployment: DeployInfra_Tst
+        displayName: 'Deploy Infrastructure to TST'
+        pool:
+          vmImage: 'ubuntu-latest'
+        environment: 'tst'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+
+                - task: AzureCLI@2
+                  displayName: 'Deploy Bicep to TST'
+                  inputs:
+                    azureSubscription: 'sc-azure-tst'
+                    scriptType: bash
+                    scriptLocation: inlineScript
+                    inlineScript: |
+                      az deployment sub create \
+                        --name "iac-$(Build.BuildNumber)" \
+                        --location $(azureLocation) \
+                        --template-file $(bicepDirectory)/main.bicep \
+                        --parameters $(bicepDirectory)/main.tst.bicepparam \
+                        --parameters environment='tst'
+
+  # ────────── DEPLOY PRD ────────────────────────
+  - stage: Deploy_Prd
+    displayName: '🏭 Deploy — PRD'
+    dependsOn: Deploy_Tst
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    variables:
+      - group: 'contoso-prd'
+    jobs:
+      - deployment: DeployInfra_Prd
+        displayName: 'Deploy Infrastructure to PRD'
+        pool:
+          vmImage: 'ubuntu-latest'
+        environment: 'prd'             # Approval gate geconfigureerd in Azure DevOps!
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+
+                - task: AzureCLI@2
+                  displayName: 'Deploy Bicep to PRD'
+                  inputs:
+                    azureSubscription: 'sc-azure-prd'
+                    scriptType: bash
+                    scriptLocation: inlineScript
+                    inlineScript: |
+                      az deployment sub create \
+                        --name "iac-$(Build.BuildNumber)" \
+                        --location $(azureLocation) \
+                        --template-file $(bicepDirectory)/main.bicep \
+                        --parameters $(bicepDirectory)/main.bicepparam \
+                        --parameters environment='prd'

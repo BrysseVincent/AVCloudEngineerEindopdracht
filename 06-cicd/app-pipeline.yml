@@ -1,0 +1,290 @@
+# app-pipeline.yml
+# Build, test en deploy .NET applicatie naar Azure App Service
+# Triggered op changes aan de applicatiecode
+
+name: 'App Deploy — $(Date:yyyyMMdd)$(Rev:.r)'
+
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+      - 'feature/*'
+  paths:
+    exclude:
+      - '05-bicep/**'
+      - '*.md'
+
+pr:
+  branches:
+    include:
+      - main
+      - develop
+
+# ──────────────────────────────────────────────
+# Variable Groups
+# Beheerd in Azure DevOps → Pipelines → Library
+# ──────────────────────────────────────────────
+
+variables:
+  - group: 'contoso-shared'
+  - name: dotnetVersion
+    value: '8.x'
+  - name: buildConfiguration
+    value: 'Release'
+  - name: projectPath
+    value: 'src/Contoso.Web/Contoso.Web.csproj'
+  - name: testProjectPath
+    value: 'src/Contoso.Tests/Contoso.Tests.csproj'
+
+# ──────────────────────────────────────────────
+# Stages
+# ──────────────────────────────────────────────
+
+stages:
+
+  # ────────── BUILD & TEST ──────────────────────
+  - stage: Build
+    displayName: '🏗️ Build & Test'
+    jobs:
+      - job: BuildAndTest
+        displayName: 'Build, Unit Test & Publish'
+        pool:
+          vmImage: 'windows-latest'       # Windows voor ASP.NET WebForms
+        steps:
+          - checkout: self
+
+          - task: UseDotNet@2
+            displayName: 'Install .NET $(dotnetVersion)'
+            inputs:
+              packageType: 'sdk'
+              version: $(dotnetVersion)
+
+          - task: DotNetCoreCLI@2
+            displayName: 'dotnet restore'
+            inputs:
+              command: 'restore'
+              projects: '**/*.csproj'
+
+          - task: DotNetCoreCLI@2
+            displayName: 'dotnet build'
+            inputs:
+              command: 'build'
+              projects: $(projectPath)
+              arguments: '--configuration $(buildConfiguration) --no-restore'
+
+          - task: DotNetCoreCLI@2
+            displayName: 'dotnet test (unit tests)'
+            inputs:
+              command: 'test'
+              projects: $(testProjectPath)
+              arguments: >
+                --configuration $(buildConfiguration)
+                --no-build
+                --collect:"XPlat Code Coverage"
+                --results-directory $(Agent.TempDirectory)/TestResults
+              publishTestResults: true
+
+          - task: PublishCodeCoverageResults@2
+            displayName: 'Publish code coverage'
+            inputs:
+              summaryFileLocation: '$(Agent.TempDirectory)/TestResults/**/*.xml'
+
+          - task: DotNetCoreCLI@2
+            displayName: 'dotnet publish'
+            inputs:
+              command: 'publish'
+              publishWebProjects: true
+              arguments: >
+                --configuration $(buildConfiguration)
+                --output $(Build.ArtifactStagingDirectory)/app
+
+          - publish: '$(Build.ArtifactStagingDirectory)/app'
+            artifact: 'app-package'
+            displayName: 'Publish app artifact'
+
+  # ────────── SECURITY SCAN ─────────────────────
+  - stage: SecurityScan
+    displayName: '🔐 Security Scan'
+    dependsOn: Build
+    jobs:
+      - job: SAST
+        displayName: 'Static Application Security Testing'
+        pool:
+          vmImage: 'windows-latest'       # Windows voor .NET Framework
+        steps:
+          - checkout: self
+
+          # Stap 1: SonarCloud voorbereiden
+          - task: SonarCloudPrepare@1
+            displayName: 'SonarCloud — Prepare'
+            inputs:
+              SonarCloud: 'sc-sonarcloud'
+              organization: 'contoso'
+              scannerMode: 'MSBuild'
+              projectKey: 'contoso-manufacturing'
+              projectName: 'Contoso Manufacturing'
+
+          # Stap 2: Build (vereist door SonarCloud)
+          - task: DotNetCoreCLI@2
+            displayName: 'dotnet build voor SonarCloud'
+            inputs:
+              command: 'build'
+              projects: '**/*.csproj'
+              arguments: '--configuration Release'
+
+          # Stap 3: Analyse uitvoeren
+          - task: SonarCloudAnalyze@1
+            displayName: 'SonarCloud — Analyse'
+
+          # Stap 4: Resultaten publiceren
+          - task: SonarCloudPublish@1
+            displayName: 'SonarCloud — Publiceer resultaten'
+            inputs:
+              pollingTimeoutSec: '300'
+
+          # Stap 5: Dependency vulnerability scan
+          - task: DotNetCoreCLI@2
+            displayName: 'NuGet dependency vulnerability scan'
+            inputs:
+              command: 'custom'
+              custom: 'list'
+              arguments: 'package --vulnerable --include-transitive'
+
+  # ────────── DEPLOY DEV ────────────────────────
+  - stage: Deploy_Dev
+    displayName: '🚀 Deploy — DEV'
+    dependsOn:
+      - Build
+      - SecurityScan
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    variables:
+      - group: 'contoso-dev'
+    jobs:
+      - deployment: DeployApp_Dev
+        displayName: 'Deploy App to DEV'
+        pool:
+          vmImage: 'ubuntu-latest'
+        environment: 'dev'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: 'app-package'
+
+                - task: AzureWebApp@1
+                  displayName: 'Deploy to App Service DEV'
+                  inputs:
+                    azureSubscription: 'sc-azure-dev'
+                    appType: 'webApp'
+                    appName: 'app-contoso-dev-web'
+                    package: '$(Pipeline.Workspace)/app-package/**/*.zip'
+                    deploymentMethod: 'zipDeploy'
+
+  # ────────── DEPLOY TST ────────────────────────
+  - stage: Deploy_Tst
+    displayName: '🧪 Deploy — TST'
+    dependsOn: Deploy_Dev
+    condition: >
+      and(
+        succeeded(),
+        in(variables['Build.SourceBranch'], 'refs/heads/develop', 'refs/heads/main')
+      )
+    variables:
+      - group: 'contoso-tst'
+    jobs:
+      - deployment: DeployApp_Tst
+        displayName: 'Deploy App to TST'
+        pool:
+          vmImage: 'ubuntu-latest'
+        environment: 'tst'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: 'app-package'
+
+                - task: AzureWebApp@1
+                  displayName: 'Deploy to App Service TST (staging slot)'
+                  inputs:
+                    azureSubscription: 'sc-azure-tst'
+                    appType: 'webApp'
+                    appName: 'app-contoso-tst-web'
+                    deployToSlotOrASE: true
+                    resourceGroupName: 'rg-contoso-tst-frontend'
+                    slotName: 'staging'
+                    package: '$(Pipeline.Workspace)/app-package/**/*.zip'
+
+                # Health check op staging slot voor swap
+                - script: |
+                    statusCode=$(curl -s -o /dev/null -w "%{http_code}" \
+                      https://app-contoso-tst-web-staging.azurewebsites.net/health)
+                    if [ "$statusCode" != "200" ]; then
+                      echo "Health check failed op TST staging! Status: $statusCode"
+                      exit 1
+                    fi
+                    echo "Health check geslaagd"
+                  displayName: 'Health check staging slot (TST)'
+
+                - task: AzureAppServiceManage@0
+                  displayName: 'Swap staging → production (TST)'
+                  inputs:
+                    azureSubscription: 'sc-azure-tst'
+                    Action: 'Swap Slots'
+                    WebAppName: 'app-contoso-tst-web'
+                    ResourceGroupName: 'rg-contoso-tst-frontend'
+                    SourceSlot: 'staging'
+
+  # ────────── DEPLOY PRD ────────────────────────
+  - stage: Deploy_Prd
+    displayName: '🏭 Deploy — PRD'
+    dependsOn: Deploy_Tst
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    variables:
+      - group: 'contoso-prd'
+    jobs:
+      - deployment: DeployApp_Prd
+        displayName: 'Deploy App to PRD'
+        pool:
+          vmImage: 'ubuntu-latest'
+        environment: 'prd'             # Approval gate geconfigureerd in Azure DevOps!
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: 'app-package'
+
+                - task: AzureWebApp@1
+                  displayName: 'Deploy to App Service PRD (staging slot)'
+                  inputs:
+                    azureSubscription: 'sc-azure-prd'
+                    appType: 'webApp'
+                    appName: 'app-contoso-prd-web'
+                    deployToSlotOrASE: true
+                    resourceGroupName: 'rg-contoso-prd-frontend'
+                    slotName: 'staging'
+                    package: '$(Pipeline.Workspace)/app-package/**/*.zip'
+
+                # Health check op staging slot vóór swap
+                - script: |
+                    echo "Running smoke tests on staging slot..."
+                    statusCode=$(curl -s -o /dev/null -w "%{http_code}" \
+                      https://app-contoso-prd-web-staging.azurewebsites.net/health)
+                    if [ "$statusCode" != "200" ]; then
+                      echo "Health check failed! Status: $statusCode"
+                      exit 1
+                    fi
+                    echo "Health check passed!"
+                  displayName: 'Health check staging slot'
+
+                - task: AzureAppServiceManage@0
+                  displayName: '🔄 Swap staging → production (PRD)'
+                  inputs:
+                    azureSubscription: 'sc-azure-prd'
+                    Action: 'Swap Slots'
+                    WebAppName: 'app-contoso-prd-web'
+                    ResourceGroupName: 'rg-contoso-prd-frontend'
+                    SourceSlot: 'staging'
