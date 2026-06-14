@@ -329,7 +329,7 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 ### App Service Plan - P2v3 (Windows, 2 instances)
 
 De bestaande web- en applicatie servers (WEB01/WEB02 + APP01/APP02) worden vervangen door één App Service Plan P2v3 met 2 instances. 
-Omdat applicatie is vooral read-heavy is en de Windows services gemigreerd worden naar Azure functions is een afzonderlijk App Service Plan voor de API niet nodig.
+Omdat de applicatie is vooral read-heavy is en de Windows services gemigreerd worden naar Azure functions is een afzonderlijk App Service Plan voor de API niet nodig.
 Web en API delen dezelfde HA-vereisten en hebben vergelijkbare performance-karakteristieken.
 P2v3 volstaat omdat Azure efficiënter omgaat met resources dan de dedicated on-premises servers. 
 Door Auto-scale kan bij piekbelasting het app service plan automatisch opgeschaald worden tot 5 instances, waarna de capaciteit vergelijkbaar is met de huidige on-premises omgeving.
@@ -380,12 +380,12 @@ VpnGw1AZ is zone-redundant en bevat 10 S2S tunnels, wat meer dan voldoende is vo
 
 ---
 
-### Jump VM — B2ms (Windows, 1 jaar Reserved, AHB)
+### Jump VM - B2ms (Windows, 1 jaar Reserved, AHB)
 
 Een jump VM in management subnet biedt toegang tot Azure SQL Database via SSMS voor database administrators en developers. 
 De Private Endpoint van SQL is niet bereikbaar vanuit het on-premises netwerk zonder een VM in het VNet. 
 B2ms is voldoende voor het gebruik van SSMS. 
-Auto-shutdown kan geconfigureerd wordem om kostoptimalisatie te realiseren buiten werkuren.
+Auto-shutdown kan geconfigureerd worden om kostoptimalisatie te realiseren buiten werkuren.
 
 ---
 
