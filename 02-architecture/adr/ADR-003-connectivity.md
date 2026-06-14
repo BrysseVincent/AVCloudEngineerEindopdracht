@@ -12,12 +12,14 @@
 Voor de hybride connectiviteit tussen de drie vestigingen van Contoso en Azure wordt gekozen voor Azure VPN Gateway met site-to-site VPN verbindingen.
 
 **Waarom VPN Gateway:**
+
 - Site-to-site VPN via versleutelde IPsec/IKE tunnel - voldoet aan NIS2-vereisten
 - Voldoende bandbreedte voor het workloadprofiel (productieplanningsapplicatie, nachtelijke SAP-batch)
 - Zone-redundant via VpnGw1AZ voor hoge beschikbaarheid
 - Significant goedkoper dan ExpressRoute - in lijn met de TCO-reductiedoelstelling van 20%
 
 **Waarom niet ExpressRoute:**
+
 ExpressRoute biedt gegarandeerde bandbreedte en ultra-lage latency, maar is niet vereist 
 voor Contoso. De SAP-integratie verloopt via nachtelijke batch zonder real-time vereisten, 
 en de kostprijs (€500-€2000+/maand) is moeilijk te verantwoorden voor dit workloadprofiel.
