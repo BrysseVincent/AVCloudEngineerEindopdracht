@@ -4,25 +4,25 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="lcC2BkzQlZVIqcTmOU3f-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Tenant Root Group" vertex="1">
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;opacity=70;" value="Tenant Root Group" vertex="1">
           <mxGeometry height="60" width="260" x="275" y="120" as="geometry" />
         </mxCell>
         <mxCell id="lcC2BkzQlZVIqcTmOU3f-3" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Management_Groups.svg;" value="" vertex="1">
           <mxGeometry height="32.97" width="34" x="275" y="120" as="geometry" />
         </mxCell>
-        <mxCell id="lcC2BkzQlZVIqcTmOU3f-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;div&gt;Contoso Manufacturing&lt;/div&gt;&lt;i&gt;Policy: NIS2, tags, Defender&lt;/i&gt;" vertex="1">
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;opacity=70;" value="&lt;div&gt;Contoso Manufacturing&lt;/div&gt;&lt;i&gt;Policy: NIS2, tags, Defender&lt;/i&gt;" vertex="1">
           <mxGeometry height="60" width="260" x="275" y="230" as="geometry" />
         </mxCell>
         <mxCell id="lcC2BkzQlZVIqcTmOU3f-5" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Management_Groups.svg;" value="" vertex="1">
           <mxGeometry height="32.97" width="34" x="275" y="230" as="geometry" />
         </mxCell>
-        <mxCell id="lcC2BkzQlZVIqcTmOU3f-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Platform Management Group&lt;br&gt;&lt;i&gt;Policy: geen publieke IPs, Private Endpoints verplicht&lt;/i&gt;" vertex="1">
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;opacity=70;" value="Platform Management Group&lt;br&gt;&lt;i&gt;Policy: geen publieke IPs, Private Endpoints verplicht&lt;/i&gt;" vertex="1">
           <mxGeometry height="60" width="400" x="-290" y="400" as="geometry" />
         </mxCell>
         <mxCell id="lcC2BkzQlZVIqcTmOU3f-9" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Management_Groups.svg;" value="" vertex="1">
           <mxGeometry height="32.97" width="34" x="-290" y="398.23" as="geometry" />
         </mxCell>
-        <mxCell id="lcC2BkzQlZVIqcTmOU3f-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Landing Zones Management group&lt;br&gt;&lt;i&gt;Policy: VNet peering alleen naar hub, Monitor agent&lt;/i&gt;" vertex="1">
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;opacity=70;" value="Landing Zones Management group&lt;br&gt;&lt;i&gt;Policy: VNet peering alleen naar hub, Monitor agent&lt;/i&gt;" vertex="1">
           <mxGeometry height="60" width="390" x="460" y="400" as="geometry" />
         </mxCell>
         <mxCell id="lcC2BkzQlZVIqcTmOU3f-11" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Management_Groups.svg;" value="" vertex="1">
@@ -31,25 +31,25 @@
         <mxCell id="cT6LmnMbhNfq8FhoQMbc-49" edge="1" parent="1" source="lcC2BkzQlZVIqcTmOU3f-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="cT6LmnMbhNfq8FhoQMbc-22">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="lcC2BkzQlZVIqcTmOU3f-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Identity" vertex="1">
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;opacity=70;" value="Identity" vertex="1">
           <mxGeometry height="60" width="200" x="-430" y="585" as="geometry" />
         </mxCell>
         <mxCell id="lcC2BkzQlZVIqcTmOU3f-16" parent="1" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Key.svg;" value="" vertex="1">
           <mxGeometry height="50" width="31" x="-270" y="590" as="geometry" />
         </mxCell>
-        <mxCell id="lcC2BkzQlZVIqcTmOU3f-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Connectivity" vertex="1">
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;opacity=70;" value="Connectivity" vertex="1">
           <mxGeometry height="60" width="200" x="50" y="585" as="geometry" />
         </mxCell>
         <mxCell id="lcC2BkzQlZVIqcTmOU3f-20" parent="1" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Key.svg;" value="" vertex="1">
           <mxGeometry height="50" width="31" x="210" y="590" as="geometry" />
         </mxCell>
-        <mxCell id="lcC2BkzQlZVIqcTmOU3f-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Management" vertex="1">
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;opacity=70;" value="Management" vertex="1">
           <mxGeometry height="60" width="200" x="-190" y="585" as="geometry" />
         </mxCell>
         <mxCell id="lcC2BkzQlZVIqcTmOU3f-22" parent="1" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Key.svg;" value="" vertex="1">
           <mxGeometry height="50" width="31" x="-30" y="590" as="geometry" />
         </mxCell>
-        <mxCell id="lcC2BkzQlZVIqcTmOU3f-23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;div&gt;Corp Management Group&lt;/div&gt;&lt;i&gt;Policy: Defender for Cloud, SQL auditing aan&lt;/i&gt;" vertex="1">
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;opacity=70;" value="&lt;div&gt;Corp Management Group&lt;/div&gt;&lt;i&gt;Policy: Defender for Cloud, SQL auditing aan&lt;/i&gt;" vertex="1">
           <mxGeometry height="60" width="348" x="290" y="520" as="geometry" />
         </mxCell>
         <mxCell id="lcC2BkzQlZVIqcTmOU3f-24" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Management_Groups.svg;" value="" vertex="1">
@@ -97,13 +97,13 @@
             <mxPoint x="310" y="530" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lcC2BkzQlZVIqcTmOU3f-33" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Contoso-Prod" vertex="1">
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-33" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;opacity=70;" value="Contoso-Prod" vertex="1">
           <mxGeometry height="60" width="200" x="275" y="765" as="geometry" />
         </mxCell>
         <mxCell id="lcC2BkzQlZVIqcTmOU3f-34" parent="1" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Key.svg;" value="" vertex="1">
           <mxGeometry height="50" width="31" x="435" y="770" as="geometry" />
         </mxCell>
-        <mxCell id="lcC2BkzQlZVIqcTmOU3f-35" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Contoso-NonProd" vertex="1">
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-35" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;opacity=70;" value="Contoso-NonProd" vertex="1">
           <mxGeometry height="60" width="200" x="538" y="765" as="geometry" />
         </mxCell>
         <mxCell id="lcC2BkzQlZVIqcTmOU3f-36" parent="1" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Key.svg;" value="" vertex="1">
@@ -121,7 +121,7 @@
             <mxPoint x="508" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lcC2BkzQlZVIqcTmOU3f-42" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Online Management Group" vertex="1">
+        <mxCell id="lcC2BkzQlZVIqcTmOU3f-42" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;opacity=70;" value="Online Management Group" vertex="1">
           <mxGeometry height="60" width="260" x="670" y="520" as="geometry" />
         </mxCell>
         <mxCell id="lcC2BkzQlZVIqcTmOU3f-43" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Management_Groups.svg;" value="" vertex="1">
