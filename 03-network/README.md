@@ -117,18 +117,17 @@ Ontwerp minimaal de volgende subnetten. Kies zelf de CIDR-ranges (documenteer je
 
 Application Gateway v2 vereist een dedicated subnet. Microsoft documenteert dat Application Gateway v2 tot 125 instanties kan schalen, waarbij elke instantie een eigen privé-IP-adres verbruikt. Daarnaast reserveert Application Gateway extra IPs voor interne communicatie. Een /24 (251 bruikbare IPs) is de door Microsoft aanbevolen minimumgrootte voor een productie Application Gateway v2 subnet.
 
-> Bron: [Application Gateway subnet requirements - Microsoft Learn](https://learn.microsoft.com/en-us/azure/application-gateway/configuration-infrastructure#size-of-the-subnet)
-
 ### snet-spoke-web - 10.20.1.0/27 (27 bruikbare IPs)
 
 App Service VNet Integration wijst één IP toe per App Service instantie. Configuratie voor Contoso:
 
 | Instantie | IPs |
 |---|---|
-| Production slot (max 5 instanties via auto-scale) | 5 |
-| Staging slot | 1 |
+| Web App - production slot (max 5 instanties via auto-scale) | 5 |
+| Web App - staging slot | 1 |
+| Function App - production | 1 |
 | Buffer voor tijdelijke overlap bij scale-out | 5 |
-| **Totaal benodigd** | **11** |
+| **Totaal benodigd** | **12** |
 
 Een /27 (27 bruikbare IPs) biedt voldoende ruimte met groeimarges voor een eventuele tweede App Service in de toekomst.
 
@@ -140,13 +139,14 @@ Zelfde redenering als snet-spoke-web. De drie WebJobs (scheduler, processor, rep
 
 Private Endpoints verbruiken elk één privé-IP. Overzicht van benodigde Private Endpoints:
 
-| Resource | Private Endpoint |
+| Resource | IPs |
 |---|---|
-| Azure SQL Database | 1 |
-| Azure Storage Account (blob) | 1 |
-| Azure Storage Account (file) | 1 |
-| Azure Key Vault | 1 |
-| **Totaal benodigd** | **4** |
+| Web App - production slot (max 5 instanties via auto-scale) | 5 |
+| Web App - staging slot | 1 |
+| API App - production slot (max 5 instanties via auto-scale) | 5 |
+| API App - staging slot | 1 |
+| Buffer voor tijdelijke overlap bij scale-out | 5 |
+| **Totaal benodigd** | **17** |
 
 Een /28 (11 bruikbare IPs) biedt ruim voldoende capaciteit, ook bij toevoeging van extra Private Endpoints in de toekomst (bijv. een tweede Key Vault voor non-prod, of Azure Service Bus).
 
