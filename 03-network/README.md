@@ -250,7 +250,8 @@ Het verkeer naar de service verlaat het VNet nooit en blijft volledig op het Mic
 
 Service Endpoints daarentegen optimaliseren de route naar de publieke Azure-service, maar de service blijft bereikbaar via een publiek IP-adres. 
 Enkel de routering wordt op deze manier verbeterd.
-Met Private Endpoints kan je de publieke toegang op de resource volledig uitschakelen, de SQL Database, Storage en Key Vault zijn letterlijk niet bereikbaar vanaf het internet. Met Service Endpoints is dat niet mogelijk.
+
+Met Private Endpoints kan je de publieke toegang op de resource volledig uitschakelen, met Service Endpoints is dat niet mogelijk.
 
 ---
 
@@ -326,7 +327,7 @@ Op DC01 moet je de volgende Conditional Forwarders aanmaken:
 | `azurewebsites.net` | `10.0.3.4` | App Service |
 
 De Inbound Endpoint van de Azure DNS Private Resolver krijgt een statisch privé-IP toegewezen uit snet-hub-dns (10.0.3.0/28), bijv. 10.0.3.4. Dit IP wordt geconfigureerd als Conditional Forwarder op DC01.
-Alle forwarders wijzen naar hetzelfde IP — de Inbound Endpoint van de Azure DNS Private Resolver in de hub.
+Alle forwarders wijzen naar hetzelfde IP, het Inbound Endpoint van de Azure DNS Private Resolver in de hub.
 
 ---
 
@@ -341,8 +342,6 @@ Documenteer de **minimaal vereiste Azure Firewall regels**:
 | Allow-WindowsUpdate | `10.20.0.0/16` | HTTPS | `*.update.microsoft.com` | Allow |
 | Allow-AzureMonitor | `10.20.0.0/16` | HTTPS | `*.monitor.azure.com` | Allow |
 | Allow-SAP-API | `10.20.0.0/16` | HTTPS | `sap-api.contoso.local` | Allow |
-
-⚠️ **DNS Proxy configuratie**: Azure Firewall is geconfigureerd met DNS Proxy enabled en `10.0.3.4` (DNS Private Resolver Inbound Endpoint) als custom DNS server. Hierdoor kunnen Application Rules ook interne FQDNs zoals `sap-api.contoso.local` resolven via de DNS Private Resolver, die op zijn beurt `.contoso.local` queries forwardet naar DC01 op on-premises.
 
 ### Network Rules (IP-gebaseerd)
 
