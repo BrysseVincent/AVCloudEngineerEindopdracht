@@ -62,34 +62,24 @@ de door Microsoft aanbevolen architectuur voor Enterprise-omgevingen.
 
 ### Hub VNet (10.0.0.0/16) - Connectivity Subscription
 
-De hub vormt het centrale knooppunt van het netwerk. Alle gedeelde netwerkservices zijn 
-hier ondergebracht: Azure Firewall filtert al het inkomende en uitgaande verkeer, de VPN 
-Gateway verzorgt de versleutelde verbinding met de drie on-premises vestigingen (Gent, 
-Luik, Hasselt) via site-to-site tunnels, Azure Bastion biedt veilige RDP-toegang tot 
-jump VMs zonder publieke IP-adressen, en de DNS Private Resolver verwerkt DNS-queries 
-tussen on-premises en Azure.
+De hub vormt het centrale knooppunt van het netwerk. 
+Alle gedeelde netwerkservices zijn hier ondergebracht.
+Azure Firewall filtert al het inkomende en uitgaande verkeer.
+De VPN Gateway verzorgt de versleutelde verbinding met de drie on-premises vestigingen (Gent, Luik, Hasselt) via site-to-site tunnels.
+Azure Bastion biedt veilige RDP-toegang tot jump VMs zonder gebruik te maken van publieke IP-adressen.
+De DNS Private Resolver verwerkt DNS-queries tussen on-premises en Azure.
 
 ### Spoke VNet (10.20.0.0/16) - Workload Subscription
 
-De spoke bevat de eigenlijke Contoso-werklasten. Via VNet Peering is de spoke verbonden 
-met de hub, waardoor al het verkeer naar on-premises of het internet via de Azure Firewall 
-in de hub wordt gerouteerd. De spoke is opgedeeld in vijf subnetten, elk met een eigen 
-NSG, voor maximale segmentatie en beveiliging.
-
-### On-premises (10.10.0.0/16)
-
-De drie vestigingen zijn via het bestaande Proximus MPLS-netwerk onderling verbonden en 
-via de VPN Gateway in de hub gekoppeld aan Azure. DC01 fungeert als on-premises DNS-server 
-met conditional forwarders naar de Azure DNS Private Resolver voor het resolven van Azure 
-Private Endpoint adressen.
+De spoke bevat de planning applicatie. 
+Via VNet Peering is de spoke verbonden met de hub, waardoor al het verkeer naar on-premises of het internet via de Azure Firewall in de hub wordt gerouteerd. 
+De spoke is opgedeeld in vijf subnetten, elk met een eigen NSG, dit voor maximale segmentatie en beveiliging.
 
 ### Waarom Hub-Spoke?
 
-Hub-Spoke werd gekozen omdat gedeelde services zoals Firewall, VPN Gateway en Bastion 
-slechts eénmaal worden ingezet in de hub en gedeeld worden door alle spoke subscriptions. 
-Dit vermijdt duplicatie, verlaagt de kost en vereenvoudigt het beheer. Alle 
-netwerkverkeer passeert verplicht via de Azure Firewall in de hub, wat consistente 
-beveiliging en logging garandeert over de volledige omgeving.
+Hub-Spoke werd gekozen omdat gedeelde services zoals Firewall, VPN Gateway en Bastion slechts éénmaal gedeployed moeten worden en gedeeld/gebruikt worden door alle spoke subscriptions. 
+Dit vermijdt het gebruik van duplicate resources waardoor de kosten verlagen en het beheer vereenvoudigd wordt. 
+Alle netwerkverkeer passeert verplicht via de Azure Firewall in de hub, wat consistente beveiliging en logging garandeert over de volledige omgeving.
 
 ---
 
