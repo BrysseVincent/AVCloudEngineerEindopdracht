@@ -20,6 +20,5 @@ Voor de hybride connectiviteit tussen de drie vestigingen van Contoso en Azure w
 
 **Waarom niet ExpressRoute:**
 
-ExpressRoute biedt gegarandeerde bandbreedte en ultra-lage latency, maar is niet vereist 
-voor Contoso. De SAP-integratie verloopt via nachtelijke batch zonder real-time vereisten, 
-en de kostprijs (€500-€2000+/maand) is moeilijk te verantwoorden voor dit workloadprofiel.
+ExpressRoute biedt gegarandeerde bandbreedte en ultra-lage latency, maar is niet vereist voor Contoso.
+De SAP-integratie verloopt via nachtelijke batch zonder real-time vereisten, en de kostprijs (€500-€2000+/maand) is moeilijk te verantwoorden voor deze applicatie.
