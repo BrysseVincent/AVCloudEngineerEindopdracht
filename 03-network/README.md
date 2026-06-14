@@ -153,7 +153,7 @@ Een /28 (11 bruikbare IPs) biedt ruim voldoende capaciteit, ook bij toevoeging v
 
 ### snet-spoke-mgmt - 10.20.4.0/28 (11 bruikbare IPs)
 
-Het management subnet host maximaal een beperkt aantal jump VMs of management agents. Een /28 (11 bruikbare IPs) is ruim voldoende voor dit doel.
+Het management subnet host momenteel enkel een jump VM. Een /28 (11 bruikbare IPs) is ruim voldoende voor dit doel.
 
 ---
 
@@ -227,8 +227,6 @@ Documenteer de **minimaal vereiste NSG-regels** per subnet. Gebruik onderstaande
 | 4096 | Deny-All-Inbound | Inbound | * | * | * | * | Deny |
 | 4096 | Deny-All-Outbound | Outbound | * | * | * | * | Deny |
 
-> ℹ️ RDP-toegang tot jump VMs in het management subnet verloopt uitsluitend via Azure Bastion (10.0.2.0/27 in de Hub). Directe RDP via internet is niet toegestaan.
-
 
 ---
 
@@ -247,7 +245,11 @@ Documenteer alle **Private Endpoints** in de architectuur:
 
 Documenteer in 3–5 zinnen waarom je Private Endpoints gebruikt in plaats van Service Endpoints. Wat zijn de voordelen en nadelen?
 
-Private Endpoints kennen een privé-IP-adres uit je eigen VNet toe aan een Azure-service (SQL, Storage, Key Vault). Het verkeer naar de service verlaat het VNet nooit — het blijft volledig op het Microsoft-backbone netwerk via een private NIC. Service Endpoints daarentegen optimaliseren de route naar de publieke Azure-service, maar de service blijft bereikbaar via een publiek IP-adres; alleen de routering wordt verbeterd.
+Private Endpoints kennen een privé-IP-adres uit je eigen VNet toe aan een Azure-service (SQL, Storage, Key Vault). 
+Het verkeer naar de service verlaat het VNet nooit en blijft volledig op het Microsoft-backbone netwerk via een private NIC.
+
+Service Endpoints daarentegen optimaliseren de route naar de publieke Azure-service, maar de service blijft bereikbaar via een publiek IP-adres. 
+Enkel de routering wordt op deze manier verbeterd.
 Met Private Endpoints kan je de publieke toegang op de resource volledig uitschakelen, de SQL Database, Storage en Key Vault zijn letterlijk niet bereikbaar vanaf het internet. Met Service Endpoints is dat niet mogelijk.
 
 ---
