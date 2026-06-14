@@ -134,7 +134,8 @@ Een /27 (27 bruikbare IPs) biedt voldoende ruimte met groeimarges voor een event
 
 ### snet-spoke-func - 10.20.2.0/27 (27 bruikbare IPs)
 
-Zelfde redenering als snet-spoke-web. De drie WebJobs (scheduler, processor, reporter) draaien binnen dezelfde App Service Plan en gebruiken dezelfde VNet Integration als de web App Service — technisch gezien hetzelfde subnet is ook mogelijk, maar een aparte subnet per laag is best practice voor NSG-isolatie en toekomstige segmentatie.
+De drie WebJobs (scheduler, processor, reporter) draaien binnen dezelfde App Service Plan en gebruiken dezelfde VNet Integration als de web App Service. 
+Een aparte subnet per laag is best practice voor NSG-isolatie en toekomstige segmentatie.
 
 ### snet-spoke-data - 10.20.3.0/28 (11 bruikbare IPs)
 
