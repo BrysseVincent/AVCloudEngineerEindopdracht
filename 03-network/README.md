@@ -78,7 +78,7 @@ De spoke is opgedeeld in vijf subnetten, elk met een eigen NSG, dit voor maximal
 ### Waarom Hub-Spoke?
 
 Hub-Spoke werd gekozen omdat gedeelde services zoals Firewall, VPN Gateway en Bastion slechts éénmaal gedeployed moeten worden en gedeeld/gebruikt worden door alle spoke subscriptions. 
-Dit vermijdt het gebruik van duplicate resources waardoor de kosten verlagen en het beheer vereenvoudigd wordt. 
+Dit vermijdt het gebruik van duplicate resources waardoor de kosten dalen en het beheer vereenvoudigd wordt. 
 Alle netwerkverkeer passeert verplicht via de Azure Firewall in de hub, wat consistente beveiliging en logging garandeert over de volledige omgeving.
 
 ---
