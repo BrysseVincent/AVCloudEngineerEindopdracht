@@ -205,7 +205,7 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 |---|---|---|
 | Totaal aantal gebruikers | 450 medewerkers | Opgegeven in opdracht |
 | Applicatie gebruikers | 200 medewerkers | Schatting aantal gebruikers die applicatie zal gebruiken|
-| Gelijktijdige gebruikers | ~50 concurrent users | Productieplanningsapplicatie — niet iedereen tegelijk actief |
+| Gelijktijdige gebruikers | ~150 concurrent users | Productieplanningsapplicatie - niet iedereen tegelijk actief |
 | Piekgebruik | Werkdagen 7u–18u | Productieplanningsperiodes tijdens werkuren |
 | Peak CPU gebruik | ~60% tijdens werkuren | Buiten werkuren minimale belasting |
 | Beschikbaarheid | 99,9% tijdens werkuren | Productieplanning niet 24/7 kritiek |
@@ -222,8 +222,8 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 
 | Categorie | Aanname | Motivering |
 |---|---|---|
-| Datatransfer egress | ~300 GB/maand | Webverkeer (~130 GB) + SAP batch (~20 GB) + rapporten (~50 GB) + geo-replicatie (~100 GB - Wijzigingsratio: 0.2% – 1% per dag) |
-| VPN bandbreedte | ~10 Mbps gemiddeld | 3 vestigingen, interne applicatie |
+| Datatransfer egress | ~300 GB/maand | Webverkeer (~130 GB) + SAP batch (~20 GB) + rapporten (~50 GB) + geo-replicatie (~100 GB - Wijzigingsratio: 0.2% - 1% per dag) |
+| VPN bandbreedte | ~15 Mbps gemiddeld | 3 vestigingen, interne applicatie |
 
 ### Opslag en backup
 
@@ -248,7 +248,7 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 |---|---|---|
 | Primaire regio | West Europe (Amsterdam) | Dichtstbij Belgische vestigingen |
 | DR regio | North Europe (Dublin) | Geo-redundantie voor SQL backups |
-| Prijspeil | Juni 2026 | Prijzen kunnen wijzigen — jaarlijkse herziening aanbevolen |
+| Prijspeil | Juni 2026 | Prijzen kunnen wijzigen - jaarlijkse herziening aanbevolen |
 | Wisselkoers | € (EUR) | Alle prijzen in euro |
 
 ## 2-3. Resource overzicht met Maandelijks kostenoverzicht - tabel met elke resource, SKU, prijs/maan + gegroepeerd per categorie
@@ -258,7 +258,7 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 | Resource | SKU | Regio | Instances | Prijs/maand (PAYG) | Prijs/maand (1J RI) |
 |---|---|---|---|---|---|
 | App Service Plan (Web + API) | P2v3 Windows | West Europe | 2 | € 848,89 | € 633,04 |
-| Azure Functions (Scheduler, Processor, Reporter) | Consumption (inbegrepen in ASP) | West Europe | — | € 0 | € 0 |
+| Azure Functions (Scheduler, Processor, Reporter) | Consumption (inbegrepen in ASP) | West Europe | - | € 0 | € 0 |
 | Virtual Machine (Jump VM) | B2ms, Windows (AHB) | West Europe | 1 | € 65,30 | € 35,26 |
 | **Subtotaal Compute** | | | | **€ 914,19** | **€ 668,30** |
 
@@ -279,7 +279,7 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 | VPN Gateway | VpnGw1AZ (zone-redundant) | West Europe | € 145,62 |
 | Azure Bastion | Basic | West Europe | € 119,30 |
 | Private DNS Zones + DNS Private Resolver | 5 zones + Inbound/Outbound Endpoint | Global | € 322,51 |
-| Datatransfer egress | ~300 GB/maand | — | € 14,97 |
+| Datatransfer egress | ~300 GB/maand | - | € 14,97 |
 | **Subtotaal Netwerk** | | | **€ 2.033,28** |
 
 ### Security & Identity
@@ -326,11 +326,11 @@ Alle bedragen zijn exclusief BTW en gebaseerd op West Europe als primaire regio.
 
 ## SKU-keuze onderbouwing
 
-### App Service Plan — P2v3 (Windows, 2 instances)
+### App Service Plan - P2v3 (Windows, 2 instances)
 
 De bestaande web- en applicatietier (WEB01/WEB02 + APP01/APP02) wordt vervangen door
 één App Service Plan P2v3 met 2 instances. Gezien de aard van de applicatie (read-heavy
-planning en rapportage), het beperkte aantal gelijktijdige gebruikers (≈50), en het feit
+planning en rapportage), het beperkte aantal gelijktijdige gebruikers (≈150), en het feit
 dat de Windows Services worden gemigreerd naar Azure Functions, is een afzonderlijk App
 Service Plan voor de API/Worker niet nodig. Web en API delen dezelfde HA-vereisten en
 hebben vergelijkbare performance-karakteristieken. P2v3 volstaat omdat Azure efficiënter
@@ -343,7 +343,7 @@ reservering. Korting: ~25% t.o.v. pay-as-you-go.
 
 ---
 
-### Azure Functions — App Service Plan (inbegrepen)
+### Azure Functions - App Service Plan (inbegrepen)
 
 De drie Windows Services (scheduler, processor, reporter) worden gemigreerd naar Azure
 Functions op het bestaande P2v3 App Service Plan. De keuze voor Azure Functions boven
@@ -355,7 +355,7 @@ in App Service Plan).
 
 ---
 
-### Azure SQL Database — General Purpose, 4 vCores
+### Azure SQL Database - General Purpose, 4 vCores
 
 De bestaande SQL Server 2014 Always On Availability Group (SQL01/SQL02) wordt vervangen
 door Azure SQL Database General Purpose. De applicatie is read-heavy met ≈50 gelijktijdige
@@ -371,7 +371,7 @@ vereisen.
 
 ---
 
-### Azure Firewall — Premium
+### Azure Firewall - Premium
 
 Azure Firewall Premium werd gekozen boven Standard omwille van de ingebouwde **IDPS
 (Intrusion Detection and Prevention System)**. IDPS detecteert en blokkeert bekende
@@ -380,7 +380,7 @@ meerkost t.o.v. Standard is verdedigbaar vanuit het security perspectief van de 
 
 ---
 
-### Application Gateway — WAF_v2
+### Application Gateway - WAF_v2
 
 WAF_v2 vervangt de F5 BIG-IP (EOL 2025) en biedt Layer 7 load balancing met WAF
 (OWASP 3.2) bescherming. WAF_v2 schaalt automatisch op basis van Capacity Units — voor
@@ -388,7 +388,7 @@ Contoso met ≈50 gelijktijdige gebruikers zijn 2 CU voldoende. Zone-redundant v
 
 ---
 
-### VPN Gateway — VpnGw1AZ
+### VPN Gateway - VpnGw1AZ
 
 VPN Gateway wordt gekozen boven ExpressRoute (zie ADR-003). VpnGw1AZ is zone-redundant
 en bevat 10 S2S tunnels — ruim voldoende voor de 3 vestigingen (Gent, Luik, Hasselt).
@@ -477,7 +477,6 @@ Totaal                             | ≈ € 80.000                  | ≈ € 1
 > **Dev/Test omgevingen** zijn niet opgenomen in de TCO-berekening.
 > Deze omgevingen worden on-demand opgestart via de Contoso-NonProd.
 > Dev/Test subscription en hebben geen vaste maandelijkse kost.
-> Geschatte kost bij actief gebruik: ~€ 50-100/dag.
 
 ---
 
@@ -485,27 +484,28 @@ Totaal                             | ≈ € 80.000                  | ≈ € 1
 
 ### 1. Reserved Instances (RI)
 
-Reserved Instances bieden een aanzienlijke korting op compute‑resources wanneer capaciteit voor 1 jaar wordt vastgelegd.
-Voor workloads die continu draaien, zoals de SQL‑database in deze omgeving, levert een 1‑jaar RI een directe en voorspelbare kostenreductie op van 20–40%.
-Omdat de SQL‑omgeving stabiel en permanent actief is, vormt een 1‑jaar RI de meest efficiënte keuze.
+Reserved instances zijn een overeenkomst waarbij je vastlegt dat je een bepaalde resouce zal afnemen voor 1 of 3 jaar.
+Deze capaciteit kan maandelijks of vooraf betaald worden.
+Voor workloads zoals de SQL‑database en app services die continu draaien, kan hierdoor jaarlijks en 20 tot 40% bespaard worden ten opzichte van Pay-as-you-go.
 
 
 ### 2. Azure Hybrid Benefit (AHB)
 
-De klant beschikt over bestaande Windows Server Datacenter en SQL Server Enterprise licenties met Software Assurance via een Microsoft Enterprise Agreement. De SA-contracten worden na afloop niet verlengd, omdat de jaarlijkse SA-kost de AHB besparing ruimschoots overstijgt.
+Azure Hybrid Benefit is een Microsoft kortingsregeling waarmee je bestaande on-premises Windows Server of SQL Server licenties met Software Assurance kan hergebruiken in Azure.
+De klant beschikt over bestaande Windows Server Datacenter en SQL Server Enterprise licenties met Software Assurance via een Microsoft Enterprise Agreement. 
+Hierdoor kunnen we gebruik maken van Azure Hybrid Benefit waarbij je geen licentie kosten meer moet betalen voor de resources.
+Enkel compute wordt dan aangerekend.
 
-Zolang de bestaande SA-periode loopt wordt AHB toegepast op: de Jump VM en de Azure SQL Database.
-
+De SA-contracten worden na afloop niet verlengd, omdat de jaarlijkse SA-kost de AHB besparing ruimschoots overstijgt.
+Zolang de bestaande SA-periode loopt wordt AHB toegepast op de Azure SQL Database en Jump VM.
 Na afloop van de SA-contracten wordt overgeschakeld naar een Azure Savings Plan als kostenefficiënter alternatief zonder licentieverplichting.
 
 
 ### 3. Auto‑scale
 
 Auto‑scale maakt het mogelijk om compute‑capaciteit automatisch op en af te schalen op basis van belasting.
-Voor de web‑ en applicatielaag (Azure App Service) zorgt auto‑scale ervoor dat er enkel extra instanties kunnen worden ingezet tijdens piekbelasting, terwijl tijdens rustige periodes automatisch wordt teruggeschaald.
+Voor het App Service plan zorgt auto‑scale ervoor dat er extra instances kunnen worden ingezet tijdens piekbelasting.
 Dit voorkomt overprovisioning en verlaagt de compute‑kost zonder impact op de beschikbaarheid.
-Voor SQL is auto‑scale minder relevant door de stabiele workload en vaste vCore‑configuratie.
-
 
 ### 4. Dev/Test resources (on-demand)
 
@@ -530,13 +530,12 @@ Voor SQL is auto‑scale minder relevant door de stabiele workload en vaste vCor
 
 ## 6. Risico's — onzekerheden in de inschatting
 
-
-Bij het opstellen van de Total Cost of Ownership (TCO) voor de Azure‑omgeving zijn verschillende aannames gemaakt. Hoewel deze gebaseerd zijn op actuele prijzen, best practices en realistische verbruiksmodellen, blijven er een aantal onzekerheden die een impact kunnen hebben op de uiteindelijke kost. Hieronder worden de belangrijkste risico’s toegelicht.
+Bij het opstellen van de TCO zijn een aantal aannames gemaakt op basis van actuele prijzen en realistische verbruiksmodellen. Deze aannames brengen onzekerheden met zich mee die de uiteindelijke kost kunnen beïnvloeden. Hieronder worden de belangrijkste risico's toegelicht.
 
 ### 1. Prijswijzigingen in Azure‑diensten
 
-Azure‑prijzen kunnen in de toekomst wijzigen. Hoewel Microsoft historisch gezien vooral prijsdalingen of stabiele tarieven hanteert, kunnen wijzigingen in compute, storage of netwerkverkeer een invloed hebben op de totale kost.
-Dit geldt vooral voor bandbreedte, premium storage en security‑diensten zoals Azure Firewall.
+Azure‑prijzen kunnen in de toekomst wijzigen. 
+Tariefwijzigingen voor compute, storage of netwerkverkeer kunnen een impact hebben op de toekomstige totale kosten.
 
 
 ### 2. Onzekerheid in verbruiksprofielen
@@ -547,55 +546,24 @@ Vooral bij App Service auto‑scale kan een onverwacht hoge belasting tijdelijk 
 
 ### 3. Afhankelijkheid van Reserved Instances en Savings Plans
 
-De TCO gaat uit van het gebruik van 1‑jaar Reserved Instances en 1‑jaar SQL Savings Plan. Indien deze optimalisaties niet worden toegepast of te laat worden geactiveerd, stijgt de kost automatisch naar Pay‑As‑You‑Go tarieven.
+De TCO gaat uit van het gebruik van 1‑jaar Reserved Instances en 1‑jaar SQL Savings Plan. 
+Indien de Reserved Instances niet worden toegepast, zal de kost automatisch stijgen naar Pay‑As‑You‑Go tarieven.
 Daarnaast blijft er een risico dat de workload in de toekomst wijzigt, waardoor de gekozen RI‑configuratie minder optimaal wordt.
 
 
 ### 4. Geen gebruik van Azure Hybrid Benefit (AHB)
 
-De huidige kostenberekening maakt gebruik van Azure Hybrid Benefit (AHB) op basis van bestaande Windows Server Datacenter en SQL Server Enterprise licenties met Software Assurance. Na afloop van de SA-contracten vervalt het recht op AHB automatisch.
-
+De huidige kostenberekening maakt gebruik van Azure Hybrid Benefit op basis van bestaande Windows Server Datacenter en SQL Server Enterprise licenties met Software Assurance. 
+Na afloop van de SA-contracten vervalt het recht op AHB automatisch.
 Indien na afloop geen Azure Savings Plan wordt afgesloten, stijgt de compute kost automatisch naar Pay-as-you-go tarieven.
+
 
 
 ### 5. Onzekerheden rond netwerkverkeer en egress‑kosten
 
-Uitgaand verkeer (egress) naar het internet of tussen regio’s kan variëren.
-Hoewel de huidige inschatting conservatief is, kunnen:
-
-    nieuwe integraties
-
-    API‑verkeer
-
-    externe partners
-
-    of groeiende gebruikersaantallen
-
-leiden tot hogere netwerk‑ en datatransferkosten.
+Egress-kosten zijn afhankelijk van het effectieve uitgaande netwerkverkeer en zijn moeilijk om exact in te schatten. 
+Bij nieuwe integraties, toenemend API-verkeer, externe partners of een groeiende gebruikersaantallen kunnen de datatransferkosten stijgen.
+De huidige inschatting is conservatief maar biedt geen garantie bij significante groei.
 
 
-### 6. Onvoorziene groei van storage en back‑ups
 
-Storage groeit vaak sneller dan verwacht.
-SQL‑back‑ups, logbestanden, monitoring‑data en applicatiebestanden kunnen leiden tot:
-
-    hogere storage‑kosten
-
-    hogere back‑upkosten
-
-    hogere retention‑kosten
-
-Vooral bij RA‑GRS back‑ups kan dit oplopen.
-
-
-### 7. Afhankelijkheid van correcte configuratie
-
-De TCO veronderstelt dat:
-
-    auto‑scale correct is ingesteld
-
-    onnodige resources worden uitgeschakeld
-
-    logging en monitoring efficiënt zijn geconfigureerd
-
-Fouten in configuratie kunnen leiden tot onnodige kosten, zoals te veel instanties, te hoge log‑retentie of inefficiënte firewall‑regels.
