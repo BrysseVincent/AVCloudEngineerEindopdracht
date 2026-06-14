@@ -125,9 +125,10 @@ App Service VNet Integration wijst één IP toe per App Service instantie. Confi
 |---|---|
 | Web App - production slot (max 5 instanties via auto-scale) | 5 |
 | Web App - staging slot | 1 |
-| Function App - production | 1 |
+| API App - production slot (max 5 instanties via auto-scale) | 5 |
+| API App - staging slot | 1 |
 | Buffer voor tijdelijke overlap bij scale-out | 5 |
-| **Totaal benodigd** | **12** |
+| **Totaal benodigd** | **17** |
 
 Een /27 (27 bruikbare IPs) biedt voldoende ruimte met groeimarges voor een eventuele tweede App Service in de toekomst.
 
@@ -139,14 +140,13 @@ Zelfde redenering als snet-spoke-web. De drie WebJobs (scheduler, processor, rep
 
 Private Endpoints verbruiken elk één privé-IP. Overzicht van benodigde Private Endpoints:
 
-| Resource | IPs |
+| Resource | Private Endpoint |
 |---|---|
-| Web App - production slot (max 5 instanties via auto-scale) | 5 |
-| Web App - staging slot | 1 |
-| API App - production slot (max 5 instanties via auto-scale) | 5 |
-| API App - staging slot | 1 |
-| Buffer voor tijdelijke overlap bij scale-out | 5 |
-| **Totaal benodigd** | **17** |
+| Azure SQL Database | 1 |
+| Azure Storage Account (blob) | 1 |
+| Azure Storage Account (file) | 1 |
+| Azure Key Vault | 1 |
+| **Totaal benodigd** | **4** |
 
 Een /28 (11 bruikbare IPs) biedt ruim voldoende capaciteit, ook bij toevoeging van extra Private Endpoints in de toekomst (bijv. een tweede Key Vault voor non-prod, of Azure Service Bus).
 
