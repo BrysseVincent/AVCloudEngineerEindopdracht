@@ -9,21 +9,24 @@
 
 **Vul in**: Welke tier kies jij? Onderbouw met de RTO/RPO-vereisten.
 
-Voor de databank kiezen we voor Azure SQL Database in de General Purpose tier met zone-redundantie ingeschakeld.
-De bestaande omgeving draait op SQL Server 2014 met Always On (2 nodes, ~500 GB). De migratiedoelstellingen vereisen een RTO ≤ 1 uur en RPO ≤ 15 minuten, samen met een TCO-reductie van minimaal 20% over 3 jaar.
+Voor de database wordt gekozen voor Azure SQL Database General Purpose ter vervanging van de bestaande SQL Server 2014 Always On Availability Group.
 
-General Purpose biedt:
-RPO van ~1-5 minuten via automatische geo-redundante backups, wat ruim binnen de vereiste van 15 minuten valt
-RTO van ~20-30 minuten bij failover, dit valt binnen de vereiste van 1 uur, maar zit aan de ondergrens
-Zone-redundantie voor hoge beschikbaarheid binnen één regio
-Automatische backups met point-in-time restore tot 35 dagen
-Ingebouwde HA zonder extra configuratie, ter vervanging van de huidige Always On setup
+**Waarom General Purpose:**
+- RPO ~1-5 minuten via geo-redundante backups, wat ruim binnen de vereiste van ≤ 15 minuten valt
+- RTO ~20-30 minuten bij failover, wat binnen de vereiste van ≤ 1 uur valt
+- Zone-redundantie voor hoge beschikbaarheid binnen één regio
+- Point-in-time restore tot 35 dagen
+- Significant goedkoper dan Business Critical, wat in lijn ligt met de TCO-reductiedoelstelling van 20%
 
-Waarom niet Business Critical:
-Business Critical biedt een RTO van ~30 seconden en een RPO van quasi nul via in-memory replica's. Dit overtreft de projectvereisten ruimschoots, maar komt met een significant hogere kostprijs. Gezien de doelstelling van TCO-reductie van minimaal 20% is deze meerprijs moeilijk te verantwoorden wanneer General Purpose de gestelde RTO/RPO-vereisten haalt.
+**Waarom niet Business Critical:**
+Business Critical biedt een RTO van ~30 seconden en een RPO van quasi nul, maar kost ~€3.000+/maand tegenover €1.077/maand voor General Purpose. 
+Gezien General Purpose de RTO/RPO-vereisten haalt, is deze meerprijs niet te verantwoorden.
 
-Waarom niet Hyperscale:
-Hyperscale is ontworpen voor zeer grote databases (meerdere TB) of workloads die extreem snelle schaalbaarheid vereisen. Met een database van ~500 GB biedt Hyperscale geen relevante meerwaarde en voegt het onnodige complexiteit en kost toe.
+**Waarom niet Hyperscale:**
+Hyperscale is ontworpen voor databases van meerdere TB. 
+Met een database van 500 GB biedt dit geen meerwaarde en voegt het onnodige complexiteit en kosten toe.
 
-Risico-aanvaarding:
-De RTO van General Purpose (~20-30 min) haalt de vereiste van ≤ 1 uur, maar biedt geen ruime marge. Dit risico wordt bewust aanvaard op basis van de kostoptimalisatiedoelstelling. Mocht de applicatie in de toekomst strengere beschikbaarheidsvereisten krijgen, dan vormt een upgrade naar Business Critical een logische volgende stap.
+**Risico-aanvaarding:**
+De RTO van ~20-30 minuten haalt de vereiste van ≤ 1 uur maar biedt geen ruime marge. 
+Dit risico wordt bewust aanvaard op basis van de kostoptimalisatiedoelstelling. 
+Bij strengere beschikbaarheidsvereisten in de toekomst is een upgrade naar Business Critical altijd een mogelijkheid.
