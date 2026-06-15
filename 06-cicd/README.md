@@ -514,42 +514,13 @@ Vul de starter pipelines aan en documenteer je keuzes:
 
 ## SAST - SonarCloud
 
-Voor de statische applicatiebeveiligingstest (SAST) werd gekozen voor **SonarCloud**. 
-SonarCloud analyseert de broncode automatisch op beveiligingslekken, bugs en 
-kwetsbaarheden zonder de applicatie uit te voeren.
+Voor SAST-tool/scan werd gekozen voor SonarCloud. 
+Dit is een tool die automatisch de broncode scant op beveiligingslekken en bugs zonder dat de applicatie effectief moet draaien.
+SonarCloud is gratis, integreert eenvoudig met Azure DevOps en biedt goede ondersteuning voor .NET. 
+Enterprise alternatieven zoals Checkmarx vereisen een dure licentie die niet realistisch is voor deze omgeving.
 
-### Waarom SonarCloud?
-
-SonarCloud werd verkozen boven alternatieven zoals Checkmarx en GitHub Advanced Security 
-omwille van de volgende redenen:
-
-**Kostprijs** - SonarCloud is gratis beschikbaar voor publieke repositories en biedt een 
-betaalbare licentie voor private repositories. Enterprise tools zoals Checkmarx vereisen 
-een dure licentie die niet realistisch is voor deze omgeving.
-
-**Azure DevOps integratie** - SonarCloud biedt een officiële Azure DevOps extension met 
-native taken zoals `SonarCloudPrepare`, `SonarCloudAnalyze` en `SonarCloudPublish`. Dit 
-maakt de integratie in de bestaande pipeline eenvoudig en goed gedocumenteerd.
-
-**.NET ondersteuning** - SonarCloud heeft uitstekende ondersteuning voor ASP.NET 
-WebForms en .NET Framework, de technologieën die Contoso gebruikt.
-
-**NIS2-compliance** - Het gebruik van een SAST tool toont aan dat Contoso security by 
-design toepast, wat bijdraagt aan de NIS2-vereisten rond beveiliging van netwerk- en 
-informatiesystemen.
-
-### Wat scant SonarCloud?
-
-- **Beveiligingslekken** - SQL injection, XSS, onveilige configuraties
-- **Bugs** - Logische fouten en null reference exceptions
-- **Code smells** - Slecht leesbare of onderhoudbare code
-- **Dependencies** - Kwetsbare NuGet packages via de vulnerability scan
-
-### Resultaten bekijken
-
-Na elke pipeline run zijn de resultaten beschikbaar op 
-`https://sonarcloud.io/project/contoso-manufacturing`. De pipeline faalt automatisch 
-indien de **Quality Gate** niet gehaald wordt.
+Na elke pipeline run zijn de resultaten beschikbaar op het SonarCloud dashboard. 
+Als de kwaliteitsdrempel niet gehaald wordt, faalt de pipeline automatisch waardoor er geen onveilige versies naar productie gedeployd worden.
 
 ---
 
