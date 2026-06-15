@@ -412,16 +412,16 @@ Schrijf de volgende modules **volledig** (de starter code hierboven is enkel een
 | Module | Bestand | Status |
 |---|---|---|
 | Spoke VNet + NSG's | `modules/network/spoke-vnet.bicep` | Starter gegeven ↑ |
-| App Service Plan | `modules/compute/app-service-plan.bicep` | ❌ Zelf schrijven |
-| App Service (+ Managed Identity + VNet Integration) | `modules/compute/app-service.bicep` | ❌ Zelf schrijven |
-| SQL Server | `modules/data/sql-server.bicep` | ❌ Zelf schrijven |
-| SQL Database (+ geo-replication) | `modules/data/sql-database.bicep` | ❌ Zelf schrijven |
-| Storage Account | `modules/data/storage-account.bicep` | ❌ Zelf schrijven |
+| App Service Plan | `modules/compute/app-service-plan.bicep` | ✅ |
+| App Service (+ Managed Identity + VNet Integration) | `modules/compute/app-service.bicep` | ✅ |
+| SQL Server | `modules/data/sql-server.bicep` | ✅ |
+| SQL Database (+ geo-replication) | `modules/data/sql-database.bicep` | ✅ |
+| Storage Account | `modules/data/storage-account.bicep` | ✅ |
 | Key Vault | `modules/security/key-vault.bicep` | Starter gegeven ↑ |
-| Private Endpoint | `modules/network/private-endpoint.bicep` | ❌ Zelf schrijven |
+| Private Endpoint | `modules/network/private-endpoint.bicep` | ✅ |
 | main.bicep orchestrator | `main.bicep` | Starter gegeven ↑ |
-| Parameters prd | `main.bicepparam` | ❌ Zelf schrijven |
-| Parameters dev | `main.dev.bicepparam` | ❌ Zelf schrijven |
+| Parameters prd | `main.bicepparam` | ✅ |
+| Parameters dev | `main.dev.bicepparam` | ✅ |
 
 ---
 
