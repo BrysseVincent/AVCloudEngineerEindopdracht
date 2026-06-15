@@ -504,11 +504,11 @@ Vul de starter pipelines aan en documenteer je keuzes:
 |---|---|---|
 | `iac-pipeline.yml` | IaC pipeline starter aanwezig | ✅ Gegeven |
 | `app-pipeline.yml` | App pipeline starter aanwezig | ✅ Gegeven |
-| SAST scan | Voeg een echte SAST-tool toe (SonarCloud/Checkmarx) | ❌ Jij |
-| Integratietests | Voeg integratietests toe na TST-deployment | ❌ Jij |
-| Rollback mechanisme | Documenteer hoe je terugdraait bij falen in PRD | ❌ Jij |
-| Variable groups | Vervang hardcoded namen door Azure DevOps variable groups | ❌ Jij |
-| Approvers configuratie | Documenteer wie de PRD approval gates beheert | ❌ Jij |
+| SAST scan | Voeg een echte SAST-tool toe (SonarCloud/Checkmarx) | ✅ |
+| Integratietests | Voeg integratietests toe na TST-deployment | ✅ |
+| Rollback mechanisme | Documenteer hoe je terugdraait bij falen in PRD | ✅ |
+| Variable groups | Vervang hardcoded namen door Azure DevOps variable groups | ✅ |
+| Approvers configuratie | Documenteer wie de PRD approval gates beheert | ✅ |
 
 ---
 
