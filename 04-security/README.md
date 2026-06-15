@@ -165,17 +165,6 @@ Kies voor elke resource type welk Defender-plan je activeert. Onderbouw je keuze
 
 Documenteer welke **Secure Score** je nastreeft en welke aanbevelingen je prioriteit geeft:
 
-| Prioriteit | Aanbeveling | Huidige score impact |
-|---|---|---|
-| 🔴 Kritiek | Enable MFA for all users | Hoog |
-| 🔴 Kritiek | Disable public network access | Hoog |
-| 🟠 Hoog | Enable Defender for SQL | Middel |
-| 🟡 Middel | Apply system updates | Laag |
-
-> **Secure Score doelstelling: ≥ 80%**
-> De Azure Security Benchmark initiative wordt toegewezen op Management Group-niveau.
-> Maandelijkse audit via Defender for Cloud dashboard.
-
 | Prioriteit | Aanbeveling | Score impact | Status in Contoso architectuur |
 |---|---|---|---|
 | 🔴 Kritiek | Enable MFA for all users | Hoog | ✅ Afgedekt via Entra ID MFA + Conditional Access |
@@ -190,6 +179,10 @@ Documenteer welke **Secure Score** je nastreeft en welke aanbevelingen je priori
 | 🟡 Middel | Apply system updates | Laag | ✅ n.v.t. — PaaS, Azure beheert updates |
 | 🟡 Middel | Enable HTTPS only on App Service | Laag | ✅ Afgedekt via Azure Policy |
 | 🟡 Middel | Require minimum TLS 1.2 on Storage | Laag | ✅ Afgedekt via Azure Policy |
+
+> **Secure Score doelstelling: ≥ 80%**
+> De Azure Security Benchmark initiative wordt toegewezen op Management Group-niveau.
+> Maandelijkse audit via Defender for Cloud dashboard.
 
 ---
 
