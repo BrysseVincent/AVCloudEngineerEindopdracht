@@ -135,9 +135,6 @@ De ingebouwde Contributor rol geeft te veel rechten waaronder ook toegang tot SQ
 | `Microsoft.Web/sites/publish/action` | Code deployen naar productie |
 | `Microsoft.Web/sites/slots/publish/action` | Code deployen naar staging slot |
 
-Scope: rg-contoso-frontend 
-De rol moet enkel toegang hebben tot de resource group met de App Service, niet de volledige subscription. Zo heeft de deployer geen toegang tot data, netwerk of security resources.
-
 ---
 
 ## deel C: microsoft defender for cloud
