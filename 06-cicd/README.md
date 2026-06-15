@@ -533,7 +533,7 @@ Documenteer hoe je de **approval gate voor productie** instelt in Azure DevOps:
 | **Tech Lead** | Technische validatie, controleert of de deployment geen regressies introduceert |
 | **Product Owner** | Functionele validatie, bevestigt dat TST omgeving correct werkt voor de business |
 
-Minimaal **2 approvers** moeten akkoord geven voor een productie deployment kan doorgaan.
+Minimaal 2 approvers zullen akkoord moeten geven voor een productie deployment kan doorgaan.
 
 ### Hoe instellen in Azure DevOps?
 
